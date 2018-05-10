@@ -1,7 +1,9 @@
 <?php
 include "DatabaseConnectorClass.php";
 $dbConn = new DababaseConnector();
-$sql = 'SELECT a.Therapist_ID, a.Comment_Log_ID ,a.Article_ID,a.Article_Title,SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM Article a INNER JOIN Therapist_Account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1';
+$sql = 'SELECT a.Therapist_ID, a.Comment_Log_ID ,a.Article_ID,a.Article_Title,
+SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM Article a
+ INNER JOIN Therapist_Account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1 ORDER BY a.Article_ID DESC';
 $dbConn->setQuery($sql);
 $result = $dbConn->executeSelectQuery();
 
@@ -73,6 +75,9 @@ $result = $dbConn->executeSelectQuery();
 
     <!-- Page Heading -->
     <h1 class="my-4">Newsfeeds</h1>
+    <div class="active-pink-4 mb-4">
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+    </div>
     <div class="row">
         <?php
 
