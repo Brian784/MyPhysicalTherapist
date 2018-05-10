@@ -64,6 +64,8 @@ $result = $dbConn->executeSelectQuery();
                 </li>
                 <li><a href="contactinfo.html">Contact Information</a></li>
             </ul>
+
+
         </nav>
 
     </div>
@@ -75,9 +77,7 @@ $result = $dbConn->executeSelectQuery();
 
     <!-- Page Heading -->
     <h1 class="my-4">Newsfeeds</h1>
-    <div class="active-pink-4 mb-4">
-        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-    </div>
+
     <div class="row">
         <?php
 
