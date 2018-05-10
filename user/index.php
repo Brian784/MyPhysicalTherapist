@@ -1,7 +1,7 @@
 <?php
 include "DatabaseConnectorClass.php";
 $dbConn=new DababaseConnector();
-$sql='SELECT a.Comment_Log_ID ,a.Article_ID,a.Article_Title,SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM Article a INNER JOIN Therapist_Account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1';
+$sql='SELECT a.Therapist_ID, a.Comment_Log_ID ,a.Article_ID,a.Article_Title,SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM Article a INNER JOIN Therapist_Account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1';
 $dbConn->setQuery($sql);
 $result=$dbConn->executeSelectQuery();
 
@@ -20,6 +20,7 @@ $result=$dbConn->executeSelectQuery();
 		<link rel="stylesheet" href="assets/css/main.css" />
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/css/3-col-portfolio.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	</head>
 	<body>
 		<div id="page-wrapper">
@@ -70,19 +71,23 @@ $result=$dbConn->executeSelectQuery();
             <h1 class="my-4">Newsfeeds</h1>
             <div class="row">
             <?php
+
             while ($row = @mysqli_fetch_array($result)) {
                 echo '<div class="col-lg-4 col-sm-6 portfolio-item">
                     <div class="card h-100">
                         <div class="card-body">';
-                echo  '<h4 class="card-title"><a href="#">'.$row['Article_Title'].'</a></h4>';
-                echo '<h5><span class="glyphicon glyphicon-user"></span>Post by '.$row['First_Name'] .'  '.$row['Last_Name'].'</h5>';
-                echo '<p class="card-text">'.$row['Article'].'</p></div></div></div>';
+                echo '<form id="userForm"  action="/therapistprofile.php" method="post">
+  <input type="hidden" name="therapistID" value='.$row["Therapist_ID"].'>
+</form>';
+                echo  '<h4 class="card-title">'.$row['Article_Title'].'</h4>';
+                echo '<h5><span class="glyphicon glyphicon-user"></span>Post by <a onclick="document.getElementById(\'userForm\').submit();">'.$row['First_Name'] .'  '.$row['Last_Name'].'</a></h5>';
+                echo '<p class="card-text">'.$row['Article'].'...</p></div></div></div>';
+
             }
             ?>
 
             </div>
             <!-- /.row -->
-
             <!-- Pagination -->
             <ul class="pagination justify-content-center">
                 <li class="page-item">
@@ -109,6 +114,7 @@ $result=$dbConn->executeSelectQuery();
             </ul>
 
         </div>
+
 
 
 
