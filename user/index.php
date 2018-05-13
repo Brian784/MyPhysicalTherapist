@@ -42,6 +42,10 @@ $result = $dbConn->executeSelectQuery();
                 <li>
                     <a href="videos.html">User</a>
                     <ul>
+                        <?php
+
+
+                        ?>
                         <li><a href="#">Login</a></li>
                         <li><a href="#">Register</a></li>
                     </ul>
