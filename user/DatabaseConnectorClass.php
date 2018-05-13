@@ -6,7 +6,6 @@ Class DababaseConnector{
     var $password='Havanaunana';
     var $dbname='id5592625_myphysicaltherapist';
     var $query;
-    var $conn;
 
     function __construct(){
 
@@ -15,43 +14,67 @@ Class DababaseConnector{
         $this->query=$var;
     }
     function getConnection(){
-        $this->conn= mysqli_connect($this->host, $this->username, $this->password,$this->dbname);
-        if (!$this->conn) {
+        $conn= mysqli_connect($this->host, $this->username, $this->password,$this->dbname);
+        if (!$conn) {
 
             die("Connection failed" . mysqli_connect_error());
         }else{
-           return $this->conn;
+           return $conn;
         }
     }
     function executeQuery(){
         $returnValue=False;
         $conn = $this->getConnection();
         if (!$conn) {
-
             die("Connection failed" . mysqli_connect_error());
         }else{
             if ($conn->query($this->query) === TRUE) {
                 $returnValue=true;
             }else{
-                echo "Query Failded";
+                $returnValue=false;
             }
         }
+        $conn->close();
         return $returnValue;
 
     }
     function executeSelectQuery(){
         $conn =$this->getConnection();
         if (!$conn) {
-
+            $conn->close();
             die("Connection failed" . mysqli_connect_error());
         }else{
             $response = @mysqli_query($conn, $this->query);
+            $conn->close();
             return $response;
         }
     }
-    function closeConn(){
-        mysqli_close($this->conn);
+    function validateUser($email,$password){
+       $conn = $this->getConnection();
+        if (!$conn) {
+            $error = mysqli_connect_error();
+            $errno = mysqli_connect_errno();
+            print "$errno: $error\n";
+            exit();
+            die("Connection failed" . mysqli_connect_error());
+        }else{
+                $sql = "SELECT Email, Password FROM `user_account` WHERE Email = ? AND Password= ?";
+            $stmt = $conn->stmt_init();
+            if(!$stmt->prepare($sql))
+            {
+                print "Failed to prepare statement\n";
+            }else{
+                $stmt->bind_param("ss", $email,$password);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                return $result->num_rows;
+            }
+
+        }
+
+
     }
+
 
 
 

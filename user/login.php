@@ -1,21 +1,24 @@
 <?php
 if(isset($_POST['email']) && isset($_POST['password'])) {
     include "DatabaseConnectorClass.php";
+
     $DBconn = new DababaseConnector();
-    $conn = $DBconn->getConnection();
-    $stmt = $conn->prepare("SELECT Email, Password FROM `user_account` WHERE Email = ? AND Password= ?");
-    $stmt->bind_param("ss", $_POST['email'],  $_POST['password']);
-    $stmt->execute();
-    //$sql="SELECT Email,Password FROM `user_account` WHERE Email= '$email' AND Password= '$password'";
-    //$response = @mysqli_query($conn,$sql);
-    //echo $response->num_rows;
-echo $stmt->num_rows;
+   // $conn = $DBconn->getConnection();
+    $DBconn->validateUser(strtolower($_POST['email']),$_POST['password']);
+ // $stmt = $conn->prepare("SELECT Email, Password FROM `user_account` WHERE Email = ? AND Password= ?");
+   // $psd=$_POST['password'];
+    //$email=strtolower($_POST['email']);
+    //$stmt->bind_param('ss', $email, $psd );
+    //$stmt->execute();
+//echo $stmt->num_rows;
+    /*
     if ($stmt->num_rows != 0) {
         header("Location: index.php");
         exit();
     } else {
         echo '<script>alert("User Not Found")</script>';
     }
+    */
 
 }
 ?>
