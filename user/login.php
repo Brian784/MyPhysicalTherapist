@@ -3,22 +3,12 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
     include "DatabaseConnectorClass.php";
 
     $DBconn = new DababaseConnector();
-   // $conn = $DBconn->getConnection();
-    $DBconn->validateUser(strtolower($_POST['email']),$_POST['password']);
- // $stmt = $conn->prepare("SELECT Email, Password FROM `user_account` WHERE Email = ? AND Password= ?");
-   // $psd=$_POST['password'];
-    //$email=strtolower($_POST['email']);
-    //$stmt->bind_param('ss', $email, $psd );
-    //$stmt->execute();
-//echo $stmt->num_rows;
-    /*
-    if ($stmt->num_rows != 0) {
-        header("Location: index.php");
-        exit();
-    } else {
-        echo '<script>alert("User Not Found")</script>';
-    }
-    */
+    $isValite=$DBconn->validateUser(strtolower($_POST['email']),$_POST['password']);
+ if($isValite){
+    echo 'true';
+ }else{
+echo 'false';
+ }
 
 }
 ?>
