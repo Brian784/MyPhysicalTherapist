@@ -78,6 +78,7 @@ Class DababaseConnector
                 $result = $stmt->get_result();
                 $numRow = $result->num_rows;
                 $stmt->close();
+                $conn->close();
                 if ($numRow == 0) {
                     return false;
                 } else {
