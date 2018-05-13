@@ -1,0 +1,31 @@
+  <?php
+                            include_once 'EncryptClass.php';
+                            include_once 'cookiesAndSessions.php';
+                            $CookieMaker=new CookiesTracking();
+                            $SessionMaker=new SessionsTracking();
+                            $encryptor=new EncryptClass();
+                            $isValid;
+                            if($CookieMaker->getCookieValue('UserEmailCookie')!=null &&$CookieMaker->getCookieValue('UserPsdCookie')!=null){
+                                //Received completed Cookies
+                                //decrypt
+                                $email=$encryptor->crypt_function($CookieMaker->getCookieValue('UserEmailCookie'),'d');
+                                $pass= $encryptor->crypt_function($CookieMaker->getCookieValue('UserPsdCookie'),'d');
+                                $isValid=$dbConn->validateUser($email,$pass);
+
+                            }else if($SessionMaker->getSession('UserEmailSession')!=null && $SessionMaker->getSession('UserPsdSession')!=null ){
+                                //received complete sessions
+                                //decrypt
+                                $email=$encryptor->crypt_function($SessionMaker->getSession('UserEmailSession'),'d');
+                                $pass= $encryptor->crypt_function($CookieMaker->getCookieValue('UserPsdSession'),'d');
+                                $isValid=$dbConn->validateUser($email,$pass);
+                            }else{
+                                //InvalidAccess
+                                //no cookies no sessions
+                                $isValid=false;
+                            }
+                        if($isValid){
+                            //cookies value matched database value
+                          
+                        }else{
+                            header('Location: login.php');
+                        }

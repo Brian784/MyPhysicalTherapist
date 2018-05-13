@@ -1,6 +1,47 @@
 <?php
+session_start();
+include_once 'EncryptClass.php';
+include_once 'cookiesAndSessions.php';
 include "DatabaseConnectorClass.php";
+$CookieMaker=new CookiesTracking();
+$SessionMaker=new SessionsTracking();
+$encryptor=new EncryptClass();
+$isLogined=true;
 $dbConn = new DababaseConnector();
+
+if($CookieMaker->getCookieValue('UserEmailCookie')!=null &&$CookieMaker->getCookieValue('UserPswCookie')!=null){
+    //Received completed Cookies
+    //decrypt
+    echo 'Received cookies<br>';
+    $email=$encryptor->crypt_function($CookieMaker->getCookieValue('UserEmailCookie'),'d');
+    $pass= $encryptor->crypt_function($CookieMaker->getCookieValue('UserPswCookie'),'d');
+    $isLogined=$dbConn->validateUser($email,$pass);
+
+}else{
+    if($SessionMaker->getSession('UserEmailSession')!=null && $SessionMaker->getSession('UserPswSession')!=null ){
+        //received complete sessions
+        //decrypt
+        echo 'Received sessions<br>';
+        $email=$encryptor->crypt_function($SessionMaker->getSession('UserEmailSession'),'d');
+        $pass= $encryptor->crypt_function($SessionMaker->getSession('UserPswSession'),'d');
+        $isLogined=$dbConn->validateUser($email,$pass);
+    }else{
+        //InvalidAccess
+        //no cookies no sessions
+        echo 'no cookies no sessions <br>';
+        $isLogined=false;
+    }
+
+
+
+}
+
+
+
+
+
+
+
 $sql = 'SELECT a.Therapist_ID, a.Comment_Log_ID ,a.Article_ID,a.Article_Title,
 SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM Article a
  INNER JOIN Therapist_Account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1 ORDER BY a.Article_ID DESC';
@@ -43,11 +84,16 @@ $result = $dbConn->executeSelectQuery();
                     <a href="videos.html">User</a>
                     <ul>
                         <?php
-
-
+                    if (!$isLogined){
+                        echo ' <li><a href="login.php">Login</a></li>';
+                        echo ' <li><a href="#">Register</a></li>';
+                    }else{
+                        echo ' <li><a href="#">User Profile</a></li>';
+                        echo ' <li><a href="#">User Profile</a></li>';
+                        echo ' <li><a href="#">Logout</a></li>';
+                    }
                         ?>
-                        <li><a href="login.php">Login</a></li>
-                        <li><a href="#">Register</a></li>
+
                     </ul>
                 </li>
                 <li>

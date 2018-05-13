@@ -21,7 +21,7 @@ Class DababaseConnector
 
     function getConnection ()
     {
-        $conn = mysqli_connect($this->host, $this->username, $this->password, $this->dbname);
+        $conn = @mysqli_connect($this->host, $this->username, $this->password, $this->dbname);
         if (!$conn) {
 
             die("Connection failed" . mysqli_connect_error());
@@ -60,6 +60,18 @@ Class DababaseConnector
             return $response;
         }
     }
+    function getUser($email, $password){
+        $this->setQuery("SELECT User_ID FROM `User_Account` WHERE Email = '$email' AND Password= '$password'");
+        $response=$this->executeSelectQuery();
+        $UserID=null;
+        if($response->num_rows!=0){
+
+            while ($row = @mysqli_fetch_array($response)) {
+                $UserID=$row['User_ID'];
+            }
+        }
+        return $UserID;
+    }
 
     function validateUser ($email, $password)
     {
@@ -68,10 +80,10 @@ Class DababaseConnector
 
             die("Connection failed" . mysqli_connect_error());
         } else {
-            $sql = "SELECT Email, Password FROM `user_account` WHERE Email = ? AND Password= ?";
+            $sql = "SELECT Email, Password FROM `User_Account` WHERE Email = ? AND Password= ?";
             $stmt = $conn->stmt_init();
             if (!$stmt->prepare($sql)) {
-                print "Failed to prepare statement\n";
+                    echo $stmt->error;
             } else {
                 $stmt->bind_param("ss", $email, $password);
                 $stmt->execute();
@@ -80,16 +92,18 @@ Class DababaseConnector
                 $stmt->close();
                 $conn->close();
                 if ($numRow == 0) {
+                    echo 'false';
                     return false;
                 } else {
+                    echo 'true';
                     return true;
                 }
             }
 
         }
+ }
 
 
-    }
 
 
 }

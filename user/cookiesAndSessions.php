@@ -20,7 +20,6 @@ class CookiesTracking {
 	function deleteCookie($cookie_name,$cookie_value){
 	    unset($_COOKIE[$cookie_name]);
 		setcookie($cookie_name, $cookie_value, time() - 3600, '/');
-		echo "cookie was deleted";
 	}
 
 }

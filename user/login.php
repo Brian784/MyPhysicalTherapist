@@ -8,7 +8,7 @@ $sessionMaker = new SessionsTracking();
 $DBconn = new DababaseConnector();
 $encrtptor = new EncryptClass();
 $EmaiCookielValue = $cookieMaker->getCookieValue('UserEmailCookie');
-$PsdCookieValue = $cookieMaker->getCookieValue('UserPsdCookie');
+$PsdCookieValue = $cookieMaker->getCookieValue('UserPswCookie');
 if ($EmaiCookielValue != null && $PsdCookieValue != null) {
     $EmaiCookielValue = $encrtptor->crypt_function($EmaiCookielValue, 'd');
     $PsdCookieValue = $encrtptor->crypt_function($PsdCookieValue, 'd');
@@ -17,14 +17,14 @@ if ($EmaiCookielValue != null && $PsdCookieValue != null) {
         header('Location: index.php');
     } else {
         $cookieMaker->deleteCookie('UserEmailCookie');
-        $cookieMaker->deleteCookie('UserPsdCookie');
-        echo '<script>alert("Invalid Cookies")</script>';
+        $cookieMaker->deleteCookie('UserPswCookie');
+
 
     }
 
 } else {
     $emailSessionValue = $sessionMaker->getSession('UserEmailSession');
-    $psdSessionValue = $sessionMaker->getSession('UserPsdSession');
+    $psdSessionValue = $sessionMaker->getSession('UserPswSession');
     $psdSessionValue = $encrtptor->crypt_function($psdSessionValue, 'd');
     $emailSessionValue = $encrtptor->crypt_function($emailSessionValue, 'd');
     echo $psdSessionValue;
@@ -34,8 +34,8 @@ if ($EmaiCookielValue != null && $PsdCookieValue != null) {
         header('Location: index.php');
     } else {
         $sessionMaker->deleteSession('UserEmailSession');
-        $sessionMaker->deleteSession('UserPsdSession');
-        echo '<script>alert("Invalid Session")</script>';
+        $sessionMaker->deleteSession('UserPswSession');
+
     }
 
 }
@@ -45,22 +45,25 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $password = $_POST['password'];
     $isValid = $DBconn->validateUser($email, $password);
     if ($isValid) {
+        $id=$DBconn->getUser($email,$password);
         $encryptedPsd = $encrtptor->crypt_function($password, 'e');
         $encryptedEmail = $encrtptor->crypt_function($email, 'e');
+        $encryptedID = $encrtptor->crypt_function($id, 'e');
         $check_value = isset($_POST['rememberMe']) ? 1 : 0;
         if ($check_value == 1) {
             $cookieMaker->createCookie('UserEmailCookie', $encryptedEmail);
-            $cookieMaker->createCookie('UserPsdCookie', $encryptedPsd);
+            $cookieMaker->createCookie('UserPswCookie', $encryptedPsd);
+            $cookieMaker->createCookie('UserIDCookie', $encryptedID);
 
         } else {
             $sessionMaker->createSession('UserEmailSession', $encryptedEmail);
-            $sessionMaker->createSession('UserPsdSession', $encryptedPsd);
+            $sessionMaker->createSession('UserPswSession', $encryptedPsd);
+            $sessionMaker->createSession('UserIDSession', $encryptedID);
         }
         header('Location: index.php');
         exit();
     } else {
-        header('Location: login.php');
-        echo '<script>alert("User Not found")</script>';
+        echo '<script>alert("'.$email.'   '.$password.'")</script>';
     }
 
 }
