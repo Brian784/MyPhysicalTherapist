@@ -1,4 +1,0 @@
-therapistprofile.php
-article.php
-userprofile.php
-logout.php

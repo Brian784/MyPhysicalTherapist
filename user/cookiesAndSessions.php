@@ -45,5 +45,6 @@ class SessionsTracking {
 
     function deleteSession($session_name){
         unset($_SESSION[$session_name]); //destroy product session item
+
     }
 }

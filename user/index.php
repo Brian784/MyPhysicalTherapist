@@ -109,8 +109,11 @@ $result = $dbConn->executeSelectQuery();
                             echo '<form id="UserIDForm"  action="userprofile.php" method="get">
   <input type="hidden" name="userID" value=' . $UserID . '>
 </form>';
+                            echo '<form id="LogoutForm"  action="login.php" method="post">
+  <input type="hidden" name="isSignout" value="1">
+</form>';
                             echo ' <li><a onclick="document.getElementById(\'UserIDForm\').submit();">User Profile</a></form></li>';
-                            echo ' <li><a href="#">Logout</a></li>';
+                            echo ' <li><a onclick="document.getElementById(\'LogoutForm\').submit();">Logout</a></li>';
                         }
                         ?>
 
