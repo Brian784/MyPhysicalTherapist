@@ -43,8 +43,8 @@ if($CookieMaker->getCookieValue('UserEmailCookie')!=null &&$CookieMaker->getCook
 
 
 $sql = 'SELECT a.Therapist_ID, a.Comment_Log_ID ,a.Article_ID,a.Article_Title,
-SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM Article a
- INNER JOIN Therapist_Account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1 ORDER BY a.Article_ID DESC';
+SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM article a
+ INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1 ORDER BY a.Article_ID DESC';
 $dbConn->setQuery($sql);
 $result = $dbConn->executeSelectQuery();
 
@@ -130,13 +130,13 @@ $result = $dbConn->executeSelectQuery();
 
     <div class="row">
         <?php
-
+        $ctr=0;
         while ($row = @mysqli_fetch_array($result)) {
-
+            ++$ctr;
             echo '<div class="col-lg-4 col-sm-6 portfolio-item">
                     <div class="card h-100">
                         <div class="card-body">';
-            echo '<form id="userForm"  action="/therapistprofile.php" method="get">
+            echo '<form id="userForm"  action="/therapistprofile.php" method="post">
   <input type="hidden" name="therapistID" value=' . $row["Therapist_ID"] . '>
 </form>';
             echo '<form id="articleForm"  action="/article.php" method="get">
@@ -145,6 +145,7 @@ $result = $dbConn->executeSelectQuery();
             echo '<h4 class="card-title"><a onclick="document.getElementById(\'articleForm\').submit();">' . $row['Article_Title'] . '</a></h4>';
             echo '<h5><span class="glyphicon glyphicon-user"></span> Post by <a onclick="document.getElementById(\'userForm\').submit();">' . $row['First_Name'] . '  ' . $row['Last_Name'] . '</a></h5>';
             echo '<p class="card-text">' . $row['Article'] . '...</p></div></div></div>';
+
 
         }
         ?>

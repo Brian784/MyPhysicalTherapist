@@ -80,7 +80,7 @@ Class DababaseConnector
 
             die("Connection failed" . mysqli_connect_error());
         } else {
-            $sql = "SELECT Email, Password FROM `User_Account` WHERE Email = ? AND Password= ?";
+            $sql = "SELECT Email, Password FROM `user_account` WHERE Email = ? AND Password= ?";
             $stmt = $conn->stmt_init();
             if (!$stmt->prepare($sql)) {
                     echo $stmt->error;
@@ -92,10 +92,8 @@ Class DababaseConnector
                 $stmt->close();
                 $conn->close();
                 if ($numRow == 0) {
-                    echo 'false';
                     return false;
                 } else {
-                    echo 'true';
                     return true;
                 }
             }

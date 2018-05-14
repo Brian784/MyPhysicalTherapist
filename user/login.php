@@ -55,15 +55,15 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             $cookieMaker->createCookie('UserPswCookie', $encryptedPsd);
             $cookieMaker->createCookie('UserIDCookie', $encryptedID);
 
-        } else {
+        }
             $sessionMaker->createSession('UserEmailSession', $encryptedEmail);
             $sessionMaker->createSession('UserPswSession', $encryptedPsd);
             $sessionMaker->createSession('UserIDSession', $encryptedID);
-        }
+
         header('Location: index.php');
         exit();
     } else {
-        echo '<script>alert("'.$email.'   '.$password.'")</script>';
+        echo '<script>alert("User Not Found");</script>';
     }
 
 }
