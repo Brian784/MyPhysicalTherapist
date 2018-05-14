@@ -17,19 +17,20 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
     $pass = $encryptor->crypt_function($CookieMaker->getCookieValue('UserPswCookie'), 'd');
     $isLogined = $dbConn->validateUser($email, $pass);
 
-}
-if ($SessionMaker->getSession('UserEmailSession') != null && $SessionMaker->getSession('UserPswSession') != null) {
-    //received complete sessions
-    //decrypt
-    echo 'Received sessions<br>';
-    $email = $encryptor->crypt_function($SessionMaker->getSession('UserEmailSession'), 'd');
-    $pass = $encryptor->crypt_function($SessionMaker->getSession('UserPswSession'), 'd');
-    $isLogined = $dbConn->validateUser($email, $pass);
-} else {
-    //InvalidAccess
-    //no cookies no sessions
-    echo 'no cookies no sessions <br>';
-    $isLogined = false;
+}else {
+    if ($SessionMaker->getSession('UserEmailSession') != null && $SessionMaker->getSession('UserPswSession') != null) {
+        //received complete sessions
+        //decrypt
+        echo 'Received sessions<br>';
+        $email = $encryptor->crypt_function($SessionMaker->getSession('UserEmailSession'), 'd');
+        $pass = $encryptor->crypt_function($SessionMaker->getSession('UserPswSession'), 'd');
+        $isLogined = $dbConn->validateUser($email, $pass);
+    } else {
+        //InvalidAccess
+        //no cookies no sessions
+        echo 'no cookies no sessions <br>';
+        $isLogined = false;
+    }
 }
 if (!$isLogined) {
     //if user is not login

@@ -61,7 +61,7 @@ Class DababaseConnector
         }
     }
     function getUser($email, $password){
-        $this->setQuery("SELECT User_ID FROM `User_Account` WHERE Email = '$email' AND Password= '$password'");
+        $this->setQuery("SELECT User_ID FROM `user_account` WHERE Email = '$email' AND Password= '$password'");
         $response=$this->executeSelectQuery();
         $UserID=null;
         if($response->num_rows!=0){
