@@ -17,7 +17,6 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
     $email = $encryptor->crypt_function($CookieMaker->getCookieValue('UserEmailCookie'), 'd');
     $pass = $encryptor->crypt_function($CookieMaker->getCookieValue('UserPswCookie'), 'd');
     $UserID = $encryptor->crypt_function($CookieMaker->getCookieValue('UserIDCookie'), 'd');
-    echo $UserID.'cookie';
     $isLogined = $dbConn->validateUser($email, $pass);
 
 }else {
@@ -28,7 +27,6 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
         $pass = $encryptor->crypt_function($SessionMaker->getSession('UserPswSession'), 'd');
         $UserID = $encryptor->crypt_function($SessionMaker->getSession('UserIDSession'), 'd');
         $isLogined = $dbConn->validateUser($email, $pass);
-        echo $UserID.'session';
     } else {
         //InvalidAccess
         //no cookies no sessions
