@@ -18,7 +18,7 @@ if ($EmaiCookielValue != null && $PsdCookieValue != null) {
     } else {
         $cookieMaker->deleteCookie('UserEmailCookie');
         $cookieMaker->deleteCookie('UserPswCookie');
-
+        $cookieMaker->deleteCookie('UserIDCookie');
 
     }
 
@@ -35,7 +35,7 @@ if ($EmaiCookielValue != null && $PsdCookieValue != null) {
     } else {
         $sessionMaker->deleteSession('UserEmailSession');
         $sessionMaker->deleteSession('UserPswSession');
-
+        $sessionMaker->deleteSession('UserIDSession');
     }
 
 }

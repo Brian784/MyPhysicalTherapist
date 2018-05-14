@@ -9,44 +9,62 @@ $encryptor=new EncryptClass();
 $isLogined=true;
 $dbConn = new DababaseConnector();
 $UserID=null;
+$itemperpage=15;
+$totalRecords=null;
 if($CookieMaker->getCookieValue('UserEmailCookie')!=null &&$CookieMaker->getCookieValue('UserPswCookie')!=null){
     //Received completed Cookies
     //decrypt
-    echo 'Received cookies<br>';
     $email=$encryptor->crypt_function($CookieMaker->getCookieValue('UserEmailCookie'),'d');
     $pass= $encryptor->crypt_function($CookieMaker->getCookieValue('UserPswCookie'),'d');
     $UserID= $encryptor->crypt_function($CookieMaker->getCookieValue('UserIDCookie'),'d');
     $isLogined=$dbConn->validateUser($email,$pass);
 
-}else{
+}
     if($SessionMaker->getSession('UserEmailSession')!=null && $SessionMaker->getSession('UserPswSession')!=null ){
         //received complete sessions
         //decrypt
-        echo 'Received sessions<br>';
         $email=$encryptor->crypt_function($SessionMaker->getSession('UserEmailSession'),'d');
         $pass= $encryptor->crypt_function($SessionMaker->getSession('UserPswSession'),'d');
         $UserID= $encryptor->crypt_function($SessionMaker->getSession('UserIDSession'),'d');
+echo $UserID;
         $isLogined=$dbConn->validateUser($email,$pass);
     }else{
         //InvalidAccess
         //no cookies no sessions
-        echo 'no cookies no sessions <br>';
         $isLogined=false;
     }
 
 
 
+$sql = 'SELECT COUNT(*) as `total` FROM article a INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1';
+$dbConn->setQuery($sql);
+$totalRecords = $dbConn->executeSelectQuery();
+while ($row = @mysqli_fetch_array($totalRecords)) {
+    $totalRecords=$row['total'];
+}
+$totalPages = ceil($totalRecords / $itemperpage);
+
+if(!isset($_GET['page'])){
+    $_GET['page'] = 0;
+}else{
+    // Convert the page number to an integer
+    $_GET['page'] = (int)$_GET['page'];
 }
 
+// If the page number is less than 1, make it 1.
+if($_GET['page'] < 1){
+    $_GET['page'] = 1;
+    // Check that the page is below the last page
+}else if($_GET['page'] > $totalPages){
+    $_GET['page'] = $totalPages;
+}
 
-
-
-
-
+$pageCntentRange1=($_GET['page']-1)*$itemperpage;
+$pageCntentRange2=$_GET['page']*$itemperpage;
 
 $sql = 'SELECT a.Therapist_ID, a.Comment_Log_ID ,a.Article_ID,a.Article_Title,
 SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM article a
- INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1 ORDER BY a.Article_ID DESC';
+ INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1 AND Article_ID >= '.$pageCntentRange1.' AND Article_ID < '.$pageCntentRange2.' ORDER BY a.Article_ID DESC ';
 $dbConn->setQuery($sql);
 $result = $dbConn->executeSelectQuery();
 
@@ -90,9 +108,10 @@ $result = $dbConn->executeSelectQuery();
                         echo ' <li><a href="login.php">Login</a></li>';
                         echo ' <li><a href="#">Register</a></li>';
                     }else{
-
-                        echo ' <li><a href="#">User Profile</a></li>';
-                        echo ' <li><a href="#">User Profile</a></li>';
+                        echo '<form id="UserIDForm"  action="userprofile.php" method="post">
+  <input type="hidden" name="userID" value=' . $UserID . '>
+</form>';
+                        echo ' <li><a onclick="document.getElementById(\'UserIDForm\').submit();">User Profile</a></form></li>';
                         echo ' <li><a href="#">Logout</a></li>';
                     }
                         ?>
@@ -133,52 +152,51 @@ $result = $dbConn->executeSelectQuery();
 
     <div class="row">
         <?php
-        $ctr=0;
         while ($row = @mysqli_fetch_array($result)) {
-            ++$ctr;
-            echo '<div class="col-lg-4 col-sm-6 portfolio-item">
+               echo '<div class="col-lg-4 col-sm-6 portfolio-item">
                     <div class="card h-100">
                         <div class="card-body">';
-            echo '<form id="userForm"  action="/therapistprofile.php" method="post">
+               echo '<form id="userForm"  action="therapistprofile.php" method="post">
   <input type="hidden" name="therapistID" value=' . $row["Therapist_ID"] . '>
 </form>';
-            echo '<form id="articleForm"  action="/article.php" method="get">
+               echo '<form id="articleForm"  action="article.php" method="get">
   <input type="hidden" name="articleID" value=' . $row["Article_ID"] . '>
 </form>';
-            echo '<h4 class="card-title"><a onclick="document.getElementById(\'articleForm\').submit();">' . $row['Article_Title'] . '</a></h4>';
-            echo '<h5><span class="glyphicon glyphicon-user"></span> Post by <a onclick="document.getElementById(\'userForm\').submit();">' . $row['First_Name'] . '  ' . $row['Last_Name'] . '</a></h5>';
-            echo '<p class="card-text">' . $row['Article'] . '...</p></div></div></div>';
-
-
+               echo '<h4 class="card-title"><a onclick="document.getElementById(\'articleForm\').submit();">' . $row['Article_Title'] . '</a></h4>';
+               echo '<h5><span class="glyphicon glyphicon-user"></span> Post by <a onclick="document.getElementById(\'userForm\').submit();">' . $row['First_Name'] . '  ' . $row['Last_Name'] . '</a></h5>';
+               echo '<p class="card-text">' . $row['Article'] . '...</p></div></div></div>';
         }
         ?>
 
     </div>
-    <!-- /.row -->
     <!-- Pagination -->
     <ul class="pagination justify-content-center">
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-                <span class="sr-only">Previous</span>
-            </a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#">1</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#">2</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#">3</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-                <span class="sr-only">Next</span>
-            </a>
-        </li>
+
+    <?php
+
+    foreach(range(1, $totalPages) as $page){
+        // Check if we're on the current page in the loop
+
+
+
+        if($page == $_GET['page']){
+            echo '<li class="page-item active">';
+            echo '<a class="page-link" href="?page=' . $page . '">'.$page.'</a>';
+            echo '</li>';
+        }else if($page == 1 || $page == $totalPages || ($page >= $_GET['page'] - 2 && $page <= $_GET['page'] + 2)){
+            echo '   <li class="page-item ">
+            <a class="page-link" href="?page=' . $page . '">'.$page.'</a>
+        </li>';
+        }
+    }
+    ?>
+
     </ul>
+
+
+
+
+
 
 </div>
 
