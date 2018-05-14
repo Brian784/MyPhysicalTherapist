@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17787c43-bc67-46f1-953c-e83e5c817b49" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/ValidatedUserFormatCode.php" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/user/DatabaseConnectorClass.php" afterPath="$PROJECT_DIR$/user/DatabaseConnectorClass.php" />
-      <change beforePath="$PROJECT_DIR$/user/index.php" afterPath="$PROJECT_DIR$/user/index.php" />
-      <change beforePath="$PROJECT_DIR$/user/login.php" afterPath="$PROJECT_DIR$/user/login.php" />
-      <change beforePath="$PROJECT_DIR$/user/testing.php" afterPath="" />
-    </list>
+    <list default="true" id="17787c43-bc67-46f1-953c-e83e5c817b49" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +30,7 @@
       <file leaf-file-name="ValidatedUserFormatCode.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/user/ValidatedUserFormatCode.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
+            <state relative-caret-position="429">
               <caret line="34" column="30" lean-forward="true" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
               <folding />
             </state>
@@ -85,7 +78,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-23" />
     <option name="y" value="-5" />
     <option name="width" value="1386" />
@@ -158,15 +151,15 @@
       <option name="presentableId" value="Default" />
       <updated>1526203973925</updated>
       <workItem from="1526203977619" duration="5864000" />
-      <workItem from="1526275372115" duration="1013000" />
+      <workItem from="1526275372115" duration="1045000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6877000" />
+    <option name="totallyTimeSpent" value="6909000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -294,7 +287,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/user/ValidatedUserFormatCode.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
+        <state relative-caret-position="429">
           <caret line="34" column="30" lean-forward="true" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
           <folding />
         </state>
