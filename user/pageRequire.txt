@@ -1,0 +1,3 @@
+therapistprofile.php
+article.php
+userprofile.php

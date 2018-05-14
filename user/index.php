@@ -1,20 +1,21 @@
 <?php
 session_start();
-include_once 'EncryptClass.php';
-include_once 'cookiesAndSessions.php';
+include 'EncryptClass.php';
+include 'cookiesAndSessions.php';
 include "DatabaseConnectorClass.php";
 $CookieMaker=new CookiesTracking();
 $SessionMaker=new SessionsTracking();
 $encryptor=new EncryptClass();
 $isLogined=true;
 $dbConn = new DababaseConnector();
-
+$UserID=null;
 if($CookieMaker->getCookieValue('UserEmailCookie')!=null &&$CookieMaker->getCookieValue('UserPswCookie')!=null){
     //Received completed Cookies
     //decrypt
     echo 'Received cookies<br>';
     $email=$encryptor->crypt_function($CookieMaker->getCookieValue('UserEmailCookie'),'d');
     $pass= $encryptor->crypt_function($CookieMaker->getCookieValue('UserPswCookie'),'d');
+    $UserID= $encryptor->crypt_function($CookieMaker->getCookieValue('UserIDCookie'),'d');
     $isLogined=$dbConn->validateUser($email,$pass);
 
 }else{
@@ -24,6 +25,7 @@ if($CookieMaker->getCookieValue('UserEmailCookie')!=null &&$CookieMaker->getCook
         echo 'Received sessions<br>';
         $email=$encryptor->crypt_function($SessionMaker->getSession('UserEmailSession'),'d');
         $pass= $encryptor->crypt_function($SessionMaker->getSession('UserPswSession'),'d');
+        $UserID= $encryptor->crypt_function($SessionMaker->getSession('UserIDSession'),'d');
         $isLogined=$dbConn->validateUser($email,$pass);
     }else{
         //InvalidAccess
@@ -88,6 +90,7 @@ $result = $dbConn->executeSelectQuery();
                         echo ' <li><a href="login.php">Login</a></li>';
                         echo ' <li><a href="#">Register</a></li>';
                     }else{
+
                         echo ' <li><a href="#">User Profile</a></li>';
                         echo ' <li><a href="#">User Profile</a></li>';
                         echo ' <li><a href="#">Logout</a></li>';

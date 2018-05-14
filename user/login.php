@@ -1,8 +1,8 @@
 <?php
 session_start();
-include_once "cookiesAndSessions.php";
-include_once "EncryptClass.php";
-include_once "DatabaseConnectorClass.php";
+include "cookiesAndSessions.php";
+include "EncryptClass.php";
+include "DatabaseConnectorClass.php";
 $cookieMaker = new CookiesTracking();
 $sessionMaker = new SessionsTracking();
 $DBconn = new DababaseConnector();
