@@ -160,7 +160,7 @@ $result = $dbConn->executeSelectQuery();
             echo '<form id="userForm"  action="therapistprofile.php" method="post">
   <input type="hidden" name="therapistID" value=' . $row["Therapist_ID"] . '>
 </form>';
-            echo '<form id="articleForm"  action="article.php" method="get">
+            echo '<form id="articleForm"  action="article.php" method="post">
   <input type="hidden" name="articleID" value=' . $row["Article_ID"] . '>
 </form>';
             echo '<h4 class="card-title"><a onclick="document.getElementById(\'articleForm\').submit();">' . $row['Article_Title'] . '</a></h4>';
