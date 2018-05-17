@@ -28,7 +28,9 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
     } else {
         //InvalidAccess
         //no cookies no sessions
-        header('Location: login.php');
+        header('Refresh: 5;url=index.php');
+        die('<p>Only registered user can access this page,you are going to redirect to welcome page in 5 seconds</p>');
+
     }
 }
 ?>

@@ -6,6 +6,36 @@ include "DatabaseConnectorClass.php";
 $CookieMaker = new CookiesTracking();
 $SessionMaker = new SessionsTracking();
 $encryptor = new EncryptClass();
+if (isset($_POST['isSignout'])) {
+    if ($_POST['isSignout'] == true) {
+        $EmaiCookielValue = $CookieMaker->getCookieValue('UserEmailCookie');
+        $PsdCookieValue = $CookieMaker->getCookieValue('UserPswCookie');
+        $UserIDCookie = $CookieMaker->getCookieValue('UserIDCookie');
+        $emailSessionValue = $SessionMaker->getSession('UserEmailSession');
+        $psdSessionValue = $SessionMaker->getSession('UserPswSession');
+        $UserSessionValue = $SessionMaker->getSession('UserIDSession');
+        if ($EmaiCookielValue != null) {
+            $CookieMaker->deleteCookie('UserEmailCookie', '');
+        }
+        if ($PsdCookieValue != null) {
+            $CookieMaker->deleteCookie('UserPswCookie', '');
+        }
+        if ($UserIDCookie != null) {
+            $CookieMaker->deleteCookie('UserIDCookie', '');
+        }
+        if ($emailSessionValue != null) {
+            $SessionMaker->deleteSession('UserEmailSession');
+        }
+        if ($psdSessionValue != null) {
+            $SessionMaker->deleteSession('UserEmailSession');
+        }
+        if ($UserSessionValue != null) {
+            $SessionMaker->deleteSession('UserIDSession');
+        }
+
+    }
+}
+
 $isLogined = true;
 $dbConn = new DababaseConnector();
 $UserID = null;
@@ -19,7 +49,7 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
     $UserID = $encryptor->crypt_function($CookieMaker->getCookieValue('UserIDCookie'), 'd');
     $isLogined = $dbConn->validateUser($email, $pass);
 
-}else {
+} else {
     if ($SessionMaker->getSession('UserEmailSession') != null && $SessionMaker->getSession('UserPswSession') != null) {
         //received complete sessions
         //decrypt
@@ -109,8 +139,8 @@ $result = $dbConn->executeSelectQuery();
                             echo ' <li><a href="#">Register</a></li>';
                         } else {
 
-                            echo '<form id="LogoutForm"  action="login.php" method="post">
-  <input type="hidden" name="isSignout" value="1">
+                            echo '<form id="LogoutForm"  action="index.php" method="post">
+  <input type="hidden" name="isSignout" value="true">
 </form>';
                             echo ' <li><a  href="userprofile.php">User Profile</a></form></li>';
                             echo ' <li><a onclick="document.getElementById(\'LogoutForm\').submit();">Logout</a></li>';
@@ -123,16 +153,16 @@ $result = $dbConn->executeSelectQuery();
 
                     <a href="#">Videos</a>
                     <ul>
-                        <form id="UpperForm"  action="videos.php" method="get">
+                        <form id="UpperForm" action="videos.php" method="get">
                             <input type="hidden" name="part" value="upper">
                         </form>
-                        <form id="LowerForm"  action="videos.php" method="get">
+                        <form id="LowerForm" action="videos.php" method="get">
                             <input type="hidden" name="part" value="lower">
                         </form>
-                        <li><a onclick="document.getElementById('UpperForm').submit();" >Upper Body</a></li>
-                        <li><a onclick="document.getElementById('LowerForm').submit();" >Lower Body</a></li>
+                        <li><a onclick="document.getElementById('UpperForm').submit();">Upper Body</a></li>
+                        <li><a onclick="document.getElementById('LowerForm').submit();">Lower Body</a></li>
                         <?php
-                        if($isLogined){
+                        if ($isLogined) {
                             echo '<li><a  href="savevideos.php.php">Saved Videos</a></form></li>';
                         }
                         ?>
@@ -189,15 +219,15 @@ $result = $dbConn->executeSelectQuery();
         foreach (range(1, $totalPages) as $page) {
             // Check if we're on the current page in the loop
 
-                if ($page == $_GET['page']) {
-                    echo '<li class="page-item active">';
-                    echo '<a class="page-link" href="?page=' . $page . '">' . $page . '</a>';
-                    echo '</li>';
-                } else if ($page == 1 || $page == $totalPages || ($page >= $_GET['page'] - 2 && $page <= $_GET['page'] + 2)) {
-                    echo '   <li class="page-item ">
+            if ($page == $_GET['page']) {
+                echo '<li class="page-item active">';
+                echo '<a class="page-link" href="?page=' . $page . '">' . $page . '</a>';
+                echo '</li>';
+            } else if ($page == 1 || $page == $totalPages || ($page >= $_GET['page'] - 2 && $page <= $_GET['page'] + 2)) {
+                echo '   <li class="page-item ">
             <a class="page-link" href="?page=' . $page . '">' . $page . '</a>
         </li>';
-                }
+            }
 
         }
         ?>
