@@ -17,7 +17,7 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
     $UserID = $encryptor->crypt_function($CookieMaker->getCookieValue('UserIDCookie'), 'd');
     $isLogined = $dbConn->validateUser($email, $pass);
 
-}else {
+} else {
     if ($SessionMaker->getSession('UserEmailSession') != null && $SessionMaker->getSession('UserPswSession') != null) {
         //received complete sessions
         //decrypt
@@ -34,10 +34,6 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
 ?>
 
 
-
-
-
-
 <!DOCTYPE HTML>
 <!--
 	Arcana by HTML5 UP
@@ -47,13 +43,17 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
 <html>
 <head>
     <title>My Physical Therapist</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--[if lte IE 8]>
+    <script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css"/>
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="assets/css/ie8.css"/><![endif]-->
+    <!--[if lte IE 9]>
     <link rel="stylesheet" href="assets/css/ie9.css"/><![endif]-->
+    <link rel="stylesheet" href="assets/css/ie9.css"/>
+    <![endif]-->
     <link rel="stylesheet" href="assets/css/main.css"/>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/3-col-portfolio.css" rel="stylesheet">
@@ -74,19 +74,17 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
                     <a href="#">User</a>
                     <ul>
                         <?php
-                        if (!$isLogined) {
-                            echo ' <li><a href="login.php">Login</a></li>';
-                            echo ' <li><a href="#">Register</a></li>';
-                        } else {
-                            echo '<form id="UserIDForm"  action="userprofile.php" method="get">
+
+                        echo '<form id="UserIDForm"  action="userprofile.php" method="get">
   <input type="hidden" name="userID" value=' . $UserID . '>
 </form>';
-                            echo '<form id="LogoutForm"  action="login.php" method="post">
+                        echo '<form id="LogoutForm"  action="login.php" method="post">
   <input type="hidden" name="isSignout" value="1">
 </form>';
-                            echo ' <li><a  href="userprofile.php">User Profile</a></form></li>';
-                            echo ' <li><a onclick="document.getElementById(\'LogoutForm\').submit();">Logout</a></li>';
-                        }
+                        echo ' <li><a  href="userprofile.php">User Profile</a></form></li>';
+
+                        echo ' <li><a onclick="document.getElementById(\'LogoutForm\').submit();">Logout</a></li>';
+
                         ?>
 
                     </ul>
@@ -95,16 +93,18 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
 
                     <a href="#">Videos</a>
                     <ul>
-                        <form id="UpperForm"  action="videos.php" method="get">
+                        <form id="UpperForm" action="videos.php" method="get">
                             <input type="hidden" name="part" value="upper">
                         </form>
-                        <form id="LowerForm"  action="videos.php" method="get">
+                        <form id="LowerForm" action="videos.php" method="get">
                             <input type="hidden" name="part" value="lower">
                         </form>
-                        <li><a onclick="document.getElementById('UpperForm').submit();" >Upper Body</a></li>
-                        <li><a onclick="document.getElementById('LowerForm').submit();" >Lower Body</a></li>
+                        <li><a onclick="document.getElementById('UpperForm').submit();">Upper Body</a></li>
+                        <li><a onclick="document.getElementById('LowerForm').submit();">Lower Body</a></li>
+                        <li><a  href="savevideos.php">Saved Videos</a></form></li>
                     </ul>
-                </>
+                </
+                >
 
                 <li class="current">
                     <a href="#">Appointment</a>
@@ -128,7 +128,8 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
 <script src="assets/js/jquery.dropotron.min.js"></script>
 <script src="assets/js/skel.min.js"></script>
 <script src="assets/js/util.js"></script>
-<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<!--[if lte IE 8]>
+<script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="assets/js/main.js"></script>
 
 </body>

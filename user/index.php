@@ -65,7 +65,6 @@ $pageCntentRange2 = $_GET['page'] * $itemperpage;
 $sql = 'SELECT a.Therapist_ID,a.Article_ID,a.Article_Title,
 SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM article a
  INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1 AND Article_ID >= ' . $pageCntentRange1 . ' AND Article_ID < ' . $pageCntentRange2 . ' ORDER BY a.Article_ID DESC ';
-echo $sql;
 $dbConn->setQuery($sql);
 $result = $dbConn->executeSelectQuery();
 
@@ -132,6 +131,11 @@ $result = $dbConn->executeSelectQuery();
                         </form>
                         <li><a onclick="document.getElementById('UpperForm').submit();" >Upper Body</a></li>
                         <li><a onclick="document.getElementById('LowerForm').submit();" >Lower Body</a></li>
+                        <?php
+                        if($isLogined){
+                            echo '<li><a  href="savevideos.php.php">Saved Videos</a></form></li>';
+                        }
+                        ?>
                     </ul>
                 </li>
 
@@ -184,9 +188,7 @@ $result = $dbConn->executeSelectQuery();
 
         foreach (range(1, $totalPages) as $page) {
             // Check if we're on the current page in the loop
-                if ($page<1){
-                    continue;
-                }
+
                 if ($page == $_GET['page']) {
                     echo '<li class="page-item active">';
                     echo '<a class="page-link" href="?page=' . $page . '">' . $page . '</a>';
