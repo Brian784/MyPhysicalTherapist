@@ -142,7 +142,7 @@ $result = $dbConn->executeSelectQuery();
                             echo '<form id="LogoutForm"  action="index.php" method="post">
   <input type="hidden" name="isSignout" value="true">
 </form>';
-                            echo ' <li><a  href="userprofile.php">User Profile</a></form></li>';
+                            echo ' <li><a  href="userprofile.php">User Profile</a></li>';
                             echo ' <li><a onclick="document.getElementById(\'LogoutForm\').submit();">Logout</a></li>';
                         }
                         ?>
@@ -163,7 +163,7 @@ $result = $dbConn->executeSelectQuery();
                         <li><a onclick="document.getElementById('LowerForm').submit();">Lower Body</a></li>
                         <?php
                         if ($isLogined) {
-                            echo '<li><a  href="savevideos.php">Saved Videos</a></form></li>';
+                            echo '<li><a  href="savevideos.php">Saved Videos</a></li>';
                         }
                         ?>
                     </ul>
@@ -193,22 +193,36 @@ $result = $dbConn->executeSelectQuery();
     <h1 class="my-4">Newsfeeds</h1>
 
     <div class="row">
-        <?php
-        while ($row = @mysqli_fetch_array($result)) {
-            echo '<div class="col-lg-4 col-sm-6 portfolio-item">
-                    <div class="card h-100">
-                        <div class="card-body">';
-            echo '<form id="userForm"  action="therapistprofile.php" method="post">
-  <input type="hidden" name="therapistID" value=' . $row["Therapist_ID"] . '>
-</form>';
-            echo '<form id="articleForm"  action="article.php" method="post">
-  <input type="hidden" name="articleID" value=' . $row["Article_ID"] . '>
-</form>';
-            echo '<h4 class="card-title"><a onclick="document.getElementById(\'articleForm\').submit();">' . $row['Article_Title'] . '</a></h4>';
-            echo '<h5><span class="glyphicon glyphicon-user"></span> Post by <a onclick="document.getElementById(\'userForm\').submit();">' . $row['First_Name'] . '  ' . $row['Last_Name'] . '</a></h5>';
-            echo '<p class="card-text">' . $row['Article'] . '...</p></div></div></div>';
-        }
-        ?>
+
+        <?php while ($row = @mysqli_fetch_array($result)) { ?>
+            <div class="col-lg-4 col-sm-6 portfolio-item">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <form id="article<?php echo $row['Article_ID'] ?>" action="article.php" method="get">
+                                <input type="hidden" name="articleID" value="<?php echo $row['Article_ID'] ?>">
+                            </form>
+
+                            <a onclick="document.getElementById('article<?php echo $row['Article_ID'] ?>' ).submit();"><?php echo $row['Article_Title'] ?></a>
+                        </h4>
+                        <form id="therapist<?php echo $row['Therapist_ID'] ?>" action="therapistprofile.php"
+                              method="get">
+                            <input type="hidden" name="articleID" value="<?php echo $row['Therapist_ID'] ?>">
+                        </form>
+
+                        <h5><span class="glyphicon glyphicon-user">
+                    </span> Post by <a
+                                    onclick="document.getElementById('therapist<?php echo $row['Therapist_ID'] ?>' ).submit();"><?php echo $row['First_Name'] . '  ' . $row['Last_Name'] ?></a>
+                        </h5>
+                        <p class="card-text">
+                            <?php echo $row['Article'] ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        <?php } ?>
+
 
     </div>
     <!-- Pagination -->
@@ -248,3 +262,5 @@ $result = $dbConn->executeSelectQuery();
 <script src="assets/js/main.js"></script>
 
 </body>
+
+</html>

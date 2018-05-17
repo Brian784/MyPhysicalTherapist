@@ -33,20 +33,6 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
 
     }
 }
-$sql;
-switch (strtolower($_GET['part'])) {
-    case 'upper':
-        $sql = 'SELECT b.Therapist_ID,a.Video_ID,a.Video_Title,SUBSTRING(a.Video_Description,1,300) as Video_Description,a.Video_URL,b.First_Name,b.Last_Name FROM video_library a INNER JOIN therapist_account b WHERE Body_Part=\'upper\' AND a.Therapist_ID=b.Therapist_ID AND b.isValidated =1';
-        break;
-    case 'lower':
-        $sql = 'SELECT b.Therapist_ID,a.Video_ID,a.Video_Title,SUBSTRING(a.Video_Description,1,300) as Video_Description,a.Video_URL,b.First_Name,b.Last_Name FROM video_library a INNER JOIN therapist_account b WHERE Body_Part=\'lower\' AND a.Therapist_ID=b.Therapist_ID AND b.isValidated =1';
-        break;
-    default:
-        header('location:index.php');
-}
-echo $sql;
-$dbConn->setQuery($sql);
-$result = $dbConn->executeSelectQuery();
 ?>
 
 
@@ -72,6 +58,7 @@ $result = $dbConn->executeSelectQuery();
     <![endif]-->
     <link rel="stylesheet" href="assets/css/main.css"/>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/3-col-portfolio.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
@@ -104,7 +91,7 @@ $result = $dbConn->executeSelectQuery();
 
                     </ul>
                 </li>
-                <li class="current">
+                <li>
 
                     <a href="#">Videos</a>
                     <ul>
@@ -116,12 +103,12 @@ $result = $dbConn->executeSelectQuery();
                         </form>
                         <li><a onclick="document.getElementById('UpperForm').submit();">Upper Body</a></li>
                         <li><a onclick="document.getElementById('LowerForm').submit();">Lower Body</a></li>
-                        <li><a href="savevideos.php">Saved Videos</a></form></li>
+                        <li><a  href="savevideos.php">Saved Videos</a></form></li>
                     </ul>
                 </
                 >
 
-                <li>
+                <li class="current">
                     <a href="#">Appointment</a>
                     <ul>
                         <li><a href="newappointment.php">New Appointment</a></li>
@@ -137,34 +124,7 @@ $result = $dbConn->executeSelectQuery();
     </div>
 
 </div>
-<div class="container">
 
-    <h1 class="my-4"><?php echo ucfirst($_GET['part']) . ' Body'; ?></h1>
-    <div class="row">
-    <?php
-    while ($row = @mysqli_fetch_array($result)) {
-echo $row['Video_ID'];
-        echo '<div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">';
-        //echo '<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>';
-        echo '<div class="card-body">';
-        echo '<form id="userForm"  action="therapistprofile.php" method="post">
-  <input type="hidden" name="therapistID" value=' . $row["Therapist_ID"] . '>
-</form>';
-        echo '<form id="videoForm"  action="watchvideo.php" method="get">
-  <input type="hidden" name="videoID" value=' . $row['Video_ID'] . '>
-</form>';
-        echo '<h4 class="card-title">';
-        echo '  <a onclick="document.getElementById(\'videoForm\').submit();">'.$row["Video_Title"].'</a>';
-        echo '<h5><span class="glyphicon glyphicon-user"></span> Post by <a onclick="document.getElementById(\'userForm\').submit();">' . $row['First_Name'] . '  ' . $row['Last_Name'] . '</a></h5>';
-        echo ' </h4>';
-        echo '<p class="card-text">';
-        echo $row['Video_Description'].'...';
-        echo '</p></div></div></div>';
-    }
-    ?>
-</div>
-</div>
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/jquery.dropotron.min.js"></script>
