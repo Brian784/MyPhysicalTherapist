@@ -199,15 +199,15 @@ $result = $dbConn->executeSelectQuery();
                 <div class="card h-100">
                     <div class="card-body">
                         <h4 class="card-title">
-                            <form id="article<?php echo $row['Article_ID'] ?>" action="article.php" method="get">
+                            <form id="article<?php echo $row['Article_ID'] ?>" action="article.php" method="post">
                                 <input type="hidden" name="articleID" value="<?php echo $row['Article_ID'] ?>">
                             </form>
 
                             <a onclick="document.getElementById('article<?php echo $row['Article_ID'] ?>' ).submit();"><?php echo $row['Article_Title'] ?></a>
                         </h4>
                         <form id="therapist<?php echo $row['Therapist_ID'] ?>" action="therapistprofile.php"
-                              method="get">
-                            <input type="hidden" name="articleID" value="<?php echo $row['Therapist_ID'] ?>">
+                              method="post">
+                            <input type="hidden" name="therapistID" value="<?php echo $row['Therapist_ID'] ?>">
                         </form>
 
                         <h5><span class="glyphicon glyphicon-user">

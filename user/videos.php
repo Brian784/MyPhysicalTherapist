@@ -141,29 +141,37 @@ $result = $dbConn->executeSelectQuery();
 
     <h1 class="my-4"><?php echo ucfirst($_GET['part']) . ' Body'; ?></h1>
     <div class="row">
-    <?php
-    while ($row = @mysqli_fetch_array($result)) {
-echo $row['Video_ID'];
-        echo '<div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">';
-        //echo '<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>';
-        echo '<div class="card-body">';
-        echo '<form id="userForm"  action="therapistprofile.php" method="post">
-  <input type="hidden" name="therapistID" value=' . $row["Therapist_ID"] . '>
-</form>';
-        echo '<form id="videoForm"  action="watchvideo.php" method="get">
-  <input type="hidden" name="videoID" value=' . $row['Video_ID'] . '>
-</form>';
-        echo '<h4 class="card-title">';
-        echo '  <a onclick="document.getElementById(\'videoForm\').submit();">'.$row["Video_Title"].'</a>';
-        echo '<h5><span class="glyphicon glyphicon-user"></span> Post by <a onclick="document.getElementById(\'userForm\').submit();">' . $row['First_Name'] . '  ' . $row['Last_Name'] . '</a></h5>';
-        echo ' </h4>';
-        echo '<p class="card-text">';
-        echo $row['Video_Description'].'...';
-        echo '</p></div></div></div>';
-    }
-    ?>
-</div>
+            <?php while ($row = @mysqli_fetch_array($result)) { ?>
+                <div class="col-lg-4 col-sm-6 portfolio-item">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <form id="video<?php echo $row['Video_ID'] ?>" action="article.php" method="get">
+                                    <input type="hidden" name="videoID" value="<?php echo $row['Video_ID'] ?>">
+                                </form>
+
+                                <a onclick="document.getElementById('video<?php echo $row['Video_ID'] ?>' ).submit();"><?php echo $row['Video_Title'] ?></a>
+                            </h4>
+                            <form id="therapist<?php echo $row['Therapist_ID'] ?>" action="therapistprofile.php"
+                                  method="get">
+                                <input type="hidden" name="therapistID" value="<?php echo $row['Therapist_ID'] ?>">
+                            </form>
+
+                            <h5><span class="glyphicon glyphicon-user">
+                    </span> Post by <a
+                                        onclick="document.getElementById('therapist<?php echo $row['Therapist_ID'] ?>' ).submit();"><?php echo $row['First_Name'] . '  ' . $row['Last_Name'] ?></a>
+                            </h5>
+                            <p class="card-text">
+                                <?php echo $row['Video_Description'] ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            <?php } ?>
+
+
+        </div>
 </div>
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
