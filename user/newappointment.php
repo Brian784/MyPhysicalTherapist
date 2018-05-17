@@ -9,8 +9,6 @@ $encryptor = new EncryptClass();
 $isLogined = true;
 $dbConn = new DababaseConnector();
 $UserID = null;
-$itemperpage = 15;
-$totalRecords = null;
 if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->getCookieValue('UserPswCookie') != null) {
     //Received completed Cookies
     //decrypt
@@ -30,65 +28,37 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
     } else {
         //InvalidAccess
         //no cookies no sessions
-        $isLogined = false;
+        header('Location: login.php');
     }
 }
-
-$sql = 'SELECT COUNT(*) as `total` FROM article a INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1';
-$dbConn->setQuery($sql);
-$totalRecords = $dbConn->executeSelectQuery();
-while ($row = @mysqli_fetch_array($totalRecords)) {
-    $totalRecords = $row['total'];
-}
-$totalPages = ceil($totalRecords / $itemperpage);
-
-if (!isset($_GET['page'])) {
-    $_GET['page'] = 0;
-} else {
-    // Convert the page number to an integer
-    $_GET['page'] = (int)$_GET['page'];
-
-}
-
-// If the page number is less than 1, make it 1.
-if ($_GET['page'] < 1) {
-    $_GET['page'] = 1;
-    // Check that the page is below the last page
-} else if ($_GET['page'] > $totalPages) {
-    $_GET['page'] = $totalPages;
-}
-
-
-$pageCntentRange1 = ($_GET['page'] - 1) * $itemperpage;
-$pageCntentRange2 = $_GET['page'] * $itemperpage;
-
-$sql = 'SELECT a.Therapist_ID, a.Comment_Log_ID ,a.Article_ID,a.Article_Title,
-SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM article a
- INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1 AND Article_ID >= ' . $pageCntentRange1 . ' AND Article_ID < ' . $pageCntentRange2 . ' ORDER BY a.Article_ID DESC ';
-$dbConn->setQuery($sql);
-$result = $dbConn->executeSelectQuery();
-
 ?>
 
-<!DOCTYPE HTML>
 
+
+
+
+
+<!DOCTYPE HTML>
+<!--
+	Arcana by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
 <head>
     <title>My Physical Therapist</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <!--[if lte IE 8]>
-    <script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-    <!--[if lte IE 8]>
-    <link rel="stylesheet" href="assets/css/ie8.css"/><![endif]-->
-    <!--[if lte IE 9]>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
     <link rel="stylesheet" href="assets/css/ie9.css"/><![endif]-->
     <link rel="stylesheet" href="assets/css/main.css"/>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/3-col-portfolio.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
-
 <body>
 <div id="page-wrapper">
 
@@ -99,16 +69,18 @@ $result = $dbConn->executeSelectQuery();
         <nav id="nav">
             <ul>
                 <li><a href="index.php"><img src="images/MyPtLogo.png" width="150" height="90"></a></li>
-                <li class="current"><a href="index.php">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li>
-                    <a href="videos.php">User</a>
+                    <a href="#">User</a>
                     <ul>
                         <?php
                         if (!$isLogined) {
                             echo ' <li><a href="login.php">Login</a></li>';
                             echo ' <li><a href="#">Register</a></li>';
                         } else {
-
+                            echo '<form id="UserIDForm"  action="userprofile.php" method="get">
+  <input type="hidden" name="userID" value=' . $UserID . '>
+</form>';
                             echo '<form id="LogoutForm"  action="login.php" method="post">
   <input type="hidden" name="isSignout" value="1">
 </form>';
@@ -132,9 +104,9 @@ $result = $dbConn->executeSelectQuery();
                         <li><a onclick="document.getElementById('UpperForm').submit();" >Upper Body</a></li>
                         <li><a onclick="document.getElementById('LowerForm').submit();" >Lower Body</a></li>
                     </ul>
-                </li>
+                </>
 
-                <li>
+                <li class="current">
                     <a href="#">Appointment</a>
                     <ul>
                         <li><a href="newappointment.php">New Appointment</a></li>
@@ -151,67 +123,13 @@ $result = $dbConn->executeSelectQuery();
 
 </div>
 
-<!-- Page Content -->
-<div class="container">
-
-    <!-- Page Heading -->
-    <h1 class="my-4">Newsfeeds</h1>
-
-    <div class="row">
-        <?php
-        while ($row = @mysqli_fetch_array($result)) {
-            echo '<div class="col-lg-4 col-sm-6 portfolio-item">
-                    <div class="card h-100">
-                        <div class="card-body">';
-            echo '<form id="userForm"  action="therapistprofile.php" method="post">
-  <input type="hidden" name="therapistID" value=' . $row["Therapist_ID"] . '>
-</form>';
-            echo '<form id="articleForm"  action="article.php" method="post">
-  <input type="hidden" name="articleID" value=' . $row["Article_ID"] . '>
-</form>';
-            echo '<h4 class="card-title"><a onclick="document.getElementById(\'articleForm\').submit();">' . $row['Article_Title'] . '</a></h4>';
-            echo '<h5><span class="glyphicon glyphicon-user"></span> Post by <a onclick="document.getElementById(\'userForm\').submit();">' . $row['First_Name'] . '  ' . $row['Last_Name'] . '</a></h5>';
-            echo '<p class="card-text">' . $row['Article'] . '...</p></div></div></div>';
-        }
-        ?>
-
-    </div>
-    <!-- Pagination -->
-    <ul class="pagination justify-content-center">
-
-        <?php
-
-        foreach (range(1, $totalPages) as $page) {
-            // Check if we're on the current page in the loop
-                if ($page<1){
-                    continue;
-                }
-                if ($page == $_GET['page']) {
-                    echo '<li class="page-item active">';
-                    echo '<a class="page-link" href="?page=' . $page . '">' . $page . '</a>';
-                    echo '</li>';
-                } else if ($page == 1 || $page == $totalPages || ($page >= $_GET['page'] - 2 && $page <= $_GET['page'] + 2)) {
-                    echo '   <li class="page-item ">
-            <a class="page-link" href="?page=' . $page . '">' . $page . '</a>
-        </li>';
-                }
-
-        }
-        ?>
-
-    </ul>
-
-
-</div>
-
-
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/jquery.dropotron.min.js"></script>
 <script src="assets/js/skel.min.js"></script>
 <script src="assets/js/util.js"></script>
-<!--[if lte IE 8]>
-<script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="assets/js/main.js"></script>
 
 </body>
+</html>
