@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17787c43-bc67-46f1-953c-e83e5c817b49" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/user/index.php" afterPath="$PROJECT_DIR$/user/index.php" />
+      <change beforePath="$PROJECT_DIR$/user/testing.php" afterPath="$PROJECT_DIR$/user/testing.php" />
+      <change beforePath="$PROJECT_DIR$/user/videos.php" afterPath="$PROJECT_DIR$/user/videos.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user/index.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="378">
-              <caret line="165" column="62" lean-forward="true" selection-start-line="165" selection-start-column="62" selection-end-line="165" selection-end-column="62" />
+              <caret line="165" column="62" lean-forward="false" selection-start-line="165" selection-start-column="62" selection-end-line="165" selection-end-column="62" />
               <folding>
                 <marker date="1526549159649" expanded="true" signature="2682:2814" ph="SELECT COUNT... article" />
                 <marker date="1526549159649" expanded="true" signature="3520:3758" ph="SELECT a.The... article" />
@@ -37,22 +38,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user/login.php">
+      <file leaf-file-name="videos.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/user/videos.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1285">
-              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testing.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user/testing.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="31" />
-              <folding />
+            <state relative-caret-position="288">
+              <caret line="140" column="29" lean-forward="false" selection-start-line="140" selection-start-column="29" selection-end-line="140" selection-end-column="29" />
+              <folding>
+                <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <marker date="1526551841830" expanded="true" signature="1653:1697" ph="SELECT * fro... WHERE" />
+                <marker date="1526551841830" expanded="true" signature="1653:1704" ph="SELECT * fro... WHERE" />
+                <marker date="1526551841830" expanded="true" signature="1653:1706" ph="SELECT * FRO... video_library" />
+                <marker date="1526551841830" expanded="true" signature="1756:1809" ph="SELECT * FRO... video_library" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -61,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/user/DatabaseConnectorClass.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1700">
-              <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+              <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
               <folding>
                 <marker date="1526288188132" expanded="true" signature="1572:1655" ph="SELECT User_... user_account" />
                 <marker date="1526288188132" expanded="true" signature="2136:2210" ph="SELECT Email... user_account" />
@@ -86,11 +83,12 @@
         <option value="$PROJECT_DIR$/user/newappointment.php" />
         <option value="$PROJECT_DIR$/user/savevideos.php" />
         <option value="$PROJECT_DIR$/user/userprofile.php" />
-        <option value="$PROJECT_DIR$/user/videos.php" />
         <option value="$PROJECT_DIR$/user/contactinfo.php" />
         <option value="$PROJECT_DIR$/user/login.php" />
-        <option value="$PROJECT_DIR$/user/testing.php" />
         <option value="$PROJECT_DIR$/user/index.php" />
+        <option value="$PROJECT_DIR$/user/testing.php" />
+        <option value="$PROJECT_DIR$/user/assets/css/1-col-portfolio.css" />
+        <option value="$PROJECT_DIR$/user/videos.php" />
       </list>
     </option>
   </component>
@@ -133,6 +131,19 @@
               <item name="pt" type="b2602c69:ProjectViewProjectNode" />
               <item name="pt" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="pt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pt" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="pt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pt" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -182,12 +193,12 @@
       <workItem from="1526275372115" duration="7533000" />
       <workItem from="1526283709365" duration="7503000" />
       <workItem from="1526357949539" duration="4540000" />
-      <workItem from="1526530862599" duration="10547000" />
+      <workItem from="1526530862599" duration="12848000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35987000" />
+    <option name="totallyTimeSpent" value="38288000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -436,21 +447,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/videos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <marker date="1526541717478" expanded="true" signature="3103:3171" ph="..." />
-            <marker date="1526541717478" expanded="true" signature="3260:3319" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user/DatabaseConnectorClass.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1700">
-          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+          <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
           <folding>
             <marker date="1526288188132" expanded="true" signature="1572:1655" ph="SELECT User_... user_account" />
             <marker date="1526288188132" expanded="true" signature="2136:2210" ph="SELECT Email... user_account" />
@@ -458,18 +458,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/login.php">
+    <entry file="file://$PROJECT_DIR$/user/testing.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1285">
-          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="115">
+          <caret line="5" column="25" lean-forward="false" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/testing.php">
+    <entry file="file://$PROJECT_DIR$/user/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="31" />
+        <state relative-caret-position="603">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -477,7 +477,7 @@
     <entry file="file://$PROJECT_DIR$/user/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
-          <caret line="165" column="62" lean-forward="true" selection-start-line="165" selection-start-column="62" selection-end-line="165" selection-end-column="62" />
+          <caret line="165" column="62" lean-forward="false" selection-start-line="165" selection-start-column="62" selection-end-line="165" selection-end-column="62" />
           <folding>
             <marker date="1526549159649" expanded="true" signature="2682:2814" ph="SELECT COUNT... article" />
             <marker date="1526549159649" expanded="true" signature="3520:3758" ph="SELECT a.The... article" />
@@ -492,6 +492,28 @@
             <marker date="1526549159649" expanded="true" signature="7645:7731" ph="..." />
             <marker date="1526549159649" expanded="true" signature="7811:7893" ph="..." />
             <marker date="1526549159649" expanded="true" signature="8960:9052" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/assets/css/1-col-portfolio.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/videos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="140" column="29" lean-forward="false" selection-start-line="140" selection-start-column="29" selection-end-line="140" selection-end-column="29" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <marker date="1526551841830" expanded="true" signature="1653:1697" ph="SELECT * fro... WHERE" />
+            <marker date="1526551841830" expanded="true" signature="1653:1704" ph="SELECT * fro... WHERE" />
+            <marker date="1526551841830" expanded="true" signature="1653:1706" ph="SELECT * FRO... video_library" />
+            <marker date="1526551841830" expanded="true" signature="1756:1809" ph="SELECT * FRO... video_library" />
           </folding>
         </state>
       </provider>

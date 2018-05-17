@@ -33,6 +33,19 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
 
     }
 }
+$sql;
+switch (strtolower($_GET['part'])){
+    case 'upper':
+        $sql='SELECT * FROM video_library WHERE Body_Part=\'upper\'';
+        break;
+    case 'lower':
+        $sql='SELECT * FROM video_library WHERE Body_Part=\'lower\'';
+        break;
+    default:
+        header('location:index.php');
+}
+echo $sql;
+$result=$dbConn->executeSelectQuery($sql);
 ?>
 
 
@@ -58,7 +71,7 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
     <![endif]-->
     <link rel="stylesheet" href="assets/css/main.css"/>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/3-col-portfolio.css" rel="stylesheet">
+    <link href="assets/css/1-col-portfolio.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
@@ -124,7 +137,10 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
     </div>
 
 </div>
+<div class="container">
+<h1 class="my-4">Page Heading</h1>
 
+</div>
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/jquery.dropotron.min.js"></script>
