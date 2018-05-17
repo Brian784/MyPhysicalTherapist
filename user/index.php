@@ -221,7 +221,7 @@ $result = $dbConn->executeSelectQuery();
                 </div>
             </div>
 
-        <?php } $result->close();?>
+        <?php } ?>
 
 
     </div>
