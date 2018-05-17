@@ -163,7 +163,7 @@ $result = $dbConn->executeSelectQuery();
                         <li><a onclick="document.getElementById('LowerForm').submit();">Lower Body</a></li>
                         <?php
                         if ($isLogined) {
-                            echo '<li><a  href="savevideos.php.php">Saved Videos</a></form></li>';
+                            echo '<li><a  href="savevideos.php">Saved Videos</a></form></li>';
                         }
                         ?>
                     </ul>
