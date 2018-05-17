@@ -44,7 +44,6 @@ switch (strtolower($_GET['part'])) {
     default:
         header('location:index.php');
 }
-echo $sql;
 $dbConn->setQuery($sql);
 $result = $dbConn->executeSelectQuery();
 ?>
@@ -168,7 +167,7 @@ $result = $dbConn->executeSelectQuery();
                     </div>
                 </div>
 
-            <?php } ?>
+            <?php } $result->close();?>
 
 
         </div>
