@@ -62,9 +62,10 @@ if ($_GET['page'] < 1) {
 $pageCntentRange1 = ($_GET['page'] - 1) * $itemperpage;
 $pageCntentRange2 = $_GET['page'] * $itemperpage;
 
-$sql = 'SELECT a.Therapist_ID, a.Comment_Log_ID ,a.Article_ID,a.Article_Title,
+$sql = 'SELECT a.Therapist_ID,a.Article_ID,a.Article_Title,
 SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM article a
  INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1 AND Article_ID >= ' . $pageCntentRange1 . ' AND Article_ID < ' . $pageCntentRange2 . ' ORDER BY a.Article_ID DESC ';
+echo $sql;
 $dbConn->setQuery($sql);
 $result = $dbConn->executeSelectQuery();
 

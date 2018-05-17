@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: May 17, 2018 at 04:01 AM
+-- Host: 127.0.0.1
+-- Generation Time: May 17, 2018 at 07:50 AM
 -- Server version: 10.1.31-MariaDB
--- PHP Version: 7.0.26
+-- PHP Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -66,6 +66,14 @@ CREATE TABLE `article` (
   `Article` text COLLATE utf8_unicode_ci NOT NULL,
   `TimePublished` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `article`
+--
+
+INSERT INTO `article` (`Article_ID`, `Therapist_ID`, `Article_Title`, `Article`, `TimePublished`) VALUES
+(1, '777', 'sadsa', 'asdas', '0000-00-00 00:00:00'),
+(2, '1', 'asdsa', 'sadasd', '2018-05-02 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -267,6 +275,12 @@ ALTER TABLE `appointments`
   MODIFY `Appointment_ID` int(20) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `article`
+--
+ALTER TABLE `article`
+  MODIFY `Article_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `saved_videos`
 --
 ALTER TABLE `saved_videos`
@@ -300,8 +314,7 @@ ALTER TABLE `appointments`
 --
 ALTER TABLE `arcticle_comments`
   ADD CONSTRAINT `Account_ID_Therapist` FOREIGN KEY (`Account_ID`) REFERENCES `therapist_account` (`Therapist_ID`),
-  ADD CONSTRAINT `Account_ID_User` FOREIGN KEY (`Account_ID`) REFERENCES `user_account` (`User_ID`),
-  ADD CONSTRAINT `Article_ID_Comments` FOREIGN KEY (`Article_ID`) REFERENCES `article` (`Article_ID`);
+  ADD CONSTRAINT `Account_ID_User` FOREIGN KEY (`Account_ID`) REFERENCES `user_account` (`User_ID`);
 
 --
 -- Constraints for table `article`
@@ -328,13 +341,6 @@ ALTER TABLE `video_comments`
   ADD CONSTRAINT `Account_ID_Video_Comments_Therapist` FOREIGN KEY (`Account_ID`) REFERENCES `therapist_account` (`Therapist_ID`),
   ADD CONSTRAINT `Account_ID_Video_Comments_User` FOREIGN KEY (`Account_ID`) REFERENCES `user_account` (`User_ID`),
   ADD CONSTRAINT `Video_ID_Viceo_Comments` FOREIGN KEY (`Video_ID`) REFERENCES `video_library` (`Video_ID`);
-
---
--- Constraints for table `video_library`
---
-ALTER TABLE `video_library`
-  ADD CONSTRAINT `Therapist_ID_Video_Library` FOREIGN KEY (`Therapist_ID`) REFERENCES `therapist_account` (`Therapist_ID`),
-  ADD CONSTRAINT `Video_Id_Video_Library` FOREIGN KEY (`Video_ID`) REFERENCES `saved_videos` (`Video_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
