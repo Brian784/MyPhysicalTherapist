@@ -37,17 +37,37 @@ if (isset($_POST['videoID'])) {
     $sql = 'SELECT a.Video_ID,a.Video_Title,a.Video_Description,a.Video_URL,a.TimePublished,b.First_Name,b.Last_Name,b.Therapist_ID FROM video_library a INNER JOIN therapist_account b WHERE a.Therapist_ID=b.Therapist_ID AND a.Video_ID = ' . $_POST['videoID'];
     $dbConn->setQuery($sql);
     $result = $dbConn->executeSelectQuery();
-        if(isset($_POST['comment'])){
-            $insertSQL='INSERT INTO `video_comments` (`Video_Comment_ID`, `Account_ID`, `Video_ID`, `Time_Stamp`, `Comment`, `isApprove`) VALUES (NULL,'. $UserID.','.$_POST['videoID'].', CURRENT_TIMESTAMP,\''.$_POST['comment'].'\',1)';
-           $dbConn->setQuery($insertSQL);
-           $dbConn->executeQuery();
 
-        }
+    if(isset($_POST['action'])){
+
+    switch ($_POST['action']){
+        case 'addVideo':
+            if(!$dbConn->isVideoSaved($UserID,($_POST['videoID']))){
+                $sql = 'INSERT INTO `saved_videos` (`Video_ID`, `User_ID`, `Time_Saved`) VALUES (\'' . $_POST['videoID'] . '\',\'' . $UserID . '\', CURRENT_TIMESTAMP)';
+                $dbConn->setQuery($sql);
+                $dbConn->executeQuery();
+            }
+            break;
+        case 'deleteVideo':
+            if($dbConn->isVideoSaved($UserID,($_POST['videoID']))){
+                $sql = 'DELETE FROM `saved_videos` WHERE `saved_videos`.`Video_ID` = '.$_POST['videoID'] .' AND `saved_videos`.`User_ID` = '.$UserID;
+                $dbConn->setQuery($sql);
+                $dbConn->executeQuery();
+            }
+            break;
+        case 'postComment':
+            $insertSQL='INSERT INTO `video_comments` (`Video_Comment_ID`, `Account_ID`, `Video_ID`, `Time_Stamp`, `Comment`, `isApprove`) VALUES (NULL,'. $UserID.','.$_POST['videoID'].', CURRENT_TIMESTAMP,\''.$_POST['comment'].'\',1)';
+            $dbConn->setQuery($insertSQL);
+            $dbConn->executeQuery();
+            break;
+    }
+    }
+
+
 } else {
     header('Location: index.php');
     die();
 }
-
 
 ?>
 
@@ -166,6 +186,7 @@ if (isset($_POST['videoID'])) {
                         <span class="glyphicon glyphicon-user"></span>
                         Posted by
                         <a onclick="document.getElementById('therapist<?php echo $row['Therapist_ID'] ?>' ).submit();"><?php echo $row['First_Name'] . ' ' . $row['Last_Name'] ?></a>
+
                     </p>
                     <hr>
                     <!-- Video-->
@@ -176,6 +197,21 @@ if (isset($_POST['videoID'])) {
                     <hr>
                     <!-- Date/Time -->
                     <p>Posted on <?php echo $row['TimePublished'] ?></p>
+                    <!--Save Video -->
+                <?php if(!$dbConn->isVideoSaved($UserID,$_POST['videoID'])){?>
+                    <form action="playvideo.php" method="post" >
+                        <input type="hidden" name="videoID" value="<?php echo $_POST['videoID'] ?>">
+                        <input type="hidden" name="action" value="addVideo">
+                        <button type="submit" class="btn btn-primary">Save Video</button>
+                    </form>
+                        <?php }else{?>
+                        <form action="playvideo.php" method="post" >
+                            <input type="hidden" name="videoID" value="<?php echo $_POST['videoID'] ?>">
+                            <input type="hidden" name="action" value="deleteVideo">
+                            <button type="submit" class="btn btn-success">Video Saved</button>
+                        </form>
+
+                        <?php }?>
                     <hr>
             <p class="lead">Video Description</p>
                     <p><?php echo $row['Video_Description'] ?></p>
@@ -188,11 +224,13 @@ if (isset($_POST['videoID'])) {
             <div class="card my-4">
                 <h5 class="card-header">Leave a Comment:</h5>
                 <div class="card-body">
-                    <form action="playvideo.php" action="playvideo.php" method="post">
+
+                    <form action="playvideo.php" method="post">
                         <div class="form-group">
                             <textarea class="form-control" name='comment'rows="3"></textarea>
                         </div>
                         <input type="hidden" name="videoID" value="<?php echo $_POST['videoID'] ?>">
+                        <input type="hidden" name="action" value="postComment">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>

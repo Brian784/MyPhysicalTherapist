@@ -3,14 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="17787c43-bc67-46f1-953c-e83e5c817b49" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/user/index.php" afterPath="$PROJECT_DIR$/user/index.php" />
-      <change beforePath="$PROJECT_DIR$/user/myappointment.php" afterPath="$PROJECT_DIR$/user/myappointment.php" />
-      <change beforePath="$PROJECT_DIR$/user/newappointment.php" afterPath="$PROJECT_DIR$/user/newappointment.php" />
+      <change beforePath="$PROJECT_DIR$/user/DatabaseConnectorClass.php" afterPath="$PROJECT_DIR$/user/DatabaseConnectorClass.php" />
       <change beforePath="$PROJECT_DIR$/user/playvideo.php" afterPath="$PROJECT_DIR$/user/playvideo.php" />
       <change beforePath="$PROJECT_DIR$/user/savevideos.php" afterPath="$PROJECT_DIR$/user/savevideos.php" />
-      <change beforePath="$PROJECT_DIR$/user/userprofile.php" afterPath="$PROJECT_DIR$/user/userprofile.php" />
-      <change beforePath="$PROJECT_DIR$/user/videos.php" afterPath="$PROJECT_DIR$/user/videos.php" />
-      <change beforePath="$PROJECT_DIR$/user/videosbackup.php" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,34 +16,76 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="videos.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/user/videos.php">
+      <file leaf-file-name="playvideo.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/user/playvideo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="145" column="9" lean-forward="true" selection-start-line="145" selection-start-column="9" selection-end-line="145" selection-end-column="9" />
+            <state relative-caret-position="384">
+              <caret line="62" column="5" lean-forward="false" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
               <folding>
-                <marker date="1526647000539" expanded="true" signature="1635:1777" ph="SELECT COUNT... video_library" />
-                <marker date="1526647000539" expanded="true" signature="2683:3069" ph="SELECT b.The... video_library" />
-                <marker date="1526647000539" expanded="true" signature="3164:3550" ph="SELECT b.The... video_library" />
-                <marker date="1526647000539" expanded="true" signature="3639:3965" ph="SELECT b.The... video_library" />
-                <marker date="1526647000539" expanded="true" signature="5865:5933" ph="..." />
-                <marker date="1526647000539" expanded="true" signature="6022:6084" ph="..." />
-                <marker date="1526647000539" expanded="true" signature="12499:12619" ph="..." />
+                <marker date="1526654789118" expanded="true" signature="1623:1847" ph="SELECT * FRO... video_library" />
+                <marker date="1526654789118" expanded="true" signature="1623:1848" ph="SELECT * FRO... video_library" />
+                <marker date="1526654789118" expanded="true" signature="2129:2271" ph="INSERT INTO `saved_videos`... " />
+                <marker date="1526654789118" expanded="true" signature="2509:2569" ph="DELETE FROM `saved_videos`... " />
+                <marker date="1526654789118" expanded="true" signature="2509:2570" ph="DELETE FROM `saved_videos`... " />
+                <marker date="1526654789118" expanded="true" signature="2509:2623" ph="DELETE FROM `saved_videos`... " />
+                <marker date="1526654789118" expanded="true" signature="2509:2624" ph="DELETE FROM `saved_videos`... " />
+                <marker date="1526654789118" expanded="true" signature="2802:3011" ph="INSERT INTO `video_comments`... " />
+                <marker date="1526654789118" expanded="true" signature="4992:5060" ph="..." />
+                <marker date="1526654789118" expanded="true" signature="5149:5211" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user/index.php">
+      <file leaf-file-name="savevideos.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user/savevideos.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="148" column="7" lean-forward="true" selection-start-line="148" selection-start-column="7" selection-end-line="150" selection-end-column="9" />
+            <state relative-caret-position="141">
+              <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="41" selection-end-column="5" />
               <folding>
-                <marker date="1526633955848" expanded="true" signature="2682:2814" ph="SELECT COUNT... article" />
-                <marker date="1526633955848" expanded="true" signature="3520:3856" ph="SELECT a.The... article" />
-                <marker date="1526633955848" expanded="true" signature="5717:5779" ph="..." />
-                <marker date="1526633955848" expanded="true" signature="9767:9859" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="1654:1796" ph="INSERT INTO `saved_videos`... " />
+                <marker date="1526654346019" expanded="true" signature="1889:2018" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="2027:3326" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="2034:2883" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="2187:2264" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="2332:2410" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="2422:2500" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="2890:3326" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="2914:3326" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="2957:3326" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="3002:3326" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="3019:3326" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="3199:3326" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="3265:3326" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="3388:3456" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="3545:3607" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="3933:4441" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="4002:4441" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="4081:4189" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="4268:4376" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="4760:5043" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="4833:5021" ph="..." />
+                <marker date="1526654346019" expanded="true" signature="5391:5466" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseConnectorClass.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user/DatabaseConnectorClass.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="19" column="28" lean-forward="false" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+              <folding>
+                <marker date="1526653021311" expanded="true" signature="428:470" ph="SELECT * Fro... saved_videos" />
+                <marker date="1526653021311" expanded="true" signature="428:480" ph="SELECT * Fro... saved_videos" />
+                <marker date="1526653021311" expanded="true" signature="428:482" ph="SELECT * Fro... saved_videos" />
+                <marker date="1526653021311" expanded="true" signature="428:496" ph="SELECT * Fro... saved_videos" />
+                <marker date="1526653021311" expanded="true" signature="428:497" ph="SELECT * Fro... saved_videos" />
+                <marker date="1526653021311" expanded="true" signature="428:498" ph="SELECT * Fro... saved_videos" />
+                <marker date="1526653021311" expanded="true" signature="428:506" ph="SELECT * Fro... saved_videos" />
+                <marker date="1526653021311" expanded="true" signature="1902:1985" ph="SELECT User_... user_account" />
+                <marker date="1526653021311" expanded="true" signature="2466:2540" ph="SELECT Email... user_account" />
               </folding>
             </state>
           </provider>
@@ -70,7 +107,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Pagination.php" />
-        <option value="$PROJECT_DIR$/user/DatabaseConnectorClass.php" />
         <option value="$PROJECT_DIR$/user/ValidatedUserFormatCode.php" />
         <option value="$PROJECT_DIR$/user/cookiesAndSessions.php" />
         <option value="$PROJECT_DIR$/user/contactinfo.php" />
@@ -79,12 +115,13 @@
         <option value="$PROJECT_DIR$/user/videosver2.php" />
         <option value="$PROJECT_DIR$/user/index.php" />
         <option value="$PROJECT_DIR$/user/testing.php" />
-        <option value="$PROJECT_DIR$/user/playvideo.php" />
         <option value="$PROJECT_DIR$/user/userprofile.php" />
-        <option value="$PROJECT_DIR$/user/savevideos.php" />
         <option value="$PROJECT_DIR$/user/newappointment.php" />
         <option value="$PROJECT_DIR$/user/myappointment.php" />
         <option value="$PROJECT_DIR$/user/videos.php" />
+        <option value="$PROJECT_DIR$/user/DatabaseConnectorClass.php" />
+        <option value="$PROJECT_DIR$/user/savevideos.php" />
+        <option value="$PROJECT_DIR$/user/playvideo.php" />
       </list>
     </option>
   </component>
@@ -116,6 +153,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -128,25 +167,10 @@
               <item name="pt" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
-            <path>
-              <item name="pt" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pt" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="pt" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pt" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -190,12 +214,13 @@
       <workItem from="1526283709365" duration="7503000" />
       <workItem from="1526357949539" duration="4540000" />
       <workItem from="1526530862599" duration="27934000" />
-      <workItem from="1526609489581" duration="22643000" />
+      <workItem from="1526609489581" duration="23766000" />
+      <workItem from="1526651609708" duration="3175000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81129000" />
+    <option name="totallyTimeSpent" value="85427000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -311,7 +336,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
           <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -320,8 +344,15 @@
         <state relative-caret-position="1886">
           <caret line="82" column="96" lean-forward="true" selection-start-line="82" selection-start-column="96" selection-end-line="82" selection-end-column="96" />
           <folding>
-            <marker date="1526288188132" expanded="true" signature="1572:1655" ph="SELECT User_... user_account" />
-            <marker date="1526288188132" expanded="true" signature="2136:2210" ph="SELECT Email... user_account" />
+            <marker date="1526653021311" expanded="true" signature="428:470" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:480" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:482" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:496" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:497" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:498" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:506" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="1902:1985" ph="SELECT User_... user_account" />
+            <marker date="1526653021311" expanded="true" signature="2466:2540" ph="SELECT Email... user_account" />
           </folding>
         </state>
       </provider>
@@ -375,10 +406,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
           <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <marker date="1526646752627" expanded="true" signature="3103:3171" ph="..." />
-            <marker date="1526646752627" expanded="true" signature="3260:3322" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -386,10 +413,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
           <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <marker date="1526646752714" expanded="true" signature="3103:3171" ph="..." />
-            <marker date="1526646752714" expanded="true" signature="3260:3322" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -398,8 +421,29 @@
         <state relative-caret-position="319">
           <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding>
-            <marker date="1526646722371" expanded="true" signature="3103:3171" ph="..." />
-            <marker date="1526646722371" expanded="true" signature="3260:3322" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="1654:1796" ph="INSERT INTO `saved_videos`... " />
+            <marker date="1526654346019" expanded="true" signature="1889:2018" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="2027:3326" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="2034:2883" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="2187:2264" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="2332:2410" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="2422:2500" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="2890:3326" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="2914:3326" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="2957:3326" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="3002:3326" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="3019:3326" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="3199:3326" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="3265:3326" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="3388:3456" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="3545:3607" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="3933:4441" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="4002:4441" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="4081:4189" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="4268:4376" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="4760:5043" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="4833:5021" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="5391:5466" ph="..." />
           </folding>
         </state>
       </provider>
@@ -408,10 +452,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="321">
           <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <marker date="1526646709243" expanded="true" signature="3119:3187" ph="..." />
-            <marker date="1526646709243" expanded="true" signature="3276:3338" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -427,8 +467,15 @@
         <state relative-caret-position="-1700">
           <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
           <folding>
-            <marker date="1526288188132" expanded="true" signature="1572:1655" ph="SELECT User_... user_account" />
-            <marker date="1526288188132" expanded="true" signature="2136:2210" ph="SELECT Email... user_account" />
+            <marker date="1526653021311" expanded="true" signature="428:470" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:480" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:482" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:496" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:497" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:498" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:506" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="1902:1985" ph="SELECT User_... user_account" />
+            <marker date="1526653021311" expanded="true" signature="2466:2540" ph="SELECT Email... user_account" />
           </folding>
         </state>
       </provider>
@@ -437,7 +484,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="5" column="25" lean-forward="false" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -445,7 +491,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="603">
           <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -523,7 +568,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
           <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -532,8 +576,15 @@
         <state relative-caret-position="1886">
           <caret line="82" column="96" lean-forward="true" selection-start-line="82" selection-start-column="96" selection-end-line="82" selection-end-column="96" />
           <folding>
-            <marker date="1526288188132" expanded="true" signature="1572:1655" ph="SELECT User_... user_account" />
-            <marker date="1526288188132" expanded="true" signature="2136:2210" ph="SELECT Email... user_account" />
+            <marker date="1526653021311" expanded="true" signature="428:470" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:480" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:482" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:496" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:497" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:498" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:506" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="1902:1985" ph="SELECT User_... user_account" />
+            <marker date="1526653021311" expanded="true" signature="2466:2540" ph="SELECT Email... user_account" />
           </folding>
         </state>
       </provider>
@@ -597,38 +648,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/videosver2.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="90" column="8" lean-forward="false" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/videosbackup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3572">
-          <caret line="189" column="35" lean-forward="true" selection-start-line="189" selection-start-column="35" selection-end-line="189" selection-end-column="118" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/DatabaseConnectorClass.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1499">
-          <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-          <folding>
-            <marker date="1526288188132" expanded="true" signature="1572:1655" ph="SELECT User_... user_account" />
-            <marker date="1526288188132" expanded="true" signature="2136:2210" ph="SELECT Email... user_account" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/user/videosver2.php" />
+    <entry file="file://$PROJECT_DIR$/user/videosbackup.php" />
     <entry file="file://$PROJECT_DIR$/user/testing.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="5" column="35" lean-forward="true" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -636,43 +661,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
           <caret line="83" column="51" lean-forward="false" selection-start-line="83" selection-start-column="51" selection-end-line="83" selection-end-column="51" />
-          <folding>
-            <marker date="1526646709243" expanded="true" signature="3119:3187" ph="..." />
-            <marker date="1526646709243" expanded="true" signature="3276:3338" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/savevideos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="83" column="51" lean-forward="false" selection-start-line="83" selection-start-column="51" selection-end-line="83" selection-end-column="51" />
-          <folding>
-            <marker date="1526646722371" expanded="true" signature="3103:3171" ph="..." />
-            <marker date="1526646722371" expanded="true" signature="3260:3322" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/playvideo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="106" column="51" lean-forward="false" selection-start-line="106" selection-start-column="51" selection-end-line="106" selection-end-column="51" />
-          <folding>
-            <marker date="1526646690977" expanded="true" signature="1623:1847" ph="SELECT * FRO... video_library" />
-            <marker date="1526646690977" expanded="true" signature="1623:1848" ph="SELECT * FRO... video_library" />
-            <marker date="1526646690977" expanded="true" signature="2007:2134" ph="INSERT INTO `video_comments`... " />
-            <marker date="1526646690977" expanded="true" signature="2007:2137" ph="INSERT INTO `video_comments`... " />
-            <marker date="1526646690977" expanded="true" signature="2007:2147" ph="INSERT INTO `video_comments`... " />
-            <marker date="1526646690977" expanded="true" signature="2007:2169" ph="INSERT INTO `video_comments`... " />
-            <marker date="1526646690977" expanded="true" signature="2007:2188" ph="INSERT INTO `video_comments`... " />
-            <marker date="1526646690977" expanded="true" signature="2007:2192" ph="INSERT INTO `video_comments`... " />
-            <marker date="1526646690977" expanded="true" signature="2007:2215" ph="INSERT INTO `video_comments`... " />
-            <marker date="1526646690977" expanded="true" signature="2007:2216" ph="INSERT INTO `video_comments`... " />
-            <marker date="1526646690977" expanded="true" signature="2007:2230" ph="INSERT INTO `video_comments`... " />
-            <marker date="1526646690977" expanded="true" signature="4174:4242" ph="..." />
-            <marker date="1526646690977" expanded="true" signature="4331:4393" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -680,10 +668,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="284">
           <caret line="83" column="51" lean-forward="false" selection-start-line="83" selection-start-column="51" selection-end-line="83" selection-end-column="51" />
-          <folding>
-            <marker date="1526646752714" expanded="true" signature="3103:3171" ph="..." />
-            <marker date="1526646752714" expanded="true" signature="3260:3322" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -691,10 +675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="141">
           <caret line="83" column="51" lean-forward="false" selection-start-line="83" selection-start-column="51" selection-end-line="83" selection-end-column="51" />
-          <folding>
-            <marker date="1526646752627" expanded="true" signature="3103:3171" ph="..." />
-            <marker date="1526646752627" expanded="true" signature="3260:3322" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -702,7 +682,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-788">
           <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/videos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="804">
+          <caret line="145" column="9" lean-forward="true" selection-start-line="145" selection-start-column="9" selection-end-line="145" selection-end-column="9" />
+          <folding>
+            <marker date="1526647000539" expanded="true" signature="1635:1777" ph="SELECT COUNT... video_library" />
+            <marker date="1526647000539" expanded="true" signature="2683:3069" ph="SELECT b.The... video_library" />
+            <marker date="1526647000539" expanded="true" signature="3164:3550" ph="SELECT b.The... video_library" />
+            <marker date="1526647000539" expanded="true" signature="3639:3965" ph="SELECT b.The... video_library" />
+            <marker date="1526647000539" expanded="true" signature="5865:5933" ph="..." />
+            <marker date="1526647000539" expanded="true" signature="6022:6084" ph="..." />
+            <marker date="1526647000539" expanded="true" signature="12499:12619" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -719,18 +714,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/videos.php">
+    <entry file="file://$PROJECT_DIR$/user/DatabaseConnectorClass.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="145" column="9" lean-forward="true" selection-start-line="145" selection-start-column="9" selection-end-line="145" selection-end-column="9" />
+        <state relative-caret-position="330">
+          <caret line="19" column="28" lean-forward="false" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
           <folding>
-            <marker date="1526647000539" expanded="true" signature="1635:1777" ph="SELECT COUNT... video_library" />
-            <marker date="1526647000539" expanded="true" signature="2683:3069" ph="SELECT b.The... video_library" />
-            <marker date="1526647000539" expanded="true" signature="3164:3550" ph="SELECT b.The... video_library" />
-            <marker date="1526647000539" expanded="true" signature="3639:3965" ph="SELECT b.The... video_library" />
-            <marker date="1526647000539" expanded="true" signature="5865:5933" ph="..." />
-            <marker date="1526647000539" expanded="true" signature="6022:6084" ph="..." />
-            <marker date="1526647000539" expanded="true" signature="12499:12619" ph="..." />
+            <marker date="1526653021311" expanded="true" signature="428:470" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:480" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:482" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:496" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:497" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:498" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="428:506" ph="SELECT * Fro... saved_videos" />
+            <marker date="1526653021311" expanded="true" signature="1902:1985" ph="SELECT User_... user_account" />
+            <marker date="1526653021311" expanded="true" signature="2466:2540" ph="SELECT Email... user_account" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/savevideos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="41" selection-end-column="5" />
+          <folding>
+            <marker date="1526654346019" expanded="true" signature="1654:1796" ph="INSERT INTO `saved_videos`... " />
+            <marker date="1526654346019" expanded="true" signature="1889:2018" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="2027:3326" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="2034:2883" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="2187:2264" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="2332:2410" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="2422:2500" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="2890:3326" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="2914:3326" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="2957:3326" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="3002:3326" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="3019:3326" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="3199:3326" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="3265:3326" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="3388:3456" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="3545:3607" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="3933:4441" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="4002:4441" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="4081:4189" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="4268:4376" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="4760:5043" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="4833:5021" ph="..." />
+            <marker date="1526654346019" expanded="true" signature="5391:5466" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/playvideo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="62" column="5" lean-forward="false" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
+          <folding>
+            <marker date="1526654789118" expanded="true" signature="1623:1847" ph="SELECT * FRO... video_library" />
+            <marker date="1526654789118" expanded="true" signature="1623:1848" ph="SELECT * FRO... video_library" />
+            <marker date="1526654789118" expanded="true" signature="2129:2271" ph="INSERT INTO `saved_videos`... " />
+            <marker date="1526654789118" expanded="true" signature="2509:2569" ph="DELETE FROM `saved_videos`... " />
+            <marker date="1526654789118" expanded="true" signature="2509:2570" ph="DELETE FROM `saved_videos`... " />
+            <marker date="1526654789118" expanded="true" signature="2509:2623" ph="DELETE FROM `saved_videos`... " />
+            <marker date="1526654789118" expanded="true" signature="2509:2624" ph="DELETE FROM `saved_videos`... " />
+            <marker date="1526654789118" expanded="true" signature="2802:3011" ph="INSERT INTO `video_comments`... " />
+            <marker date="1526654789118" expanded="true" signature="4992:5060" ph="..." />
+            <marker date="1526654789118" expanded="true" signature="5149:5211" ph="..." />
           </folding>
         </state>
       </provider>

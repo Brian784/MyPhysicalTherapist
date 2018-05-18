@@ -33,6 +33,14 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
 
     }
 }
+
+
+    if(!$dbConn->isVideoSaved($UserID,($_POST['videoID']))){
+    $sql = 'INSERT INTO `saved_videos` (`Video_ID`, `User_ID`, `Time_Saved`) VALUES (\'' . $_POST['videoID'] . '\',\'' . $UserID . '\', CURRENT_TIMESTAMP)';
+    $dbConn->setQuery($sql);
+    $dbConn->executeQuery();
+    }
+
 ?>
 
 

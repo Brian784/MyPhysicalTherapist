@@ -13,6 +13,16 @@ Class DababaseConnector
     {
 
     }
+    function isVideoSaved($userID,$videoID){
+        $sql='SELECT * From saved_videos WHERE Video_ID='.$videoID.' AND User_ID = '.$userID;
+        $this->setQuery($sql);
+        $rowNum=$this->executeSelectQuery();
+        if($rowNum->num_rows<1){
+            return false;
+        }else{
+            return true;
+        }
+    }
 
     function setQuery ($var)
     {
