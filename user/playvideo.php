@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 include 'EncryptClass.php';
 include 'cookiesAndSessions.php';
 include "DatabaseConnectorClass.php";
@@ -66,7 +67,7 @@ if (isset($_POST['videoID'])) {
 
 
 } else {
-    header('Location: index.php');
+    header('Location: videos.php');
     die();
 }
 
@@ -325,6 +326,10 @@ $userName=$dbConn->executeSelectQuery();
     <!-- /.row -->
 
 </div>
+<?php
+$_POST['videoID']=null;
+
+?>
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/jquery.dropotron.min.js"></script>

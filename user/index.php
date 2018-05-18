@@ -39,7 +39,7 @@ if (isset($_POST['isSignout'])) {
 $isLogined = true;
 $dbConn = new DababaseConnector();
 $UserID = null;
-$itemperpage = 15;
+$itemperpage = 10;
 $totalRecords = null;
 if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->getCookieValue('UserPswCookie') != null) {
     //Received completed Cookies
@@ -90,11 +90,18 @@ if ($_GET['page'] < 1) {
 
 
 $pageCntentRange1 = ($_GET['page'] - 1) * $itemperpage;
-$pageCntentRange2 = $_GET['page'] * $itemperpage;
-
+if($pageCntentRange1<0){
+    $pageCntentRange1=0;
+}
+if(!isset($_GET['keyword'])){
 $sql = 'SELECT a.Therapist_ID,a.Article_ID,a.Article_Title,
 SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM article a
- INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1 AND Article_ID >= ' . $pageCntentRange1 . ' AND Article_ID < ' . $pageCntentRange2 . ' ORDER BY a.Article_ID DESC ';
+ INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1 ORDER BY a.Article_ID DESC LIMIT '.$pageCntentRange1.','.$itemperpage;
+}else{
+    $sql='SELECT a.Therapist_ID,a.Article_ID,a.Article_Title,
+SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM article a
+ INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND a.Article_Title LIKE \'%' . $_GET['keyword'] . '%\' AND b.isValidated = 1 ORDER BY a.Article_ID DESC LIMIT '.$pageCntentRange1.','.$itemperpage;
+}
 $dbConn->setQuery($sql);
 $result = $dbConn->executeSelectQuery();
 
@@ -196,43 +203,82 @@ $result = $dbConn->executeSelectQuery();
 <!-- Page Content -->
 <div class="container">
 
-    <!-- Page Heading -->
-    <h1 class="my-4">Newsfeeds</h1>
-
     <div class="row">
 
-        <?php while ($row = @mysqli_fetch_array($result)) { ?>
-            <div class="col-lg-4 col-sm-6 portfolio-item">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <form id="article<?php echo $row['Article_ID'] ?>" action="article.php" method="post">
-                                <input type="hidden" name="articleID" value="<?php echo $row['Article_ID'] ?>">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8 ">
+
+            <h1 class="my-4">Newsfeeds
+                <small>Articles from legit source</small>
+            </h1>
+        <?php if($result->num_rows){?>
+            <?php while ($row = @mysqli_fetch_array($result)) { ?>
+                <div class="col-lg-6 portfolio-item">
+                    <div class="card h-100 mh-100 ">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <form id="article<?php echo $row['Article_ID'] ?>" action="article.php" method="post">
+                                    <input type="hidden" name="articleID" value="<?php echo $row['Article_ID'] ?>">
+                                </form>
+
+                                <a onclick="document.getElementById('article<?php echo $row['Article_ID'] ?>' ).submit();"><?php echo $row['Article_Title'] ?></a>
+                            </h4>
+                            <form id="therapist<?php echo $row['Therapist_ID'] ?>" action="therapistprofile.php"
+                                  method="post">
+                                <input type="hidden" name="therapistID" value="<?php echo $row['Therapist_ID'] ?>">
                             </form>
 
-                            <a onclick="document.getElementById('article<?php echo $row['Article_ID'] ?>' ).submit();"><?php echo $row['Article_Title'] ?></a>
-                        </h4>
-                        <form id="therapist<?php echo $row['Therapist_ID'] ?>" action="therapistprofile.php"
-                              method="post">
-                            <input type="hidden" name="therapistID" value="<?php echo $row['Therapist_ID'] ?>">
-                        </form>
-
-                        <h5><span class="glyphicon glyphicon-user">
+                            <h5><span class="glyphicon glyphicon-user">
                     </span> Post by <a
-                                    onclick="document.getElementById('therapist<?php echo $row['Therapist_ID'] ?>' ).submit();"><?php echo $row['First_Name'] . '  ' . $row['Last_Name'] ?></a>
-                        </h5>
-                        <p class="card-text">
-                            <?php echo $row['Article'] ?>
-                        </p>
+                                        onclick="document.getElementById('therapist<?php echo $row['Therapist_ID'] ?>' ).submit();"><?php echo $row['First_Name'] . '  ' . $row['Last_Name'] ?></a>
+                            </h5>
+                            <p class="card-text">
+                                <?php echo $row['Article'] ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            <?php } ?>
+            <?php }else{?>
+            <h1>No Contents</h1>
+            <?php } ?>
+
+
+        </div>
+
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+            <!-- Search Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Search</h5>
+                <div class="card-body">
+                    <div class="input-group">
+                        <form id="searchForm" action="index.php" method="get">
+                        <input type="text" name="keyword" class="form-control" placeholder="Search for...">
+                            </form >
+                        <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="button" onclick="document.getElementById('searchForm').submit();">Search!</button>
+
+                </span>
                     </div>
                 </div>
             </div>
 
-        <?php } ?>
+            <!-- Side Widget -->
+            <div class="card my-4">
+                <h5 class="card-header"><strong>Article Section</strong></h5>
+                <div class="card-body">
+                    Those Articles are posted by certified therapist.It's realiable resources
+                </div>
+            </div>
 
+        </div>
 
     </div>
-    <!-- Pagination -->
+    <!-- /.row -->
     <ul class="pagination justify-content-center">
 
         <?php
@@ -254,9 +300,8 @@ $result = $dbConn->executeSelectQuery();
         ?>
 
     </ul>
-
-
 </div>
+<!-- /.container -->
 
 
 <!-- Scripts -->

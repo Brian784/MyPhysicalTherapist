@@ -37,7 +37,7 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
 $sql=null;
 
 $totalRecords=null;
-$itemperpage=15;
+$itemperpage=10;
 $sql='SELECT COUNT(a.Video_ID) AS total FROM video_library a INNER JOIN therapist_account b WHERE a.Therapist_ID=b.Therapist_ID AND b.isValidated =1 ';
 $dbConn->setQuery($sql);
 $totalRecords = $dbConn->executeSelectQuery();
@@ -66,17 +66,16 @@ $pageCntentRange1 = ($_GET['page'] - 1) * $itemperpage;
 if($pageCntentRange1<0){
     $pageCntentRange1=0;
 }
-$pageCntentRange2 = $_GET['page'] * $itemperpage;
 $isSearch=null;
 if(isset($_GET['part'])) {
     switch (strtolower($_GET['part'])) {
         case 'upper':
             $isSearch = false;
-            $sql = 'SELECT b.Therapist_ID,a.Video_ID,a.Video_Title,SUBSTRING(a.Video_Description,1,300) as Video_Description,a.Video_URL,b.First_Name,b.Last_Name FROM video_library a INNER JOIN therapist_account b WHERE Body_Part=\'upper\' AND a.Therapist_ID=b.Therapist_ID AND b.isValidated =1 AND a.Video_ID >= ' . $pageCntentRange1 . ' AND  a.Video_ID <' . $pageCntentRange2 . ' ORDER BY a.Video_ID DESC';
+            $sql = 'SELECT b.Therapist_ID,a.Video_ID,a.Video_Title,SUBSTRING(a.Video_Description,1,300) as Video_Description,a.Video_URL,b.First_Name,b.Last_Name FROM video_library a INNER JOIN therapist_account b WHERE Body_Part=\'upper\' AND a.Therapist_ID=b.Therapist_ID AND b.isValidated =1 ORDER BY a.Video_ID DESC LIMIT '.$pageCntentRange1.','.$itemperpage;
             break;
         case 'lower':
             $isSearch = false;
-            $sql = 'SELECT b.Therapist_ID,a.Video_ID,a.Video_Title,SUBSTRING(a.Video_Description,1,300) as Video_Description,a.Video_URL,b.First_Name,b.Last_Name FROM video_library a INNER JOIN therapist_account b WHERE Body_Part=\'lower\' AND a.Therapist_ID=b.Therapist_ID AND b.isValidated =1 AND a.Video_ID >= ' . $pageCntentRange1 . ' AND a.Video_ID < ' . $pageCntentRange2 . ' ORDER BY a.Video_ID DESC';
+            $sql = 'SELECT b.Therapist_ID,a.Video_ID,a.Video_Title,SUBSTRING(a.Video_Description,1,300) as Video_Description,a.Video_URL,b.First_Name,b.Last_Name FROM video_library a INNER JOIN therapist_account b WHERE Body_Part=\'lower\' AND a.Therapist_ID=b.Therapist_ID AND b.isValidated =1 ORDER BY a.Video_ID DESC LIMIT '.$pageCntentRange1.','.$itemperpage;
             break;
         default:
             $isSearch = true;
