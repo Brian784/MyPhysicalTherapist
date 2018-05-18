@@ -104,7 +104,7 @@ if (isset($_POST['videoID'])) {
   <input type="hidden" name="userID" value=' . $UserID . '>
 </form>';
                         echo '<form id="LogoutForm"  action="login.php" method="post">
-  <input type="hidden" name="isSignout" value="1">
+  <input type="hidden" name="isSignout" value="true">
 </form>';
                         echo ' <li><a  href="userprofile.php">User Profile</a></form></li>';
 

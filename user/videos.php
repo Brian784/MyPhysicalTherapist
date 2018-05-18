@@ -144,8 +144,8 @@ if(isset($_GET['part'])) {
                         echo '<form id="UserIDForm"  action="userprofile.php" method="get">
   <input type="hidden" name="userID" value=' . $UserID . '>
 </form>';
-                        echo '<form id="LogoutForm"  action="login.php" method="post">
-  <input type="hidden" name="isSignout" value="1">
+                        echo '<form id="LogoutForm"  action="index.php" method="post">
+  <input type="hidden" name="isSignout" value="true">
 </form>';
                         echo ' <li><a  href="userprofile.php">User Profile</a></form></li>';
 
