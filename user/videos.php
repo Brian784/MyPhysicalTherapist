@@ -86,6 +86,7 @@ if(isset($_GET['part'])) {
 
     $dbConn->setQuery($sql);
     $result = $dbConn->executeSelectQuery();
+
 }else{
     header('Location: index.php');
     die();
@@ -116,6 +117,13 @@ if(isset($_GET['part'])) {
     <link rel="stylesheet" href="assets/css/main.css"/>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8357713287289102",
+            enable_page_level_ads: true
+        });
+    </script>
 </head>
 <body>
 <div id="page-wrapper">
@@ -202,7 +210,7 @@ if(isset($_GET['part'])) {
              <!--   <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">-->
                 <div class="card-body">
                     <h2 class="card-title"><?php echo $row['Video_Title']?></h2>
-                    <form id="video<?php echo $row['Video_ID'] ?>" action="playvideo.php" method="get">
+                    <form id="video<?php echo $row['Video_ID'] ?>" action="playvideo.php" method="post">
                         <input type="hidden" name="videoID" value="<?php echo $row['Video_ID'] ?>">
                     </form>
                     <form id="therapist<?php echo $row['Therapist_ID'] ?>" action="therapistprofile.php"
@@ -266,9 +274,9 @@ if(isset($_GET['part'])) {
 
             <!-- Side Widget -->
             <div class="card my-4">
-                <h5 class="card-header">Side Widget</h5>
+                <h5 class="card-header"><strong>Reminder</strong></h5>
                 <div class="card-body">
-                    You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+                    We would like to remind you that these video tutorials will serve as guide for certain physical injuries. However, My Physical Therapist is not responsible for any event that may occur.
                 </div>
             </div>
 
@@ -288,11 +296,11 @@ if(!$isSearch) {
 
         if ($page == $_GET['page']) {
             echo '<li class="page-item active">';
-            echo '<a class="page-link" href="?page=' . $page . '?part=' . $_GET['part'] . '">' . $page . '</a>';
+            echo '<a class="page-link" href="?part=' . $_GET['part'] . '&?page=' . $page. '">' . $page . '</a>';
             echo '</li>';
         } else if ($page == 1 || $page == $totalPages || ($page >= $_GET['page'] - 2 && $page <= $_GET['page'] + 2)) {
             echo '   <li class="page-item ">
-            <a class="page-link" href="?page=' . $page . '?part=' . $_GET['part'] . '">' . $page . '</a>
+            <a class="page-link" href="?part=' . $_GET['part'] . '&?page=' .$page  . '">' . $page . '</a>
         </li>';
         }
 
