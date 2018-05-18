@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 17, 2018 at 07:50 AM
+-- Host: localhost:3306
+-- Generation Time: May 18, 2018 at 12:26 PM
 -- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.4
+-- PHP Version: 7.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -72,8 +72,7 @@ CREATE TABLE `article` (
 --
 
 INSERT INTO `article` (`Article_ID`, `Therapist_ID`, `Article_Title`, `Article`, `TimePublished`) VALUES
-(1, '777', 'sadsa', 'asdas', '0000-00-00 00:00:00'),
-(2, '1', 'asdsa', 'sadasd', '2018-05-02 00:00:00');
+(1, '777', 'sadsa', 'asdas', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -101,7 +100,7 @@ CREATE TABLE `therapist_account` (
   `License_Id` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `isValidated` tinyint(1) NOT NULL,
   `License_Type` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `Profile_Picture` longblob NOT NULL,
+  `Profile_Picture` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `Contact_Number` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `Email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `Description` text COLLATE utf8_unicode_ci NOT NULL
@@ -112,9 +111,9 @@ CREATE TABLE `therapist_account` (
 --
 
 INSERT INTO `therapist_account` (`Therapist_ID`, `Password`, `First_Name`, `Last_Name`, `License_Id`, `isValidated`, `License_Type`, `Profile_Picture`, `Contact_Number`, `Email`, `Description`) VALUES
-('1', 'spraintrain', 'Maura', 'Kelly', '123', 1, 'therapist', 0x74686572617069737470696374757265, '8976654', 'kellymaura1@gmail.com', 'A well known therapist'),
-('777', 'infinity', 'Doc', 'Mercy', '555', 1, 'Surgeon', 0x616e6f746865722070696374757265, '921221', 'DocsHaveMercy@ypmail.com', 'A skilled doctor with his own technique'),
-('892', 'timestone', 'Doctor', 'Strange', '8722', 1, 'Doctor', 0x612070696374757265, '9021122', 'DocStrange78@gmail.com', 'Keeper and protector of the time stone.');
+('33', 'spraintrain', 'Maura', 'Kelly', '123', 1, 'therapist', 'therapistpicture', '8976654', 'kellymaura1@gmail.com', 'A well known therapist'),
+('777', 'infinity', 'Doc', 'Mercy', '555', 1, 'Surgeon', 'another picture', '921221', 'DocsHaveMercy@ypmail.com', 'A skilled doctor with his own technique'),
+('892', 'timestone', 'Doctor', 'Strange', '8722', 1, 'Doctor', 'a picture', '9021122', 'DocStrange78@gmail.com', 'Keeper and protector of the time stone.');
 
 -- --------------------------------------------------------
 
@@ -142,7 +141,7 @@ CREATE TABLE `user_account` (
   `Password` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `First_Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `Last_Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `Profile_Picture` longblob NOT NULL,
+  `Profile_Picture` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `Email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `Contact_Number` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `Age` tinyint(3) UNSIGNED NOT NULL,
@@ -154,8 +153,8 @@ CREATE TABLE `user_account` (
 --
 
 INSERT INTO `user_account` (`User_ID`, `Password`, `First_Name`, `Last_Name`, `Profile_Picture`, `Email`, `Contact_Number`, `Age`, `Gender`) VALUES
-('1', 'Havanaunana', 'Ryan', 'Connor', '', 'brianxu784@Gmail.com', '09152016010', 21, 'M'),
-('111', 'abc123', 'Tony', 'Stark', 0x612070696374757265, 'ironman@yahoo.com', '87000', 45, 'M');
+('1', 'Havanaunana', 'Ryan', 'Reynolds', 'userprofilepictures/1.jpg', 'brianxu784@Gmail.com', '09152016010', 21, 'M'),
+('111', 'abc123', 'Tony', 'Stark', 'userprofilepictures/111.jpg', 'ironman@yahoo.com', '87000', 45, 'M');
 
 -- --------------------------------------------------------
 
@@ -164,13 +163,24 @@ INSERT INTO `user_account` (`User_ID`, `Password`, `First_Name`, `Last_Name`, `P
 --
 
 CREATE TABLE `video_comments` (
-  `Video_Comment_ID` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `Video_Comment_ID` int(10) UNSIGNED NOT NULL,
   `Account_ID` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `Video_ID` int(20) NOT NULL,
   `Time_Stamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Comment` text COLLATE utf8_unicode_ci NOT NULL,
   `isApprove` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `video_comments`
+--
+
+INSERT INTO `video_comments` (`Video_Comment_ID`, `Account_ID`, `Video_ID`, `Time_Stamp`, `Comment`, `isApprove`) VALUES
+(1, '1', 4, '2018-05-09 00:00:00', 'It\'s a very helpful video', 1),
+(3, '111', 4, '2018-05-18 11:21:20', 'what a nice video', 1),
+(4, '111', 4, '2018-05-18 11:27:45', 'very well explaination', 1),
+(5, '111', 4, '2018-05-18 11:29:30', 'I like the way that you explain', 1),
+(6, '111', 4, '2018-05-18 12:12:09', 'Hi tony!', 1);
 
 -- --------------------------------------------------------
 
@@ -185,7 +195,7 @@ CREATE TABLE `video_library` (
   `Video_Description` text COLLATE utf8_unicode_ci NOT NULL,
   `Video_URL` text COLLATE utf8_unicode_ci NOT NULL,
   `Body_Part` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `TimePublished` time NOT NULL
+  `TimePublished` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -193,7 +203,8 @@ CREATE TABLE `video_library` (
 --
 
 INSERT INTO `video_library` (`Video_ID`, `Therapist_ID`, `Video_Title`, `Video_Description`, `Video_URL`, `Body_Part`, `TimePublished`) VALUES
-(3, '892', 'Sprain, Quick Relief', 'A quick tutorial on how to relieve spran pain.', 'www.youtube.com', 'feet', '00:00:00');
+(3, '892', 'Instant Headache Relief in Seconds with Self Massage Technique', 'The majority of all headaches are tension related headaches. The blockage of blood circulation along with contraction/shortening of muscles is what causes this condition. This simple technique can take away most tension related headaches in seconds.', '../therapist/videos/3.mp4', 'upper', '2018-05-15 03:00:00'),
+(4, '777', 'Amazing Technique for Upper Neck Pain - MUST WATCH!', ':) Guys try this out', '../therapist/videos/4.mp4', 'upper', '2018-05-16 05:17:00');
 
 --
 -- Indexes for dumped tables
@@ -293,10 +304,16 @@ ALTER TABLE `therapist_schedule`
   MODIFY `Schedule_ID` int(20) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `video_comments`
+--
+ALTER TABLE `video_comments`
+  MODIFY `Video_Comment_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `video_library`
 --
 ALTER TABLE `video_library`
-  MODIFY `Video_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Video_ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -333,14 +350,6 @@ ALTER TABLE `saved_videos`
 --
 ALTER TABLE `therapist_schedule`
   ADD CONSTRAINT `Therapist_ID` FOREIGN KEY (`Therapist_ID`) REFERENCES `therapist_account` (`Therapist_ID`);
-
---
--- Constraints for table `video_comments`
---
-ALTER TABLE `video_comments`
-  ADD CONSTRAINT `Account_ID_Video_Comments_Therapist` FOREIGN KEY (`Account_ID`) REFERENCES `therapist_account` (`Therapist_ID`),
-  ADD CONSTRAINT `Account_ID_Video_Comments_User` FOREIGN KEY (`Account_ID`) REFERENCES `user_account` (`User_ID`),
-  ADD CONSTRAINT `Video_ID_Viceo_Comments` FOREIGN KEY (`Video_ID`) REFERENCES `video_library` (`Video_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
