@@ -140,14 +140,8 @@ if (isset($_POST['videoID'])) {
 
                     <a href="#">Videos</a>
                     <ul>
-                        <form id="UpperForm" action="videos.php" method="get">
-                            <input type="hidden" name="part" value="upper">
-                        </form>
-                        <form id="LowerForm" action="videos.php" method="get">
-                            <input type="hidden" name="part" value="lower">
-                        </form>
-                        <li><a onclick="document.getElementById('UpperForm').submit();">Upper Body</a></li>
-                        <li><a onclick="document.getElementById('LowerForm').submit();">Lower Body</a></li>
+                        <li><a href="videos.php?part=upper">Upper Body</a></li>
+                        <li><a href="videos.php>part=lower">Lower Body</a></li>
                         <li><a href="savevideos.php">Saved Videos</a></form></li>
                     </ul>
                 </
@@ -277,7 +271,7 @@ $userName=$dbConn->executeSelectQuery();
                             <input type="text" name='part' class="form-control" placeholder="Search for...">
                         </form>
                         <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button" onclick="document.getElementById('searchForm').submit();">Go!</button>
+                  <button class="btn btn-secondary" type="button" onclick="document.getElementById('searchForm').submit();">Search!</button>
                 </span>
                     </div>
                 </div>
