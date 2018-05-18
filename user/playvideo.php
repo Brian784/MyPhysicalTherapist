@@ -220,10 +220,16 @@ if (isset($_POST['videoID'])) {
             <?php } ?>
 
             <hr>
-
+<?php
+$sql='(SELECT user_account.First_Name,user_account.Last_Name FROM user_account WHERE user_account.User_ID ='.$UserID.')UNION(SELECT therapist_account.First_Name,therapist_account.Last_Name FROM therapist_account WHERE therapist_account.Therapist_ID='.$UserID.' )';
+$dbConn->setQuery($sql);
+$userName=$dbConn->executeSelectQuery();
+?>
             <!-- Comments Form -->
             <div class="card my-4">
-                <h5 class="card-header">Leave a Comment:</h5>
+                <h5 class="card-header"><?php while ($row = @mysqli_fetch_array($userName)) {
+                    echo 'Hi! '.$row['First_Name'].'   '.$row['Last_Name'];
+                    }?>, You Might want to Leave a Comment:</h5>
                 <div class="card-body">
 
                     <form action="playvideo.php" method="post">
