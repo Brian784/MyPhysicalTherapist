@@ -79,7 +79,7 @@ if(isset($_GET['part'])) {
             break;
         default:
             $isSearch = true;
-            $sql = 'SELECT b.Therapist_ID,a.Video_ID,a.Video_Title,SUBSTRING(a.Video_Description,1,300) as Video_Description,a.Video_URL,b.First_Name,b.Last_Name FROM video_library a INNER JOIN therapist_account b WHERE a.Therapist_ID=b.Therapist_ID AND b.isValidated =1 AND a.Video_Title LIKE \'%' . $_GET['part'] . '%\' ORDER BY a.Video_ID DESC';
+            $sql = 'SELECT b.Therapist_ID,a.Video_ID,a.Video_Title,SUBSTRING(a.Video_Description,1,300) as Video_Description,a.Video_URL,b.First_Name,b.Last_Name FROM video_library a INNER JOIN therapist_account b WHERE a.Therapist_ID=b.Therapist_ID AND b.isValidated =1 AND (a.Video_Title LIKE \'%' . $_GET['part'] . '%\' OR b.First_Name LIKE \'%'.$_GET['part'].'%\' OR  b.Last_Name LIKE \'%'.$_GET['part'].'%\') ORDER BY a.Video_ID DESC';
             break;
     }
 
@@ -159,7 +159,7 @@ if(isset($_GET['part'])) {
                     <a href="#">Videos</a>
                     <ul>
                         <li><a href="videos.php?part=upper">Upper Body</a></li>
-                        <li><a href="videos.php>part=lower">Lower Body</a></li>
+                        <li><a href="videos.php?part=lower">Lower Body</a></li>
                         <li><a href="savevideos.php">Saved Videos</a></form></li>
                     </ul>
                 </li>

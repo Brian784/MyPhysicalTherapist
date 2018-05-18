@@ -100,7 +100,7 @@ SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM article a
 }else{
     $sql='SELECT a.Therapist_ID,a.Article_ID,a.Article_Title,
 SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM article a
- INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND a.Article_Title LIKE \'%' . $_GET['keyword'] . '%\' AND b.isValidated = 1 ORDER BY a.Article_ID DESC LIMIT '.$pageCntentRange1.','.$itemperpage;
+ INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND (a.Article_Title LIKE \'%' . $_GET['keyword'] . '%\' OR b.First_Name LIKE \'%'. $_GET['keyword'] . '%\' OR b.Last_Name LIKE \'%'. $_GET['keyword'] . '%\') AND b.isValidated = 1 ORDER BY a.Article_ID DESC LIMIT '.$pageCntentRange1.','.$itemperpage;
 }
 $dbConn->setQuery($sql);
 $result = $dbConn->executeSelectQuery();
@@ -168,7 +168,7 @@ $result = $dbConn->executeSelectQuery();
                     <a href="#">Videos</a>
                     <ul>
                         <li><a href="videos.php?part=upper">Upper Body</a></li>
-                        <li><a href="videos.php>part=lower">Lower Body</a></li>
+                        <li><a href="videos.php?part=lower">Lower Body</a></li>
                         <?php
                         if ($isLogined) {
                             echo '<li><a  href="savevideos.php">Saved Videos</a></li>';

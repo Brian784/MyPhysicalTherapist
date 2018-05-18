@@ -141,7 +141,7 @@ if (isset($_POST['videoID'])) {
                     <a href="#">Videos</a>
                     <ul>
                         <li><a href="videos.php?part=upper">Upper Body</a></li>
-                        <li><a href="videos.php>part=lower">Lower Body</a></li>
+                        <li><a href="videos.php?part=lower">Lower Body</a></li>
                         <li><a href="savevideos.php">Saved Videos</a></form></li>
                     </ul>
                 </
