@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/user/index.php" afterPath="$PROJECT_DIR$/user/index.php" />
       <change beforePath="$PROJECT_DIR$/user/videos.php" afterPath="$PROJECT_DIR$/user/videos.php" />
-      <change beforePath="$PROJECT_DIR$/user/watchvideo.php" afterPath="$PROJECT_DIR$/user/playvideo.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,35 +15,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="videos.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/user/videos.php">
+      <file leaf-file-name="playvideo.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/user/playvideo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="88" column="1" lean-forward="true" selection-start-line="88" selection-start-column="1" selection-end-line="88" selection-end-column="1" />
+            <state relative-caret-position="-2116">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <element signature="e#8920#8926#0#HTML" expanded="true" />
-                <marker date="1526617990109" expanded="true" signature="1635:1777" ph="SELECT COUNT... video_library" />
-                <marker date="1526617990109" expanded="true" signature="2683:3069" ph="SELECT b.The... video_library" />
-                <marker date="1526617990109" expanded="true" signature="3164:3550" ph="SELECT b.The... video_library" />
-                <marker date="1526617990109" expanded="true" signature="3639:3965" ph="SELECT b.The... video_library" />
-                <marker date="1526617990109" expanded="true" signature="5581:5649" ph="..." />
-                <marker date="1526617990109" expanded="true" signature="5738:5797" ph="..." />
-                <marker date="1526617990109" expanded="true" signature="12144:12263" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1475">
-              <caret line="2" column="27" lean-forward="true" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
-              <folding>
-                <marker date="1526578639985" expanded="true" signature="2682:2814" ph="SELECT COUNT... article" />
-                <marker date="1526578639985" expanded="true" signature="3520:3856" ph="SELECT a.The... article" />
-                <marker date="1526578639985" expanded="true" signature="5434:5496" ph="..." />
-                <marker date="1526578639985" expanded="true" signature="9484:9576" ph="..." />
+                <marker date="1526570840054" expanded="true" signature="3103:3171" ph="..." />
+                <marker date="1526570840054" expanded="true" signature="3260:3319" ph="..." />
               </folding>
             </state>
           </provider>
@@ -183,12 +161,12 @@
       <workItem from="1526283709365" duration="7503000" />
       <workItem from="1526357949539" duration="4540000" />
       <workItem from="1526530862599" duration="27934000" />
-      <workItem from="1526609489581" duration="7579000" />
+      <workItem from="1526609489581" duration="7827000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66065000" />
+    <option name="totallyTimeSpent" value="66313000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -255,14 +233,14 @@
         <state relative-caret-position="3480">
           <caret line="156" column="70" lean-forward="false" selection-start-line="156" selection-start-column="70" selection-end-line="156" selection-end-column="70" />
           <folding>
-            <element signature="e#8920#8926#0#HTML" expanded="true" />
-            <marker date="1526617990109" expanded="true" signature="1635:1777" ph="SELECT COUNT... video_library" />
-            <marker date="1526617990109" expanded="true" signature="2683:3069" ph="SELECT b.The... video_library" />
-            <marker date="1526617990109" expanded="true" signature="3164:3550" ph="SELECT b.The... video_library" />
-            <marker date="1526617990109" expanded="true" signature="3639:3965" ph="SELECT b.The... video_library" />
-            <marker date="1526617990109" expanded="true" signature="5581:5649" ph="..." />
-            <marker date="1526617990109" expanded="true" signature="5738:5797" ph="..." />
-            <marker date="1526617990109" expanded="true" signature="12144:12263" ph="..." />
+            <element signature="e#8918#8924#0#HTML" expanded="true" />
+            <marker date="1526618202373" expanded="true" signature="1635:1777" ph="SELECT COUNT... video_library" />
+            <marker date="1526618202373" expanded="true" signature="2683:3069" ph="SELECT b.The... video_library" />
+            <marker date="1526618202373" expanded="true" signature="3164:3550" ph="SELECT b.The... video_library" />
+            <marker date="1526618202373" expanded="true" signature="3639:3965" ph="SELECT b.The... video_library" />
+            <marker date="1526618202373" expanded="true" signature="5581:5649" ph="..." />
+            <marker date="1526618202373" expanded="true" signature="5738:5797" ph="..." />
+            <marker date="1526618202373" expanded="true" signature="12142:12261" ph="..." />
           </folding>
         </state>
       </provider>
@@ -436,14 +414,14 @@
         <state relative-caret-position="391">
           <caret line="142" column="6" lean-forward="false" selection-start-line="142" selection-start-column="6" selection-end-line="142" selection-end-column="6" />
           <folding>
-            <element signature="e#8920#8926#0#HTML" expanded="true" />
-            <marker date="1526617990109" expanded="true" signature="1635:1777" ph="SELECT COUNT... video_library" />
-            <marker date="1526617990109" expanded="true" signature="2683:3069" ph="SELECT b.The... video_library" />
-            <marker date="1526617990109" expanded="true" signature="3164:3550" ph="SELECT b.The... video_library" />
-            <marker date="1526617990109" expanded="true" signature="3639:3965" ph="SELECT b.The... video_library" />
-            <marker date="1526617990109" expanded="true" signature="5581:5649" ph="..." />
-            <marker date="1526617990109" expanded="true" signature="5738:5797" ph="..." />
-            <marker date="1526617990109" expanded="true" signature="12144:12263" ph="..." />
+            <element signature="e#8918#8924#0#HTML" expanded="true" />
+            <marker date="1526618202373" expanded="true" signature="1635:1777" ph="SELECT COUNT... video_library" />
+            <marker date="1526618202373" expanded="true" signature="2683:3069" ph="SELECT b.The... video_library" />
+            <marker date="1526618202373" expanded="true" signature="3164:3550" ph="SELECT b.The... video_library" />
+            <marker date="1526618202373" expanded="true" signature="3639:3965" ph="SELECT b.The... video_library" />
+            <marker date="1526618202373" expanded="true" signature="5581:5649" ph="..." />
+            <marker date="1526618202373" expanded="true" signature="5738:5797" ph="..." />
+            <marker date="1526618202373" expanded="true" signature="12142:12261" ph="..." />
           </folding>
         </state>
       </provider>
@@ -625,17 +603,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/playvideo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-529">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1526570840054" expanded="true" signature="3103:3171" ph="..." />
-            <marker date="1526570840054" expanded="true" signature="3260:3319" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user/videosver2.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="366">
@@ -674,17 +641,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/user/videos.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="88" column="1" lean-forward="true" selection-start-line="88" selection-start-column="1" selection-end-line="88" selection-end-column="1" />
+        <state relative-caret-position="284">
+          <caret line="194" column="51" lean-forward="false" selection-start-line="194" selection-start-column="51" selection-end-line="194" selection-end-column="51" />
           <folding>
-            <element signature="e#8920#8926#0#HTML" expanded="true" />
-            <marker date="1526617990109" expanded="true" signature="1635:1777" ph="SELECT COUNT... video_library" />
-            <marker date="1526617990109" expanded="true" signature="2683:3069" ph="SELECT b.The... video_library" />
-            <marker date="1526617990109" expanded="true" signature="3164:3550" ph="SELECT b.The... video_library" />
-            <marker date="1526617990109" expanded="true" signature="3639:3965" ph="SELECT b.The... video_library" />
-            <marker date="1526617990109" expanded="true" signature="5581:5649" ph="..." />
-            <marker date="1526617990109" expanded="true" signature="5738:5797" ph="..." />
-            <marker date="1526617990109" expanded="true" signature="12144:12263" ph="..." />
+            <element signature="e#8918#8924#0#HTML" expanded="true" />
+            <marker date="1526618202373" expanded="true" signature="1635:1777" ph="SELECT COUNT... video_library" />
+            <marker date="1526618202373" expanded="true" signature="2683:3069" ph="SELECT b.The... video_library" />
+            <marker date="1526618202373" expanded="true" signature="3164:3550" ph="SELECT b.The... video_library" />
+            <marker date="1526618202373" expanded="true" signature="3639:3965" ph="SELECT b.The... video_library" />
+            <marker date="1526618202373" expanded="true" signature="5581:5649" ph="..." />
+            <marker date="1526618202373" expanded="true" signature="5738:5797" ph="..." />
+            <marker date="1526618202373" expanded="true" signature="12142:12261" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/playvideo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2116">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1526570840054" expanded="true" signature="3103:3171" ph="..." />
+            <marker date="1526570840054" expanded="true" signature="3260:3319" ph="..." />
           </folding>
         </state>
       </provider>

@@ -192,7 +192,7 @@ if(isset($_GET['part'])) {
             <h1 class="my-4"><?php echo ucfirst($_GET['part']).' Body';?>
             </h1>
             <?php }else{ ?>
-                <h1 class="my-4"><?php echo 'Searched \''.ucfirst($_GET['part']).'\'';?>
+                <h1 class="my-4"><?php echo 'Search \''.ucfirst($_GET['part']).'\'';?>
                 </h1>
             <?php } ?>
             <!-- Blog Post -->
