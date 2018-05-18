@@ -25,21 +25,16 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
         $pass = $encryptor->crypt_function($SessionMaker->getSession('UserPswSession'), 'd');
         $UserID = $encryptor->crypt_function($SessionMaker->getSession('UserIDSession'), 'd');
         $isLogined = $dbConn->validateUser($email, $pass);
-    } else {
+    } else{
         //InvalidAccess
         //no cookies no sessions
-        header('Refresh: 5;url=index.php');
-        die('<p>Only registered user can access this page,you are going to redirect to welcome page in 5 seconds</p>');
+        header('Refresh: 4;url=index.php');
+        die('<p>Only registered user can access this page,you will be redirectd to welcome page in 4 seconds</p>');
 
     }
 }
 
 
-    if(!$dbConn->isVideoSaved($UserID,($_POST['videoID']))){
-    $sql = 'INSERT INTO `saved_videos` (`Video_ID`, `User_ID`, `Time_Saved`) VALUES (\'' . $_POST['videoID'] . '\',\'' . $UserID . '\', CURRENT_TIMESTAMP)';
-    $dbConn->setQuery($sql);
-    $dbConn->executeQuery();
-    }
 
 ?>
 
