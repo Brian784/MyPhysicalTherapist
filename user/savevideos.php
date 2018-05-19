@@ -102,8 +102,7 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
                         <li><a href="videos.php?part=lower">Lower Body</a></li>
                         <li><a  href="savevideos.php">Saved Videos</a></form></li>
                     </ul>
-                </
-                >
+                </li>
 
                 <li>
                     <a href="#">Appointment</a>
