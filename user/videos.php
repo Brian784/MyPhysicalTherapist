@@ -116,13 +116,7 @@ if(isset($_GET['part'])) {
     <link rel="stylesheet" href="assets/css/main.css"/>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-8357713287289102",
-            enable_page_level_ads: true
-        });
-    </script>
+
 </head>
 <body>
 <div id="page-wrapper">
@@ -312,6 +306,11 @@ if(!$isSearch) {
 <!--[if lte IE 8]>
 <script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="assets/js/main.js"></script>
+<?php
+include_once '../Ads.php';
+$ads= new Ads();
+echo $ads->getAds();
+?>
 
 </body>
 </html>
