@@ -22,7 +22,7 @@
 
             </ul>
         </li>
-        <li class="current">
+        <li>
 
             <a href="#">Videos</a>
             <ul>

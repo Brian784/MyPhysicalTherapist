@@ -2,7 +2,7 @@
 <nav id="nav">
     <ul>
         <li><a href="index.php"><img src="images/MyPtLogo.png" width="150" height="90"></a></li>
-        <li class="current"><a href="index.php">Home</a></li>
+        <li><a href="index.php">Home</a></li>
         <li>
             <a href="videos.php">User</a>
             <ul>
