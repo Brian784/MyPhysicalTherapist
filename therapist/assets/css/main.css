@@ -2354,7 +2354,7 @@
 
 	#nav {
 		cursor: default;
-		background-color: #2b7a78;
+		background-color: #4960be;
 		background-image: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3)), url("images/bg01.png");
 		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3)), url("images/bg01.png");
 		background-image: -ms-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3)), url("images/bg01.png");
@@ -2488,8 +2488,8 @@
 			bottom: 0;
 			left: 0;
 			width: 100%;
-			background: #2b7a78;
-			background: rgba(43, 122, 120, 0.75);
+			background: #4960be;
+			background: rgba(81, 81, 200, 0.75);
 			color: #fff;
 			padding: 1.5em 0;
 		}
@@ -2503,7 +2503,7 @@
 
 				#banner header h2 em {
 					opacity: 0.75;
-				}
+				}a
 
 				#banner header h2 a {
 					border-bottom-color: rgba(255, 255, 255, 0.5);
