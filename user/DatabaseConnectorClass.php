@@ -3,8 +3,8 @@
 
 Class DababaseConnector
 {
-    var $host = 'mysql.hostinger.com';
-    var $username = 'u738774436_pt';
+    var $host = 'localhost';
+    var $username = 'id5592625_gregariousxx18';
     var $password = 'Havanaunana';
     var $dbname = 'u738774436_mypt';
     var $query;

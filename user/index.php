@@ -124,7 +124,13 @@ $result = $dbConn->executeSelectQuery();
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/3-col-portfolio.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8357713287289102",
+            enable_page_level_ads: true
+        });
+    </script>
 </head>
 
 <body>
@@ -196,8 +202,7 @@ $result = $dbConn->executeSelectQuery();
         <!-- Blog Entries Column -->
         <div class="col-md-8 ">
 
-            <h1 class="my-4">Newsfeeds
-                <small>Articles from legit source</small>
+            <h1 class="my-4">Newsfeed
             </h1>
         <?php if($result->num_rows){?>
             <?php while ($row = @mysqli_fetch_array($result)) { ?>
@@ -259,7 +264,7 @@ $result = $dbConn->executeSelectQuery();
             <div class="card my-4">
                 <h5 class="card-header"><strong>Article Section</strong></h5>
                 <div class="card-body">
-                    These Articles are posted by certified therapist.They are reliable.
+                    These articles are posted by authorized therapists.
                 </div>
             </div>
 
@@ -300,6 +305,7 @@ $result = $dbConn->executeSelectQuery();
 <!--[if lte IE 8]>
 <script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="assets/js/main.js"></script>
+
 <?php
 include_once '../Ads.php';
 $ads= new Ads();
