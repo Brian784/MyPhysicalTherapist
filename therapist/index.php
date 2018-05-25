@@ -6,7 +6,7 @@
 -->
 <html>
 <head>
-    <title>My Physical Therapist</title>
+    <title>My Physical Therapist-Therapist</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!--[if lte IE 8]>
@@ -25,7 +25,7 @@
     <!-- Header -->
     <div id="header">
         <?php
-require("includes/header.html");
+require("includes/header.php");
 ?>
     </div>
 

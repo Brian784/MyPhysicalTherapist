@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3811677-0483-4c87-a8b2-26d37e45e8c4" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/therapist/includes/header.php" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/user/assets/css/main.css" afterPath="$PROJECT_DIR$/user/assets/css/main.css" />
+      <change beforePath="$PROJECT_DIR$/therapist/includes/header.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/therapist/index.php" afterPath="$PROJECT_DIR$/therapist/index.php" />
       <change beforePath="$PROJECT_DIR$/user/includes/header.php" afterPath="$PROJECT_DIR$/user/includes/header.php" />
       <change beforePath="$PROJECT_DIR$/user/includes/indexHeader.php" afterPath="$PROJECT_DIR$/user/includes/indexHeader.php" />
     </list>
@@ -15,18 +17,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/user/assets/css/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="2367" column="24" lean-forward="true" selection-start-line="2367" selection-start-column="24" selection-end-line="2367" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -47,7 +38,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/user/includes/header.html" />
-        <option value="$PROJECT_DIR$/therapist/index.php" />
         <option value="$PROJECT_DIR$/user/savevideos.php" />
         <option value="$PROJECT_DIR$/user/index.php" />
         <option value="$PROJECT_DIR$/user/newappointment.php" />
@@ -56,10 +46,13 @@
         <option value="$PROJECT_DIR$/user/playvideo.php" />
         <option value="$PROJECT_DIR$/user/userprofile.php" />
         <option value="$PROJECT_DIR$/user/videos.php" />
-        <option value="$PROJECT_DIR$/user/includes/header.php" />
-        <option value="$PROJECT_DIR$/user/includes/indexHeader.php" />
         <option value="$PROJECT_DIR$/Ads.php" />
         <option value="$PROJECT_DIR$/user/assets/css/main.css" />
+        <option value="$PROJECT_DIR$/user/includes/indexHeader.php" />
+        <option value="$PROJECT_DIR$/user/includes/header.php" />
+        <option value="$PROJECT_DIR$/therapist/includes/header.html" />
+        <option value="$PROJECT_DIR$/therapist/includes/header.php" />
+        <option value="$PROJECT_DIR$/therapist/index.php" />
       </list>
     </option>
   </component>
@@ -103,20 +96,13 @@
             <path>
               <item name="pt" type="b2602c69:ProjectViewProjectNode" />
               <item name="pt" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="therapist" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="pt" type="b2602c69:ProjectViewProjectNode" />
               <item name="pt" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="pt" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pt" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="therapist" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="includes" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -161,18 +147,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1527249929517</updated>
-      <workItem from="1527249932177" duration="2573000" />
+      <workItem from="1527249932177" duration="5715000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2573000" />
+    <option name="totallyTimeSpent" value="5715000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1386" height="788" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963504" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963504" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -203,40 +188,11 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/therapist/includes/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/therapist/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="26" column="7" lean-forward="true" selection-start-line="26" selection-start-column="7" selection-end-line="28" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user/EncryptClass.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="136" column="23" lean-forward="true" selection-start-line="136" selection-start-column="23" selection-end-line="136" selection-end-column="23" />
-          <folding>
-            <marker date="1527251662996" expanded="true" signature="2682:2814" ph="SELECT COUNT... article" />
-            <marker date="1527251662996" expanded="true" signature="3551:3829" ph="SELECT a.The... article" />
-            <marker date="1527251662996" expanded="true" signature="3862:4299" ph="SELECT a.The... article" />
-            <marker date="1527251662996" expanded="true" signature="9276:9368" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -330,41 +286,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/videos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14">
-          <caret line="121" column="0" lean-forward="false" selection-start-line="121" selection-start-column="0" selection-end-line="130" selection-end-column="6" />
-          <folding>
-            <marker date="1527250526770" expanded="true" signature="1631:1773" ph="SELECT COUNT... video_library" />
-            <marker date="1527250526770" expanded="true" signature="2629:2957" ph="SELECT b.The... video_library" />
-            <marker date="1527250526770" expanded="true" signature="3065:3393" ph="SELECT b.The... video_library" />
-            <marker date="1527250526770" expanded="true" signature="3495:3913" ph="SELECT b.The... video_library" />
-            <marker date="1527250526770" expanded="true" signature="10052:10172" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/includes/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <marker date="1527252310508" expanded="true" signature="463:531" ph="..." />
-            <marker date="1527252310508" expanded="true" signature="612:674" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/includes/indexHeader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <marker date="1527252320118" expanded="true" signature="662:724" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Ads.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="548">
@@ -376,11 +297,78 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/user/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3128">
+          <caret line="136" column="23" lean-forward="true" selection-start-line="136" selection-start-column="23" selection-end-line="136" selection-end-column="23" />
+          <folding>
+            <marker date="1527251662996" expanded="true" signature="2682:2814" ph="SELECT COUNT... article" />
+            <marker date="1527251662996" expanded="true" signature="3551:3829" ph="SELECT a.The... article" />
+            <marker date="1527251662996" expanded="true" signature="3862:4299" ph="SELECT a.The... article" />
+            <marker date="1527251662996" expanded="true" signature="9276:9368" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/videos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="121" column="0" lean-forward="false" selection-start-line="121" selection-start-column="0" selection-end-line="130" selection-end-column="6" />
+          <folding>
+            <marker date="1527250526770" expanded="true" signature="1631:1773" ph="SELECT COUNT... video_library" />
+            <marker date="1527250526770" expanded="true" signature="2629:2957" ph="SELECT b.The... video_library" />
+            <marker date="1527250526770" expanded="true" signature="3065:3393" ph="SELECT b.The... video_library" />
+            <marker date="1527250526770" expanded="true" signature="3495:3913" ph="SELECT b.The... video_library" />
+            <marker date="1527250526770" expanded="true" signature="10052:10172" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/includes/indexHeader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="34" lean-forward="false" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+          <folding>
+            <marker date="1527255245323" expanded="true" signature="666:728" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/user/assets/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="2367" column="24" lean-forward="true" selection-start-line="2367" selection-start-column="24" selection-end-line="2367" selection-end-column="24" />
+        <state relative-caret-position="16261">
+          <caret line="2373" column="19" lean-forward="true" selection-start-line="2373" selection-start-column="19" selection-end-line="2373" selection-end-column="19" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/includes/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1058">
+          <caret line="46" column="6" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="46" selection-end-column="6" />
+          <folding>
+            <marker date="1527255263131" expanded="true" signature="467:535" ph="..." />
+            <marker date="1527255263131" expanded="true" signature="616:678" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/therapist/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/therapist/includes/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="12" column="39" lean-forward="false" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
+          <folding>
+            <marker date="1527260414536" expanded="true" signature="777:883" ph="..." />
+            <marker date="1527260414536" expanded="true" signature="968:1064" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
