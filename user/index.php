@@ -124,13 +124,6 @@ $result = $dbConn->executeSelectQuery();
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/3-col-portfolio.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-8357713287289102",
-            enable_page_level_ads: true
-        });
-    </script>
 </head>
 
 <body>
@@ -152,7 +145,7 @@ $result = $dbConn->executeSelectQuery();
 
             <h1 class="my-4">Newsfeed
             </h1>
-        <?php if($result->num_rows){?>
+        <?php if($result->num_rows>0){?>
             <?php while ($row = @mysqli_fetch_array($result)) { ?>
                 <div class="col-lg-6 portfolio-item">
                     <div class="card h-100 mh-100 ">
@@ -174,7 +167,7 @@ $result = $dbConn->executeSelectQuery();
                                         onclick="document.getElementById('therapist<?php echo $row['Therapist_ID'] ?>' ).submit();"><?php echo $row['First_Name'] . '  ' . $row['Last_Name'] ?></a>
                             </h5>
                             <p class="card-text">
-                                <?php echo $row['Article'] ?>
+                                <?php echo $row['Article'].'...' ?>
                             </p>
                         </div>
                     </div>

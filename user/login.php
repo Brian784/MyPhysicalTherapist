@@ -47,7 +47,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $password = $_POST['password'];
     $isValid = $DBconn->validateUser($email, $password);
     if ($isValid) {
-        $id = $DBconn->getUser($email, $password);
+        $id=$DBconn->getTherapist($EmaiCookielValue,$PsdCookieValue);
         $encryptedPsd = $encrtptor->crypt_function($password, 'e');
         $encryptedEmail = $encrtptor->crypt_function($email, 'e');
         $encryptedID = $encrtptor->crypt_function($id, 'e');

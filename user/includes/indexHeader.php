@@ -13,7 +13,7 @@
                     echo ' <li><a href="#">Register</a></li>';
                 } else {
 
-                    echo '<form id="LogoutForm"  action="index.php" method="post">
+                    echo '<form id="LogoutForm"  action="login.php" method="post">
   <input type="hidden" name="isSignout" value="true">
 </form>';
                     echo ' <li><a  href="userprofile.php">User Profile</a></li>';

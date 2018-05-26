@@ -8,9 +8,9 @@
             <li>
                 <a href="index.php">Articles</a>
                 <ul>
-                    <li><a href="#">Articles</a></form></li>
+                    <li><a href="index.php">Articles</a></form></li>
                     <li><a href="#">New Articles</a></form></li>
-                    <li><a href="#">My Articles</a></form></li>
+                    <li><a href="myarticles.php">My Articles</a></form></li>
                 </ul>
             </li>
             <li>

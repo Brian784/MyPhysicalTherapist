@@ -2,7 +2,7 @@
 session_start();
 require "includes/validate.php";
 $itemperpage=15;
-$sql = 'SELECT COUNT(*) as `total` FROM article a INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1';
+$sql='SELECT COUNT(*) as `total` FROM article a INNER JOIN therapist_account b WHERE a.Therapist_ID =b.Therapist_ID AND b.isValidated =1 and a.Therapist_ID='.$UserID;
 $dbConn->setQuery($sql);
 $totalRecords = $dbConn->executeSelectQuery();
 while ($row = @mysqli_fetch_array($totalRecords)) {
@@ -34,15 +34,15 @@ if($pageCntentRange1<0){
 if(!isset($_GET['keyword'])){
     $sql = 'SELECT a.Therapist_ID,a.Article_ID,a.Article_Title,
 SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM article a
- INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1 ORDER BY a.Article_ID DESC LIMIT '.$pageCntentRange1.','.$itemperpage;
+ INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1 AND a.Therapist_ID='.$UserID.' ORDER BY a.Article_ID DESC LIMIT '.$pageCntentRange1.','.$itemperpage;
 }else{
     $sql='SELECT a.Therapist_ID,a.Article_ID,a.Article_Title,
 SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM article a
- INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND (a.Article_Title LIKE \'%' . $_GET['keyword'] . '%\' OR b.First_Name LIKE \'%'. $_GET['keyword'] . '%\' OR b.Last_Name LIKE \'%'. $_GET['keyword'] . '%\') AND b.isValidated = 1 ORDER BY a.Article_ID DESC LIMIT '.$pageCntentRange1.','.$itemperpage;
+ INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND a.Therapist_ID='.$UserID.' AND (a.Article_Title LIKE \'%' . $_GET['keyword'] . '%\' OR b.First_Name LIKE \'%'. $_GET['keyword'] . '%\' OR b.Last_Name LIKE \'%'. $_GET['keyword'] . '%\') AND b.isValidated = 1 ORDER BY a.Article_ID DESC LIMIT '.$pageCntentRange1.','.$itemperpage;
 }
+
 $dbConn->setQuery($sql);
 $result = $dbConn->executeSelectQuery();
-
 
 ?>
 <!DOCTYPE HTML>
@@ -82,7 +82,7 @@ require("includes/header.php");
         <!-- Blog Entries Column -->
         <div class="col-md-8 ">
 
-            <h1 class="my-4">Articles
+            <h1 class="my-4">My Articles
             </h1>
             <?php if($result->num_rows>0){?>
                 <?php while ($row = @mysqli_fetch_array($result)) { ?>
@@ -126,7 +126,7 @@ require("includes/header.php");
                 <h5 class="card-header">Search</h5>
                 <div class="card-body">
                     <div class="input-group">
-                        <form id="searchForm" action="index.php" method="get">
+                        <form id="searchForm" action="myarticles.php" method="get">
                             <input type="text" name="keyword" class="form-control" placeholder="Search for...">
                         </form >
                         <span class="input-group-btn">
