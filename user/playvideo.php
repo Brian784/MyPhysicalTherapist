@@ -75,11 +75,7 @@ if (isset($_POST['videoID'])) {
 
 
 <!DOCTYPE HTML>
-<!--
-	Arcana by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
 <head>
     <title>My Physical Therapist</title>
@@ -134,7 +130,7 @@ if (isset($_POST['videoID'])) {
                     <hr>
                     <!-- Video-->
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe src="<?php echo $row['Video_URL'];?>" width="100%" height="100%" frameborder="0"
+                        <iframe id='video' src="<?php echo $row['Video_URL'];?>" width="100%" height="100%" frameborder="0"
                                 webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                     </div>
                     <hr>
