@@ -5,7 +5,7 @@ $sql=null;
 
 $totalRecords=null;
 $itemperpage=10;
-$sql='SELECT COUNT(a.Video_ID) AS total FROM therapist_saved_videos Where saved_videos.User_ID = '.$UserID;
+$sql='SELECT COUNT(a.Video_ID) AS total FROM therapist_saved_videos Where therapist_saved_videos.User_ID = '.$UserID;
 $dbConn->setQuery($sql);
 $totalRecords = $dbConn->executeSelectQuery();
 while ($row = @mysqli_fetch_array($totalRecords)) {
@@ -33,7 +33,7 @@ $pageCntentRange1 = ($_GET['page'] - 1) * $itemperpage;
 if($pageCntentRange1<0){
     $pageCntentRange1=0;
 }
- $sql='SELECT * FROM therapist_saved_videos a INNER JOIN video_library b where a.Video_ID=b.Video_ID AND a.User_ID='.$UserID.
+ $sql='SELECT * FROM therapist_saved_videos a INNER JOIN video_library b where a.Video_ID=b.Video_ID AND a.Therapist_ID='.$UserID.
  ' ORDER BY a.Video_ID DESC Limit '.$pageCntentRange1.','.$itemperpage;
 $dbConn->setQuery($sql);
 

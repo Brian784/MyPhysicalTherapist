@@ -14,7 +14,7 @@ Class DababaseConnector
 
     }
     function isVideoSaved($userID,$videoID){
-        $sql='SELECT * From saved_videos WHERE Video_ID='.$videoID.' AND User_ID = '.$userID;
+        $sql='SELECT * From therapist_saved_videos WHERE Video_ID='.$videoID.' AND therapist_ID = '.$userID;
         $this->setQuery($sql);
         $rowNum=$this->executeSelectQuery();
         if($rowNum->num_rows<1){

@@ -27,7 +27,7 @@
 
             <a href="videos.php">Videos</a>
             <ul>
-                <li><a href="videos.php?part=upper">Videos</a></li>
+                <li><a href="videos.php">Videos</a></li>
 
                 <li><a  href="savevideos.php">Saved Videos</a></li>
 

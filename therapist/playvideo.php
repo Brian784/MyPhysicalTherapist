@@ -1,39 +1,6 @@
 <?php
 session_start();
-
-include 'EncryptClass.php';
-include 'cookiesAndSessions.php';
-include "DatabaseConnectorClass.php";
-$CookieMaker = new CookiesTracking();
-$SessionMaker = new SessionsTracking();
-$encryptor = new EncryptClass();
-$isLogined = true;
-$dbConn = new DababaseConnector();
-$UserID = null;
-if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->getCookieValue('UserPswCookie') != null) {
-    //Received completed Cookies
-    //decrypt
-    $email = $encryptor->crypt_function($CookieMaker->getCookieValue('UserEmailCookie'), 'd');
-    $pass = $encryptor->crypt_function($CookieMaker->getCookieValue('UserPswCookie'), 'd');
-    $UserID = $encryptor->crypt_function($CookieMaker->getCookieValue('UserIDCookie'), 'd');
-    $isLogined = $dbConn->validateUser($email, $pass);
-
-} else {
-    if ($SessionMaker->getSession('UserEmailSession') != null && $SessionMaker->getSession('UserPswSession') != null) {
-        //received complete sessions
-        //decrypt
-        $email = $encryptor->crypt_function($SessionMaker->getSession('UserEmailSession'), 'd');
-        $pass = $encryptor->crypt_function($SessionMaker->getSession('UserPswSession'), 'd');
-        $UserID = $encryptor->crypt_function($SessionMaker->getSession('UserIDSession'), 'd');
-        $isLogined = $dbConn->validateUser($email, $pass);
-    } else {
-        //InvalidAccess
-        //no cookies no sessions
-        header('Refresh: 4;url=index.php');
-        die('<p>Only registered user can access this page,you will be redirectd to welcome page in 4 seconds or  click <a href="index.php">here</a> to redirect right the way</p>');
-
-    }
-}
+require "includes/validate.php";
 if (isset($_POST['videoID'])) {
     $sql = 'SELECT a.Video_ID,a.Video_Title,a.Video_Description,a.Video_URL,a.TimePublished,b.First_Name,b.Last_Name,b.Therapist_ID FROM video_library a INNER JOIN therapist_account b WHERE a.Therapist_ID=b.Therapist_ID AND a.Video_ID = ' . $_POST['videoID'];
     $dbConn->setQuery($sql);
@@ -44,14 +11,14 @@ if (isset($_POST['videoID'])) {
     switch ($_POST['action']){
         case 'addVideo':
             if(!$dbConn->isVideoSaved($UserID,($_POST['videoID']))){
-                $sql = 'INSERT INTO `user_saved_videos` (`Video_ID`, `User_ID`, `Time_Saved`) VALUES (\'' . $_POST['videoID'] . '\',\'' . $UserID . '\', CURRENT_TIMESTAMP)';
+                $sql = 'INSERT INTO `therapist_saved_videos` (`Video_ID`, `Therapist_ID`, `Time_Saved`) VALUES (\'' . $_POST['videoID'] . '\',\'' . $UserID . '\', CURRENT_TIMESTAMP)';
                 $dbConn->setQuery($sql);
                 $dbConn->executeQuery();
             }
             break;
         case 'deleteVideo':
             if($dbConn->isVideoSaved($UserID,($_POST['videoID']))){
-                $sql = 'DELETE FROM `user_saved_videos` WHERE `user_saved_videos`.`Video_ID` = '.$_POST['videoID'] .' AND `user_saved_videos`.`User_ID` = '.$UserID;
+                $sql = 'DELETE FROM `therapist_saved_videos` WHERE `therapist_saved_videos`.`Video_ID` = '.$_POST['videoID'] .' AND `therapist_saved_videos`.`User_ID` = '.$UserID;
                 $dbConn->setQuery($sql);
                 $dbConn->executeQuery();
             }
@@ -62,6 +29,7 @@ if (isset($_POST['videoID'])) {
             $dbConn->executeQuery();
             break;
     }
+
     unset($_POST['action']);
 
     }
@@ -131,7 +99,7 @@ if (isset($_POST['videoID'])) {
                     <hr>
                     <!-- Video-->
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe id='video' src="<?php echo '../therapist/videos/'.$row['Video_URL'];?>" width="100%" height="100%" frameborder="0"
+                        <iframe id='video' src="<?php echo 'videos/'.$row['Video_URL'];?>" width="100%" height="100%" frameborder="0"
                                 webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                     </div>
                     <hr>
