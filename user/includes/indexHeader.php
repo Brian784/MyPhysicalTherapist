@@ -5,7 +5,7 @@
         <li><a href="../index.html"><img src="images/MyPtLogo.png" width="150" height="90"></a></li>
         <li><a href="index.php">Home</a></li>
         <li>
-            <a href="videos.php">User</a>
+            <a href="#">User</a>
             <ul>
                 <?php
                 if (!$isLogined) {
@@ -25,15 +25,12 @@
         </li>
         <li>
 
-            <a href="#">Videos</a>
+            <a href="videos.php">Videos</a>
             <ul>
-                <li><a href="videos.php?part=upper">Upper Body</a></li>
-                <li><a href="videos.php?part=lower">Lower Body</a></li>
-                <?php
-                if ($isLogined) {
-                    echo '<li><a  href="savevideos.php">Saved Videos</a></li>';
-                }
-                ?>
+                <li><a href="videos.php?part=upper">Videos</a></li>
+
+                <li><a  href="savevideos.php">Saved Videos</a></li>
+
             </ul>
         </li>
 

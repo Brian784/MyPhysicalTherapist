@@ -93,11 +93,14 @@ $pageCntentRange1 = ($_GET['page'] - 1) * $itemperpage;
 if($pageCntentRange1<0){
     $pageCntentRange1=0;
 }
+$isSearch=null;
 if(!isset($_GET['keyword'])){
+    $isSearch=false;
 $sql = 'SELECT a.Therapist_ID,a.Article_ID,a.Article_Title,
 SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM article a
  INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1 ORDER BY a.Article_ID DESC LIMIT '.$pageCntentRange1.','.$itemperpage;
 }else{
+    $isSearch=true;
     $sql='SELECT a.Therapist_ID,a.Article_ID,a.Article_Title,
 SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM article a
  INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND (a.Article_Title LIKE \'%' . $_GET['keyword'] . '%\' OR b.First_Name LIKE \'%'. $_GET['keyword'] . '%\' OR b.Last_Name LIKE \'%'. $_GET['keyword'] . '%\') AND b.isValidated = 1 ORDER BY a.Article_ID DESC LIMIT '.$pageCntentRange1.','.$itemperpage;
@@ -145,6 +148,10 @@ $result = $dbConn->executeSelectQuery();
 
             <h1 class="my-4">Newsfeed
             </h1>
+            <?php if($isSearch){ ?>
+                <h6 class="my-4"><?php echo 'Search \''.ucfirst($_GET['keyword']).'\'';?>
+                </h6>
+            <?php } ?>
         <?php if($result->num_rows>0){?>
             <?php while ($row = @mysqli_fetch_array($result)) { ?>
                 <div class="col-lg-6 portfolio-item">
@@ -174,9 +181,8 @@ $result = $dbConn->executeSelectQuery();
                 </div>
 
             <?php } ?>
-            <?php }else{?>
-            <h1>No Contents</h1>
-            <?php } ?>
+            <?php }?>
+
 
 
         </div>

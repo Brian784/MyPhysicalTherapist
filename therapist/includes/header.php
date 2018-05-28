@@ -35,8 +35,8 @@
 
                 <a href="#">Videos</a>
                 <ul>
-                    <li><a href="videos.php?part=upper">Videos</a></li>
-                    <li><a href="#">My Videos</a></form></li>
+                    <li><a href="videos.php">Videos</a></li>
+                    <li><a href="myvideos.php">My Videos</a></form></li>
                     <li><a href="savevideos.php">Saved Videos</a></form></li>
                 </ul>
             </li>

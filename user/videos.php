@@ -70,11 +70,11 @@ $isSearch=null;
 if(isset($_GET['part'])) {
     switch (strtolower($_GET['part'])) {
         case 'upper':
-            $isSearch = false;
+            $isSearch = true;
             $sql = 'SELECT b.Therapist_ID,a.Video_ID,a.Video_Title,SUBSTRING(a.Video_Description,1,300) as Video_Description,a.Video_URL,b.First_Name,b.Last_Name FROM video_library a INNER JOIN therapist_account b WHERE Body_Part=\'upper\' AND a.Therapist_ID=b.Therapist_ID AND b.isValidated =1 ORDER BY a.Video_ID DESC LIMIT '.$pageCntentRange1.','.$itemperpage;
             break;
         case 'lower':
-            $isSearch = false;
+            $isSearch = true;
             $sql = 'SELECT b.Therapist_ID,a.Video_ID,a.Video_Title,SUBSTRING(a.Video_Description,1,300) as Video_Description,a.Video_URL,b.First_Name,b.Last_Name FROM video_library a INNER JOIN therapist_account b WHERE Body_Part=\'lower\' AND a.Therapist_ID=b.Therapist_ID AND b.isValidated =1 ORDER BY a.Video_ID DESC LIMIT '.$pageCntentRange1.','.$itemperpage;
             break;
         default:
@@ -83,13 +83,13 @@ if(isset($_GET['part'])) {
             break;
     }
 
-    $dbConn->setQuery($sql);
-    $result = $dbConn->executeSelectQuery();
-
 }else{
-    header('Location: index.php');
-    die();
+    $sql = 'SELECT b.Therapist_ID,a.Video_ID,a.Video_Title,SUBSTRING(a.Video_Description,1,300) as Video_Description,a.Video_URL,b.First_Name,b.Last_Name FROM video_library a INNER JOIN therapist_account b WHERE a.Therapist_ID=b.Therapist_ID AND b.isValidated =1 ORDER BY a.Video_ID DESC LIMIT '.$pageCntentRange1.','.$itemperpage;
 }
+
+$dbConn->setQuery($sql);
+$result = $dbConn->executeSelectQuery();
+
 ?>
 
 
@@ -137,12 +137,11 @@ if(isset($_GET['part'])) {
 
         <!-- Blog Entries Column -->
         <div class="col-md-8">
-            <?php if(!$isSearch){ ?>
-            <h1 class="my-4"><?php echo ucfirst($_GET['part']).' Body';?>
+            <h1 class="my-4">Videos
             </h1>
-            <?php }else{ ?>
-                <h1 class="my-4"><?php echo 'Search \''.ucfirst($_GET['part']).'\'';?>
-                </h1>
+            <?php if($isSearch){ ?>
+                <h6 class="my-4"><?php echo 'Search \''.ucfirst($_GET['part']).'\'';?>
+                </h6>
             <?php } ?>
             <!-- Blog Post -->
             <?php if($result->num_rows>0){?>
@@ -168,9 +167,8 @@ if(isset($_GET['part'])) {
                 </div>
             </div>
                 <?php } ?>
-            <?php }else{?>
-                <h1>No Contents</h1>
-            <?php } ?>
+            <?php }?>
+
         </div>
         <!-- Sidebar Widgets Column -->
         <div class="col-md-4">
@@ -231,7 +229,7 @@ if(isset($_GET['part'])) {
     <ul class="pagination justify-content-center">
 
         <?php
-if(!$isSearch) {
+if($isSearch) {
     foreach (range(1, $totalPages) as $page) {
         // Check if we're on the current page in the loop
 
@@ -246,6 +244,22 @@ if(!$isSearch) {
         }
 
     }
+}else{
+    foreach (range(1, $totalPages) as $page) {
+        // Check if we're on the current page in the loop
+
+        if ($page == $_GET['page']) {
+            echo '<li class="page-item active">';
+            echo '<a class="page-link" href="?page=' . $page. '">' . $page . '</a>';
+            echo '</li>';
+        } else if ($page == 1 || $page == $totalPages || ($page >= $_GET['page'] - 2 && $page <= $_GET['page'] + 2)) {
+            echo '   <li class="page-item ">
+            <a class="page-link" href="?page=' .$page  . '">' . $page . '</a>
+        </li>';
+        }
+
+    }
+
 }
         ?>
 

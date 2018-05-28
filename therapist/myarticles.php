@@ -31,11 +31,14 @@ $pageCntentRange1 = ($_GET['page'] - 1) * $itemperpage;
 if ($pageCntentRange1 < 0) {
     $pageCntentRange1 = 0;
 }
+$isSearch=null;
 if (!isset($_GET['keyword'])) {
+    $isSearch=false;
     $sql = 'SELECT a.Therapist_ID,a.Article_ID,a.Article_Title,
 SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM article a
  INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1 AND a.Therapist_ID=' . $UserID . ' ORDER BY a.Article_ID DESC LIMIT ' . $pageCntentRange1 . ',' . $itemperpage;
 } else {
+    $isSearch=true;
     $sql = 'SELECT a.Therapist_ID,a.Article_ID,a.Article_Title,
 SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM article a
  INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND a.Therapist_ID=' . $UserID . ' AND (a.Article_Title LIKE \'%' . $_GET['keyword'] . '%\' OR b.First_Name LIKE \'%' . $_GET['keyword'] . '%\' OR b.Last_Name LIKE \'%' . $_GET['keyword'] . '%\') AND b.isValidated = 1 ORDER BY a.Article_ID DESC LIMIT ' . $pageCntentRange1 . ',' . $itemperpage;
@@ -82,8 +85,12 @@ $result = $dbConn->executeSelectQuery();
         <!-- Blog Entries Column -->
         <div class="col-md-8 ">
 
-            <h2 class="my-4">Hello <?php echo $dbConn->getTherapistName($UserID)?>, here are your articles.
+            <h2 class="my-4">My Articles
             </h2>
+            <?php if($isSearch){ ?>
+                <h6 class="my-4"><?php echo 'Search \''.ucfirst($_GET['keyword']).'\'';?>
+                </h6>
+            <?php } ?>
             <?php if ($result->num_rows > 0) { ?>
                 <?php while ($row = @mysqli_fetch_array($result)) { ?>
                     <div class="col-lg-6 portfolio-item">
@@ -119,9 +126,8 @@ $result = $dbConn->executeSelectQuery();
                     </div>
 
                 <?php } ?>
-            <?php } else { ?>
-                <h1>No Contents</h1>
             <?php } ?>
+
 
 
         </div>
@@ -162,7 +168,7 @@ $result = $dbConn->executeSelectQuery();
 
         foreach (range(1, $totalPages) as $page) {
             // Check if we're on the current page in the loop
-
+            if($page!=0){
             if ($page == $_GET['page']) {
                 echo '<li class="page-item active">';
                 echo '<a class="page-link" href="?page=' . $page . '">' . $page . '</a>';
@@ -173,7 +179,8 @@ $result = $dbConn->executeSelectQuery();
         </li>';
             }
 
-        }
+        }}
+
         ?>
 
     </ul>
