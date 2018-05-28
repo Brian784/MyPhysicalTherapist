@@ -28,7 +28,7 @@ if ($CookieMaker->getCookieValue('TherapistEmailCookie') != null && $CookieMaker
         //InvalidAccess
         //no cookies no sessions
         header('Location:login.php');
-        die('<p>Only registered user can access this page,you will be redirectd to welcome page in 4 seconds</p>');
+        die('<p>Only registered user can access this page,you will be redirectd to welcome page in 4 seconds or  click <a href="index.php">here</a> to redirect right the way</p>');
 
     }
 }

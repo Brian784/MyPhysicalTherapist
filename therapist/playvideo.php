@@ -1,39 +1,7 @@
 <?php
 session_start();
+require "includes/validate.php";
 
-include 'EncryptClass.php';
-include 'cookiesAndSessions.php';
-include "DatabaseConnectorClass.php";
-$CookieMaker = new CookiesTracking();
-$SessionMaker = new SessionsTracking();
-$encryptor = new EncryptClass();
-$isLogined = true;
-$dbConn = new DababaseConnector();
-$UserID = null;
-if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->getCookieValue('UserPswCookie') != null) {
-    //Received completed Cookies
-    //decrypt
-    $email = $encryptor->crypt_function($CookieMaker->getCookieValue('UserEmailCookie'), 'd');
-    $pass = $encryptor->crypt_function($CookieMaker->getCookieValue('UserPswCookie'), 'd');
-    $UserID = $encryptor->crypt_function($CookieMaker->getCookieValue('UserIDCookie'), 'd');
-    $isLogined = $dbConn->validateUser($email, $pass);
-
-} else {
-    if ($SessionMaker->getSession('UserEmailSession') != null && $SessionMaker->getSession('UserPswSession') != null) {
-        //received complete sessions
-        //decrypt
-        $email = $encryptor->crypt_function($SessionMaker->getSession('UserEmailSession'), 'd');
-        $pass = $encryptor->crypt_function($SessionMaker->getSession('UserPswSession'), 'd');
-        $UserID = $encryptor->crypt_function($SessionMaker->getSession('UserIDSession'), 'd');
-        $isLogined = $dbConn->validateUser($email, $pass);
-    } else {
-        //InvalidAccess
-        //no cookies no sessions
-        header('Refresh: 4;url=index.php');
-        die('<p>Only registered user can access this page,you will be redirectd to welcome page in 4 seconds or  click <a href="index.php">here</a> to redirect right the way</p>');
-
-    }
-}
 if (isset($_POST['videoID'])) {
     $sql = 'SELECT a.Video_ID,a.Video_Title,a.Video_Description,a.Video_URL,a.TimePublished,b.First_Name,b.Last_Name,b.Therapist_ID FROM video_library a INNER JOIN therapist_account b WHERE a.Therapist_ID=b.Therapist_ID AND a.Video_ID = ' . $_POST['videoID'];
     $dbConn->setQuery($sql);
@@ -44,14 +12,14 @@ if (isset($_POST['videoID'])) {
     switch ($_POST['action']){
         case 'addVideo':
             if(!$dbConn->isVideoSaved($UserID,($_POST['videoID']))){
-                $sql = 'INSERT INTO `user_saved_videos` (`Video_ID`, `User_ID`, `Time_Saved`) VALUES (\'' . $_POST['videoID'] . '\',\'' . $UserID . '\', CURRENT_TIMESTAMP)';
+                $sql = 'INSERT INTO `saved_videos` (`Video_ID`, `User_ID`, `Time_Saved`) VALUES (\'' . $_POST['videoID'] . '\',\'' . $UserID . '\', CURRENT_TIMESTAMP)';
                 $dbConn->setQuery($sql);
                 $dbConn->executeQuery();
             }
             break;
         case 'deleteVideo':
             if($dbConn->isVideoSaved($UserID,($_POST['videoID']))){
-                $sql = 'DELETE FROM `user_saved_videos` WHERE `user_saved_videos`.`Video_ID` = '.$_POST['videoID'] .' AND `user_saved_videos`.`User_ID` = '.$UserID;
+                $sql = 'DELETE FROM `saved_videos` WHERE `saved_videos`.`Video_ID` = '.$_POST['videoID'] .' AND `saved_videos`.`User_ID` = '.$UserID;
                 $dbConn->setQuery($sql);
                 $dbConn->executeQuery();
             }
@@ -63,7 +31,6 @@ if (isset($_POST['videoID'])) {
             break;
     }
     unset($_POST['action']);
-
     }
 
 
@@ -182,20 +149,15 @@ $userName=$dbConn->executeSelectQuery();
                 </div>
             </div>
             <?php
-            $commentSql='(SELECT b.First_Name,\'user\' AS \'type\' ,b.Last_Name,b.Profile_Picture,a.Comment,a.Time_Stamp FROM video_comments a INNER JOIN user_account b WHERE a.Account_ID=b.User_ID AND a.Video_ID = '.$_POST['videoID'].' )
-            UNION(SELECT b.First_Name ,\'therapist\' AS \'type\',b.Last_Name,b.Profile_Picture,a.Comment,a.Time_Stamp FROM video_comments a INNER JOIN therapist_account b WHERE a.Account_ID=b.Therapist_ID AND a.Video_ID = '.$_POST['videoID'].' )';
+            $commentSql='(SELECT b.First_Name ,b.Last_Name,b.Profile_Picture,a.Comment,a.Time_Stamp FROM video_comments a INNER JOIN user_account b WHERE a.Account_ID=b.User_ID AND a.Video_ID = '.$_POST['videoID'].' )
+            UNION(SELECT b.First_Name ,b.Last_Name,b.Profile_Picture,a.Comment,a.Time_Stamp FROM video_comments a INNER JOIN therapist_account b WHERE a.Account_ID=b.Therapist_ID AND a.Video_ID = '.$_POST['videoID'].' )';
             $dbConn->setQuery($commentSql);
             $comments=$dbConn->executeSelectQuery();
             ?>
             <?php if($comments->num_rows>0){?>
             <?php while ($row = @mysqli_fetch_array($comments)) { ?>
             <div class="media mb-4">
-
-                <?php if($row['type']==='user'){?>
-                <img class="d-flex mr-3 rounded-circle"  height="42" width="42"  src="<?php echo'userprofilepictures/'.$row['Profile_Picture']; ?>">
-               <?php }else{?>
-                    <img class="d-flex mr-3 rounded-circle"  height="42" width="42"  src="<?php echo'../therapist/therapistprofilepictures/'.$row['Profile_Picture']; ?>">
-                <?php }?>
+                <img class="d-flex mr-3 rounded-circle"  height="42" width="42"  src="<?php echo $row['Profile_Picture'] ?>" alt="">
                 <div class="media-body">
                     <h5 class="mt-0"><?php echo $row['First_Name'].' '.$row['Last_Name']?></h5>
                     <?php echo $row['Comment'] ?>

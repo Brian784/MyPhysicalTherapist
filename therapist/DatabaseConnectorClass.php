@@ -79,11 +79,24 @@ Class DababaseConnector
 
             while ($row = @mysqli_fetch_array($response)) {
                 $UserID=$row['Therapist_ID'];
-                echo $UserID;
             }
         }
 
         return $UserID;
+    }
+    function getTherapistName($ID){
+        $this->setQuery("SELECT First_Name,Last_Name FROM `therapist_account` WHERE Therapist_ID = ".$ID.' And isValidated =1');
+
+        $response=$this->executeSelectQuery();
+        $name=null;
+        if($response->num_rows>0){
+            while ($row = @mysqli_fetch_array($response)) {
+                $name=$row['First_Name'].'  '.$row['Last_Name'];
+            }
+            return$name;
+        }else{
+            return false;
+        }
     }
 
     function validateTherapist ($email, $password)

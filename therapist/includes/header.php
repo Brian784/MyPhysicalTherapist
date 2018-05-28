@@ -9,7 +9,6 @@
                 <a href="index.php">Articles</a>
                 <ul>
                     <li><a href="index.php">Articles</a></form></li>
-                    <li><a href="#">New Articles</a></form></li>
                     <li><a href="myarticles.php">My Articles</a></form></li>
                 </ul>
             </li>
@@ -37,7 +36,6 @@
                 <a href="#">Videos</a>
                 <ul>
                     <li><a href="videos.php?part=upper">Videos</a></li>
-                    <li><a href="#">New Video</a></form></li>
                     <li><a href="#">My Videos</a></form></li>
                     <li><a href="savevideos.php">Saved Videos</a></form></li>
                 </ul>

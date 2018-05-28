@@ -1,8 +1,8 @@
 <?php
 session_start();
 require "includes/validate.php";
-$itemperpage=15;
-$sql='SELECT COUNT(*) as `total` FROM article a INNER JOIN therapist_account b WHERE a.Therapist_ID =b.Therapist_ID AND b.isValidated =1 and a.Therapist_ID='.$UserID;
+$itemperpage = 15;
+$sql = 'SELECT COUNT(*) as `total` FROM article a INNER JOIN therapist_account b WHERE a.Therapist_ID =b.Therapist_ID AND b.isValidated =1 and a.Therapist_ID=' . $UserID;
 $dbConn->setQuery($sql);
 $totalRecords = $dbConn->executeSelectQuery();
 while ($row = @mysqli_fetch_array($totalRecords)) {
@@ -28,17 +28,17 @@ if ($_GET['page'] < 1) {
 
 
 $pageCntentRange1 = ($_GET['page'] - 1) * $itemperpage;
-if($pageCntentRange1<0){
-    $pageCntentRange1=0;
+if ($pageCntentRange1 < 0) {
+    $pageCntentRange1 = 0;
 }
-if(!isset($_GET['keyword'])){
+if (!isset($_GET['keyword'])) {
     $sql = 'SELECT a.Therapist_ID,a.Article_ID,a.Article_Title,
 SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM article a
- INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1 AND a.Therapist_ID='.$UserID.' ORDER BY a.Article_ID DESC LIMIT '.$pageCntentRange1.','.$itemperpage;
-}else{
-    $sql='SELECT a.Therapist_ID,a.Article_ID,a.Article_Title,
+ INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1 AND a.Therapist_ID=' . $UserID . ' ORDER BY a.Article_ID DESC LIMIT ' . $pageCntentRange1 . ',' . $itemperpage;
+} else {
+    $sql = 'SELECT a.Therapist_ID,a.Article_ID,a.Article_Title,
 SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM article a
- INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND a.Therapist_ID='.$UserID.' AND (a.Article_Title LIKE \'%' . $_GET['keyword'] . '%\' OR b.First_Name LIKE \'%'. $_GET['keyword'] . '%\' OR b.Last_Name LIKE \'%'. $_GET['keyword'] . '%\') AND b.isValidated = 1 ORDER BY a.Article_ID DESC LIMIT '.$pageCntentRange1.','.$itemperpage;
+ INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND a.Therapist_ID=' . $UserID . ' AND (a.Article_Title LIKE \'%' . $_GET['keyword'] . '%\' OR b.First_Name LIKE \'%' . $_GET['keyword'] . '%\' OR b.Last_Name LIKE \'%' . $_GET['keyword'] . '%\') AND b.isValidated = 1 ORDER BY a.Article_ID DESC LIMIT ' . $pageCntentRange1 . ',' . $itemperpage;
 }
 
 $dbConn->setQuery($sql);
@@ -70,8 +70,8 @@ $result = $dbConn->executeSelectQuery();
     <!-- Header -->
     <div id="header">
         <?php
-require("includes/header.php");
-?>
+        require("includes/header.php");
+        ?>
     </div>
 
 </div>
@@ -82,38 +82,44 @@ require("includes/header.php");
         <!-- Blog Entries Column -->
         <div class="col-md-8 ">
 
-            <h1 class="my-4">My Articles
-            </h1>
-            <?php if($result->num_rows>0){?>
+            <h2 class="my-4">Hello <?php echo $dbConn->getTherapistName($UserID)?>, here are your articles.
+            </h2>
+            <?php if ($result->num_rows > 0) { ?>
                 <?php while ($row = @mysqli_fetch_array($result)) { ?>
                     <div class="col-lg-6 portfolio-item">
                         <div class="card h-100 mh-100">
                             <div class="card-body">
                                 <h4 class="card-title">
-                                    <form id="article<?php echo $row['Article_ID'] ?>" action="article.php" method="post">
+                                    <form id="article<?php echo $row['Article_ID'] ?>" action="article.php"
+                                          method="post">
                                         <input type="hidden" name="articleID" value="<?php echo $row['Article_ID'] ?>">
                                     </form>
 
                                     <a onclick="document.getElementById('article<?php echo $row['Article_ID'] ?>' ).submit();"><?php echo $row['Article_Title'] ?></a>
                                 </h4>
-                                <form id="therapist<?php echo $row['Therapist_ID'] ?>" action="therapistprofile.php"
-                                      method="post">
-                                    <input type="hidden" name="therapistID" value="<?php echo $row['Therapist_ID'] ?>">
-                                </form>
 
-                                <h5><span class="glyphicon glyphicon-user">
-                    </span> Post by <a
-                                            onclick="document.getElementById('therapist<?php echo $row['Therapist_ID'] ?>' ).submit();"><?php echo $row['First_Name'] . '  ' . $row['Last_Name'] ?></a>
-                                </h5>
                                 <p class="card-text">
-                                    <?php echo $row['Article'].'...' ?>
+                                    <?php echo $row['Article'] . '...' ?>
                                 </p>
+
+                                <button type="button" class="btn btn-success btn-md">
+                                    <span class="glyphicon glyphicon-plus"></span> New
+                                </button>
+
+                                <button type="button" class="btn btn-warning btn-md">
+                                    <span class="glyphicon glyphicon-font"></span> Modify
+                                </button>
+
+                                <button type="button" class="btn btn-danger btn-md">
+                                    <span class="glyphicon glyphicon-remove"></span> Delete
+                                </button>
+
                             </div>
                         </div>
                     </div>
 
                 <?php } ?>
-            <?php }else{?>
+            <?php } else { ?>
                 <h1>No Contents</h1>
             <?php } ?>
 
@@ -128,9 +134,10 @@ require("includes/header.php");
                     <div class="input-group">
                         <form id="searchForm" action="myarticles.php" method="get">
                             <input type="text" name="keyword" class="form-control" placeholder="Search for...">
-                        </form >
+                        </form>
                         <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button" onclick="document.getElementById('searchForm').submit();">Search!</button>
+                  <button class="btn btn-secondary" type="button"
+                          onclick="document.getElementById('searchForm').submit();">Search!</button>
 
                 </span>
                     </div>
@@ -141,7 +148,7 @@ require("includes/header.php");
             <div class="card my-4">
                 <h5 class="card-header"><strong>Article Section</strong></h5>
                 <div class="card-body">
-                    These articles are posted by authorized therapists.
+                    Manage your articles.
                 </div>
             </div>
 
@@ -171,7 +178,6 @@ require("includes/header.php");
 
     </ul>
 </div>
-
 
 
 <!-- Scripts -->

@@ -29,7 +29,7 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
         //InvalidAccess
         //no cookies no sessions
         header('Refresh: 4;url=index.php');
-        die('<p>Only registered user can access this page,you will be redirectd to welcome page in 4 seconds</p>');
+        die('<p>Only registered user can access this page,you will be redirectd to welcome page in 4 seconds or  click <a href="index.php">here</a> to redirect right the way</p>');
 
     }
 }
@@ -38,7 +38,7 @@ $sql=null;
 
 $totalRecords=null;
 $itemperpage=10;
-$sql='SELECT COUNT(a.Video_ID) AS total FROM save_videos Where save_videos.User_ID = '.$UserID;
+$sql='SELECT COUNT(a.Video_ID) AS total FROM user_save_videos Where save_videos.User_ID = '.$UserID;
 $dbConn->setQuery($sql);
 $totalRecords = $dbConn->executeSelectQuery();
 while ($row = @mysqli_fetch_array($totalRecords)) {
@@ -66,7 +66,7 @@ $pageCntentRange1 = ($_GET['page'] - 1) * $itemperpage;
 if($pageCntentRange1<0){
     $pageCntentRange1=0;
 }
- $sql='SELECT * FROM saved_videos a INNER JOIN video_library b where a.Video_ID=b.Video_ID AND a.User_ID='.$UserID.
+ $sql='SELECT * FROM user_saved_videos a INNER JOIN video_library b where a.Video_ID=b.Video_ID AND a.User_ID='.$UserID.
  ' ORDER BY a.Video_ID DESC Limit '.$pageCntentRange1.','.$itemperpage;
 $dbConn->setQuery($sql);
 
