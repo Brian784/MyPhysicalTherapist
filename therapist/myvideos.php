@@ -115,6 +115,12 @@ $result = $dbConn->executeSelectQuery();
 
             </div>
                 <?php } ?>
+            <?php }else{ ?>
+                <!-- add-->
+            <div class="card mb-8">
+                <div class="card-body">
+                    <h2 class="card-title">Post Your Own Article</h2>
+                    <a class ="card-link" onclick="document.getElementById('video<?php echo $row['Video_ID'] ?>' ).submit();" class="btn btn-success"> New</a>
             <?php }?>
 
         </div>

@@ -18,7 +18,7 @@ if (isset($_POST['videoID'])) {
             break;
         case 'deleteVideo':
             if($dbConn->isVideoSaved($UserID,($_POST['videoID']))){
-                $sql = 'DELETE FROM `therapist_saved_videos` WHERE `therapist_saved_videos`.`Video_ID` = '.$_POST['videoID'] .' AND `therapist_saved_videos`.`User_ID` = '.$UserID;
+                $sql = 'DELETE FROM `therapist_saved_videos` WHERE `therapist_saved_videos`.`Video_ID` = '.$_POST['videoID'] .' AND `therapist_saved_videos`.`Therapist_ID` = '.$UserID;
                 $dbConn->setQuery($sql);
                 $dbConn->executeQuery();
             }

@@ -126,9 +126,9 @@ $result = $dbConn->executeSelectQuery();
                     </div>
 
                 <?php } ?>
-            <?php } ?>
-
-
+            <?php }else{ ?>
+<!-- add-->
+<?php }?>
 
         </div>
         <div class="col-md-4">
