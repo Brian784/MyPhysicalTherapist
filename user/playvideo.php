@@ -7,7 +7,6 @@ if (isset($_POST['videoID'])) {
     $result = $dbConn->executeSelectQuery();
 
     if(isset($_POST['action'])){
-
     switch ($_POST['action']){
         case 'addVideo':
             if(!$dbConn->isVideoSaved($UserID,($_POST['videoID']))){
@@ -30,7 +29,6 @@ if (isset($_POST['videoID'])) {
             break;
     }
     unset($_POST['action']);
-
     }
 
 

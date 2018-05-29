@@ -3,8 +3,8 @@
 
 Class DababaseConnector
 {
-    var $host = 'localhost';
-    var $username = 'id5592625_gregariousxx18';
+    var $host = 'mysql.hostinger.com';
+    var $username = 'u738774436_pt';
     var $password = 'Havanaunana';
     var $dbname = 'u738774436_mypt';
     var $query;
@@ -71,7 +71,7 @@ Class DababaseConnector
         }
     }
     function getUser($email, $password){
-        $this->setQuery("SELECT User_ID FROM `user_account` WHERE Email = '$email' AND Password= '$password'");
+        $this->setQuery("SELECT User_ID FROM `user_account` WHERE Email = '$email' AND BINARY Password= '$password'");
         $response=$this->executeSelectQuery();
         $UserID=null;
         if($response->num_rows!=0){
@@ -90,7 +90,7 @@ Class DababaseConnector
 
             die("Connection failed" . mysqli_connect_error());
         } else {
-            $sql = "SELECT Email, Password FROM `user_account` WHERE Email = ? AND Password= ?";
+            $sql = "SELECT Email, Password FROM `user_account` WHERE Email = ? AND BINARY Password= ?";
             $stmt = $conn->stmt_init();
             if (!$stmt->prepare($sql)) {
                     echo $stmt->error;

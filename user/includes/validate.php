@@ -30,5 +30,6 @@ if ($CookieMaker->getCookieValue('UserEmailCookie') != null && $CookieMaker->get
         header('Refresh: 4;url=index.php');
         die('<p>Only registered user can access this page,you will be redirectd to welcome page in 4 seconds</p>');
     }
+
 }
 ?>

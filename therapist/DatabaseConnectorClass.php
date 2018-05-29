@@ -4,7 +4,7 @@
 Class DababaseConnector
 {
     var $host = 'localhost';
-    var $username = 'id5592625_gregariousxx18';
+    var $username = 'u738774436_pt';
     var $password = 'Havanaunana';
     var $dbname = 'u738774436_mypt';
     var $query;
@@ -14,7 +14,7 @@ Class DababaseConnector
 
     }
     function isVideoSaved($userID,$videoID){
-        $sql='SELECT * From therapist_saved_videos WHERE Video_ID='.$videoID.' AND therapist_ID = '.$userID;
+        $sql='SELECT * From therapist_saved_videos WHERE Video_ID='.$videoID.' AND Therapist_ID = '.$userID;
         $this->setQuery($sql);
         $rowNum=$this->executeSelectQuery();
         if($rowNum->num_rows<1){
@@ -86,7 +86,6 @@ Class DababaseConnector
     }
     function getTherapistName($ID){
         $this->setQuery("SELECT First_Name,Last_Name FROM `therapist_account` WHERE Therapist_ID = ".$ID.' And isValidated =1');
-
         $response=$this->executeSelectQuery();
         $name=null;
         if($response->num_rows>0){

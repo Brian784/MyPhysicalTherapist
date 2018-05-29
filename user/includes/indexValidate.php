@@ -1,10 +1,5 @@
 <?php
-include 'EncryptClass.php';
-include 'cookiesAndSessions.php';
-include "DatabaseConnectorClass.php";
-$CookieMaker = new CookiesTracking();
-$SessionMaker = new SessionsTracking();
-$encryptor = new EncryptClass();
+
 if (isset($_POST['isSignout'])) {
     if ($_POST['isSignout'] == true) {
         $EmaiCookielValue = $CookieMaker->getCookieValue('UserEmailCookie');

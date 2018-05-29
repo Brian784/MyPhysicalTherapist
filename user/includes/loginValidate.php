@@ -46,10 +46,9 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $password = $_POST['password'];
     $isValid = $DBconn->validateUser($email, $password);
     if ($isValid) {
-        $id=$DBconn->getUser($EmaiCookielValue,$PsdCookieValue);
         $encryptedPsd = $encrtptor->crypt_function($password, 'e');
         $encryptedEmail = $encrtptor->crypt_function($email, 'e');
-        $encryptedID = $encrtptor->crypt_function($id, 'e');
+        $encryptedID = $encrtptor->crypt_function($DBconn->getUser($email,$password), 'e');
         $check_value = isset($_POST['rememberMe']) ? 1 : 0;
         if ($check_value == 1) {
             $cookieMaker->createCookie('UserEmailCookie', $encryptedEmail);

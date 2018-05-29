@@ -1,7 +1,13 @@
 <?php
 session_start();
+include 'EncryptClass.php';
+include 'cookiesAndSessions.php';
+include "DatabaseConnectorClass.php";
+$CookieMaker = new CookiesTracking();
+$SessionMaker = new SessionsTracking();
+$encryptor = new EncryptClass();
+require 'includes/logoutAction.php';
 require "includes/indexValidate.php";
-
 $sql = 'SELECT COUNT(*) as `total` FROM article a INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1';
 $dbConn->setQuery($sql);
 $totalRecords = $dbConn->executeSelectQuery();
