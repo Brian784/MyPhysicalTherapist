@@ -87,6 +87,7 @@ $result = $dbConn->executeSelectQuery();
 
             <h2 class="my-4">My Articles
             </h2>
+            <a href="google.com">New Article</a>
             <?php if($isSearch){ ?>
                 <h6 class="my-4"><?php echo 'Search \''.ucfirst($_GET['keyword']).'\'';?>
                 </h6>
@@ -109,10 +110,6 @@ $result = $dbConn->executeSelectQuery();
                                     <?php echo $row['Article'] . '...' ?>
                                 </p>
 
-                                <button type="button" class="btn btn-success btn-md">
-                                    <span class="glyphicon glyphicon-plus"></span> New
-                                </button>
-
                                 <button type="button" class="btn btn-warning btn-md">
                                     <span class="glyphicon glyphicon-font"></span> Modify
                                 </button>
@@ -126,9 +123,8 @@ $result = $dbConn->executeSelectQuery();
                     </div>
 
                 <?php } ?>
-            <?php }else{ ?>
-<!-- add-->
-<?php }?>
+            <?php }?>
+
 
         </div>
         <div class="col-md-4">

@@ -1,15 +1,17 @@
 <?php
 session_start();
-require 'includes/validate.php';
+require "includes/validate.php";
+
+$sql='SELECT * FROM therapist_saved_videos a INNER JOIN video_library b where a.Video_ID=b.Video_ID AND a.Therapist_ID='.$UserID.
+    ' ORDER BY a.Video_ID DESC Limit '.$pageCntentRange1.','.$itemperpage;
+$dbConn->setQuery($sql);
+$result = $dbConn->executeSelectQuery();
+
 ?>
 
 
 <!DOCTYPE HTML>
-<!--
-	Arcana by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
 <head>
     <title>My Physical Therapist</title>
@@ -26,22 +28,21 @@ require 'includes/validate.php';
     <![endif]-->
     <link rel="stylesheet" href="assets/css/main.css"/>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/3-col-portfolio.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 </head>
 <body>
 <div id="page-wrapper">
 
     <!-- Header -->
     <div id="header">
-
-        <!-- Nav -->
         <?php
         require("includes/header.php");
         ?>
     </div>
 
 </div>
+<!-- Page Content -->
 
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
@@ -51,6 +52,11 @@ require 'includes/validate.php';
 <!--[if lte IE 8]>
 <script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="assets/js/main.js"></script>
+<?php
+include_once '../Ads.php';
+$ads= new Ads();
+echo $ads->getAds();
+?>
 
 </body>
 </html>

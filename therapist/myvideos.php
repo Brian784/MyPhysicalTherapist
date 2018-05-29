@@ -92,6 +92,7 @@ $result = $dbConn->executeSelectQuery();
         <div class="col-md-8">
             <h1 class="my-4">My videos
             </h1>
+            <a href="google.com">New Video</a>
             <?php if($isSearch){ ?>
                 <h6 class="my-4"><?php echo 'Search \''.ucfirst($_GET['part']).'\'';?>
                 </h6>
@@ -107,7 +108,6 @@ $result = $dbConn->executeSelectQuery();
                         <input type="hidden" name="videoID" value="<?php echo $row['Video_ID'] ?>">
                     </form>
                     <p class="card-text"> <?php echo $row['Video_Description']?></p>
-                    <a onclick="document.getElementById('video<?php echo $row['Video_ID'] ?>' ).submit();" class="btn btn-success"> New</a>
                     <a onclick="document.getElementById('video<?php echo $row['Video_ID'] ?>' ).submit();" class="btn btn-warning">Modify</a>
                     <a onclick="document.getElementById('video<?php echo $row['Video_ID'] ?>' ).submit();" class="btn btn-danger">Delete </a>
                     <a onclick="document.getElementById('video<?php echo $row['Video_ID'] ?>' ).submit();" class="btn btn-primary">Watch &rarr;</a>
@@ -117,10 +117,6 @@ $result = $dbConn->executeSelectQuery();
                 <?php } ?>
             <?php }else{ ?>
                 <!-- add-->
-            <div class="card mb-8">
-                <div class="card-body">
-                    <h2 class="card-title">Post Your Own Article</h2>
-                    <a class ="card-link" onclick="document.getElementById('video<?php echo $row['Video_ID'] ?>' ).submit();" class="btn btn-success"> New</a>
             <?php }?>
 
         </div>

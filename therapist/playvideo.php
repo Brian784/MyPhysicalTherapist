@@ -160,9 +160,9 @@ $userName=$dbConn->executeSelectQuery();
             <div class="media mb-4">
 
                 <?php if($row['type']==='user'){?>
-                <img class="d-flex mr-3 rounded-circle"  height="42" width="42"  src="<?php echo'userprofilepictures/'.$row['Profile_Picture']; ?>">
+                <img class="d-flex mr-3 rounded-circle"  height="42" width="42"  src="<?php echo'../user/userprofilepictures/'.$row['Profile_Picture']; ?>">
                <?php }else{?>
-                    <img class="d-flex mr-3 rounded-circle"  height="42" width="42"  src="<?php echo'../therapist/therapistprofilepictures/'.$row['Profile_Picture']; ?>">
+                    <img class="d-flex mr-3 rounded-circle"  height="42" width="42"  src="<?php echo'/therapist/therapistprofilepictures/'.$row['Profile_Picture']; ?>">
                 <?php }?>
                 <div class="media-body">
                     <h5 class="mt-0"><?php echo $row['First_Name'].' '.$row['Last_Name']?></h5>

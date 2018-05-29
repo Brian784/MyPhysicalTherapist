@@ -122,7 +122,7 @@ $dbConn->setQuery($sql);
                     </div>
                 <?php } ?>
             <?php }else{?>
-                <h1>No Saved Videos</h1>
+                <h6>Empty</h6>
             <?php } ?>
         </div>
         <!-- Sidebar Widgets Column -->
