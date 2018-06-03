@@ -8,8 +8,8 @@
             <li>
                 <a href="index.php">Articles</a>
                 <ul>
-                    <li><a href="index.php">Articles</a></form></li>
-                    <li><a href="myarticles.php">My Articles</a></form></li>
+                    <li><a href="index.php">Articles</a></li>
+                    <li><a href="myarticles.php">My Articles</a></li>
                 </ul>
             </li>
             <li>
@@ -23,7 +23,7 @@
                     echo '<form id="LogoutForm"  action="login.php" method="post">
                     <input type="hidden" name="isSignout" value="true">
                 </form>';
-                    echo ' <li><a  href="userprofile.php">User Profile</a></form></li>';
+                    echo ' <li><a  href="userprofile.php">User Profile</a></li>';
 
                     echo ' <li><a onclick="document.getElementById(\'LogoutForm\').submit();">Logout</a></li>';
 
@@ -36,8 +36,8 @@
                 <a href="#">Videos</a>
                 <ul>
                     <li><a href="videos.php">Videos</a></li>
-                    <li><a href="myvideos.php">My Videos</a></form></li>
-                    <li><a href="savevideos.php">Saved Videos</a></form></li>
+                    <li><a href="myvideos.php">My Videos</a></li>
+                    <li><a href="savevideos.php">Saved Videos</a></li>
                 </ul>
             </li>
 

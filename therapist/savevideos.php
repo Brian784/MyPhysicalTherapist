@@ -101,7 +101,7 @@ $dbConn->setQuery($sql);
                                 <input type="hidden" name="videoID" value="<?php echo $row['Video_ID'] ?>">
                             </form>
                             <form id="therapist<?php echo $row['Therapist_ID'] ?>" action="therapistprofile.php"
-                                  method="get">
+                                  method="post">
                                 <input type="hidden" name="therapistID" value="<?php echo $row['Therapist_ID'] ?>">
                             </form>
                             <p class="card-text"> <?php echo $row['Video_Description']?></p>
@@ -133,6 +133,17 @@ $dbConn->setQuery($sql);
                 <h5 class="card-header"><strong>Reminder</strong></h5>
                 <div class="card-body">
                     We would like to remind you that these video tutorials will serve as guide for certain physical injuries. However, My Physical Therapist is not responsible for any event that may occur.
+                </div>
+            </div>
+            
+            <!-- Side Widget -->
+            <div class="card my-4">
+                <div class="card-body">
+                    <?php
+                    include_once '../Ads.php';
+                    $ads= new Ads();
+                    echo $ads->getAds();
+                    ?>
                 </div>
             </div>
 
@@ -175,11 +186,7 @@ $dbConn->setQuery($sql);
 <!--[if lte IE 8]>
 <script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="assets/js/main.js"></script>
-<?php
-include_once '../Ads.php';
-$ads= new Ads();
-echo $ads->getAds();
-?>
+
 
 </body>
 </html>

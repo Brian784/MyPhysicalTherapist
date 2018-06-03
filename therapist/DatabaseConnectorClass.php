@@ -23,6 +23,27 @@ Class DababaseConnector
             return true;
         }
     }
+    function insertArticle($UserID,$title,$article){
+        $conn = $this->getConnection();
+        if (!$conn) {
+            die("Connection failed" . mysqli_connect_error());
+        } else {
+            $sql = "INSERT INTO `article` (`Article_ID`, `Therapist_ID`, `Article_Title`, `Article`, `TimePublished`, `Article_Picture`) VALUES (NULL, ?, ?,?, current_timestamp, NULL);";
+            $stmt = $conn->stmt_init();
+            if (!$stmt->prepare($sql)) {
+                echo $stmt->error;
+            } else {
+                $stmt->bind_param("sss", $UserID, $title,$article);
+                echo $stmt->affected_rows;
+                $stmt->execute();
+
+                $stmt->close();
+                $conn->close();
+            }
+
+
+        }
+    }
 
     function setQuery ($var)
     {
@@ -71,7 +92,7 @@ Class DababaseConnector
         }
     }
     function getTherapist($email, $password){
-        $this->setQuery("SELECT Therapist_ID FROM `therapist_account` WHERE Email = '$email' AND Password= '$password'");
+        $this->setQuery("SELECT Therapist_ID FROM `therapist_account` WHERE Email = '$email' AND BINARY Password= '$password'");
 
         $response=$this->executeSelectQuery();
         $UserID=null;
@@ -105,7 +126,7 @@ Class DababaseConnector
 
             die("Connection failed" . mysqli_connect_error());
         } else {
-            $sql = "SELECT Email, Password FROM `therapist_account` WHERE Email = ? AND Password= ?";
+            $sql = "SELECT Email, Password FROM `therapist_account` WHERE Email = ? AND BINARY Password= ?";
             $stmt = $conn->stmt_init();
             if (!$stmt->prepare($sql)) {
                     echo $stmt->error;

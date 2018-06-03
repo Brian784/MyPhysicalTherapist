@@ -6,35 +6,6 @@ if (isset($_POST['videoID'])) {
     $dbConn->setQuery($sql);
     $result = $dbConn->executeSelectQuery();
 
-    if(isset($_POST['action'])){
-
-    switch ($_POST['action']){
-        case 'addVideo':
-            if(!$dbConn->isVideoSaved($UserID,($_POST['videoID']))){
-                $sql = 'INSERT INTO `therapist_saved_videos` (`Video_ID`, `Therapist_ID`, `Time_Saved`) VALUES (\'' . $_POST['videoID'] . '\',\'' . $UserID . '\', CURRENT_TIMESTAMP)';
-                $dbConn->setQuery($sql);
-                $dbConn->executeQuery();
-            }
-            break;
-        case 'deleteVideo':
-            if($dbConn->isVideoSaved($UserID,($_POST['videoID']))){
-                $sql = 'DELETE FROM `therapist_saved_videos` WHERE `therapist_saved_videos`.`Video_ID` = '.$_POST['videoID'] .' AND `therapist_saved_videos`.`Therapist_ID` = '.$UserID;
-                $dbConn->setQuery($sql);
-                $dbConn->executeQuery();
-            }
-            break;
-        case 'postComment':
-            $sql='INSERT INTO `video_comments` (`Video_Comment_ID`, `Account_ID`, `Video_ID`, `Time_Stamp`, `Comment`, `isApprove`) VALUES (NULL,'. $UserID.','.$_POST['videoID'].', CURRENT_TIMESTAMP,\''.$_POST['comment'].'\',1)';
-            $dbConn->setQuery($sql);
-            $dbConn->executeQuery();
-            break;
-    }
-
-    unset($_POST['action']);
-
-    }
-
-
 } else {
     header('Location: videos.php');
     die();
@@ -98,22 +69,21 @@ if (isset($_POST['videoID'])) {
                     </p>
                     <hr>
                     <!-- Video-->
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe id='video' src="<?php echo 'videos/'.$row['Video_URL'];?>" width="100%" height="100%" frameborder="0"
-                                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                     <div class="embed-responsive embed-responsive-16by9">
+                        <video id='video' oncontextmenu="return false;" src="<?php echo 'videos/'.$row['Video_URL'];?>" width="100%" height="100%" controls controlsList="nodownload"></video>
                     </div>
                     <hr>
                     <!-- Date/Time -->
                     <p>Posted on <?php echo $row['TimePublished'] ?></p>
                     <!--Save Video -->
                 <?php if(!$dbConn->isVideoSaved($UserID,$_POST['videoID'])){?>
-                    <form action="playvideo.php" method="post" >
+                    <form action="VideoAction.php" method="post" >
                         <input type="hidden" name="videoID" value="<?php echo $_POST['videoID'] ?>">
                         <input type="hidden" name="action" value="addVideo">
                         <button type="submit" class="btn btn-primary">Save Video</button>
                     </form>
                         <?php }else{?>
-                        <form action="playvideo.php" method="post" >
+                        <form action="VideoAction.php" method="post" >
                             <input type="hidden" name="videoID" value="<?php echo $_POST['videoID'] ?>">
                             <input type="hidden" name="action" value="deleteVideo">
                             <button type="submit" class="btn btn-success">Video Saved</button>
@@ -139,7 +109,7 @@ $userName=$dbConn->executeSelectQuery();
                     }?>, You Might want to Leave a Comment:</h5>
                 <div class="card-body">
 
-                    <form action="playvideo.php" method="post">
+                    <form action="VideoAction.php" method="post">
                         <div class="form-group">
                             <textarea class="form-control" name='comment'rows="3"></textarea>
                         </div>
@@ -151,7 +121,7 @@ $userName=$dbConn->executeSelectQuery();
             </div>
             <?php
             $commentSql='(SELECT b.First_Name,\'user\' AS \'type\' ,b.Last_Name,b.Profile_Picture,a.Comment,a.Time_Stamp FROM video_comments a INNER JOIN user_account b WHERE a.Account_ID=b.User_ID AND a.Video_ID = '.$_POST['videoID'].' )
-            UNION(SELECT b.First_Name ,\'therapist\' AS \'type\',b.Last_Name,b.Profile_Picture,a.Comment,a.Time_Stamp FROM video_comments a INNER JOIN therapist_account b WHERE a.Account_ID=b.Therapist_ID AND a.Video_ID = '.$_POST['videoID'].' )';
+            UNION(SELECT b.First_Name ,\'therapist\' AS \'type\',b.Last_Name,b.Profile_Picture,a.Comment,a.Time_Stamp FROM video_comments a INNER JOIN therapist_account b WHERE a.Account_ID=b.Therapist_ID AND a.Video_ID = '.$_POST['videoID'].' ) ORDER BY Time_Stamp DESC';
             $dbConn->setQuery($commentSql);
             $comments=$dbConn->executeSelectQuery();
             ?>
@@ -246,6 +216,7 @@ $_POST['videoID']=null;
 <script src="assets/js/jquery.dropotron.min.js"></script>
 <script src="assets/js/skel.min.js"></script>
 <script src="assets/js/util.js"></script>
+<script src="../user/assets/js/playJs.js"></script>
 <!--[if lte IE 8]>
 <script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="assets/js/main.js"></script>

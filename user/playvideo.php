@@ -5,33 +5,6 @@ if (isset($_POST['videoID'])) {
     $sql = 'SELECT a.Video_ID,a.Video_Title,a.Video_Description,a.Video_URL,a.TimePublished,b.First_Name,b.Last_Name,b.Therapist_ID FROM video_library a INNER JOIN therapist_account b WHERE a.Therapist_ID=b.Therapist_ID AND a.Video_ID = ' . $_POST['videoID'];
     $dbConn->setQuery($sql);
     $result = $dbConn->executeSelectQuery();
-
-    if(isset($_POST['action'])){
-    switch ($_POST['action']){
-        case 'addVideo':
-            if(!$dbConn->isVideoSaved($UserID,($_POST['videoID']))){
-                $sql = 'INSERT INTO `user_saved_videos` (`Video_ID`, `User_ID`, `Time_Saved`) VALUES (\'' . $_POST['videoID'] . '\',\'' . $UserID . '\', CURRENT_TIMESTAMP)';
-                $dbConn->setQuery($sql);
-                $dbConn->executeQuery();
-            }
-            break;
-        case 'deleteVideo':
-            if($dbConn->isVideoSaved($UserID,($_POST['videoID']))){
-                $sql = 'DELETE FROM `user_saved_videos` WHERE `user_saved_videos`.`Video_ID` = '.$_POST['videoID'] .' AND `user_saved_videos`.`User_ID` = '.$UserID;
-                $dbConn->setQuery($sql);
-                $dbConn->executeQuery();
-            }
-            break;
-        case 'postComment':
-            $sql='INSERT INTO `video_comments` (`Video_Comment_ID`, `Account_ID`, `Video_ID`, `Time_Stamp`, `Comment`, `isApprove`) VALUES (NULL,'. $UserID.','.$_POST['videoID'].', CURRENT_TIMESTAMP,\''.$_POST['comment'].'\',1)';
-            $dbConn->setQuery($sql);
-            $dbConn->executeQuery();
-            break;
-    }
-    unset($_POST['action']);
-    }
-
-
 } else {
     header('Location: videos.php');
     die();
@@ -96,21 +69,20 @@ if (isset($_POST['videoID'])) {
                     <hr>
                     <!-- Video-->
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe id='video' src="<?php echo '../therapist/videos/'.$row['Video_URL'];?>" width="100%" height="100%" frameborder="0"
-                                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        <video id='video' oncontextmenu="return false;" src="<?php echo '../therapist/videos/'.$row['Video_URL'];?>" width="100%" height="100%" controls controlsList="nodownload"></video>
                     </div>
                     <hr>
                     <!-- Date/Time -->
                     <p>Posted on <?php echo $row['TimePublished'] ?></p>
                     <!--Save Video -->
                 <?php if(!$dbConn->isVideoSaved($UserID,$_POST['videoID'])){?>
-                    <form action="playvideo.php" method="post" >
+                    <form action="VideoAction.php" method="post" >
                         <input type="hidden" name="videoID" value="<?php echo $_POST['videoID'] ?>">
                         <input type="hidden" name="action" value="addVideo">
-                        <button type="submit" class="btn btn-primary">Save Video</button>
+                        <button type="submit" class="btn btn-primary">Save In Playlist</button>
                     </form>
                         <?php }else{?>
-                        <form action="playvideo.php" method="post" >
+                        <form action="VideoAction.php" method="post" >
                             <input type="hidden" name="videoID" value="<?php echo $_POST['videoID'] ?>">
                             <input type="hidden" name="action" value="deleteVideo">
                             <button type="submit" class="btn btn-success">Video Saved</button>
@@ -136,7 +108,7 @@ $userName=$dbConn->executeSelectQuery();
                     }?>, You Might want to Leave a Comment:</h5>
                 <div class="card-body">
 
-                    <form action="playvideo.php" method="post">
+                    <form action="VideoAction.php" method="post">
                         <div class="form-group">
                             <textarea class="form-control" name='comment'rows="3"></textarea>
                         </div>
@@ -148,7 +120,7 @@ $userName=$dbConn->executeSelectQuery();
             </div>
             <?php
             $commentSql='(SELECT b.First_Name,\'user\' AS \'type\' ,b.Last_Name,b.Profile_Picture,a.Comment,a.Time_Stamp FROM video_comments a INNER JOIN user_account b WHERE a.Account_ID=b.User_ID AND a.Video_ID = '.$_POST['videoID'].' )
-            UNION(SELECT b.First_Name ,\'therapist\' AS \'type\',b.Last_Name,b.Profile_Picture,a.Comment,a.Time_Stamp FROM video_comments a INNER JOIN therapist_account b WHERE a.Account_ID=b.Therapist_ID AND a.Video_ID = '.$_POST['videoID'].' )';
+            UNION(SELECT b.First_Name ,\'therapist\' AS \'type\',b.Last_Name,b.Profile_Picture,a.Comment,a.Time_Stamp FROM video_comments a INNER JOIN therapist_account b WHERE a.Account_ID=b.Therapist_ID AND a.Video_ID = '.$_POST['videoID'].' ) ORDER BY Time_Stamp DESC';
             $dbConn->setQuery($commentSql);
             $comments=$dbConn->executeSelectQuery();
             ?>
@@ -222,12 +194,23 @@ $userName=$dbConn->executeSelectQuery();
 
             <!-- Side Widget -->
             <div class="card my-4">
-                <h5 class="card-header"><strong>Reminder</strong></h5>
+                <h5 class="card-header"><strong>DISCLAIMER</strong></h5>
                 <div class="card-body">
                     We would like to remind you that these video tutorials will serve as guide for certain physical injuries. However, My Physical Therapist is not responsible for any event that may occur.
                 </div>
             </div>
-
+            
+            <!-- Side Widget -->
+            <div class="card my-4">
+                <div class="card-body">
+                    <?php
+                    include_once '../Ads.php';
+                    $ads= new Ads();
+                    echo $ads->getAds();
+                    ?>
+                </div>
+            </div>
+            
         </div>
 
     </div>
@@ -246,11 +229,7 @@ $_POST['videoID']=null;
 <!--[if lte IE 8]>
 <script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="assets/js/main.js"></script>
-<?php
-include_once '../Ads.php';
-$ads= new Ads();
-echo $ads->getAds();
-?>
+<script src="assets/js/playJs.js"></script>
 
 </body>
 </html>

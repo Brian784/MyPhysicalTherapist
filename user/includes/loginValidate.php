@@ -26,6 +26,7 @@ if ($EmaiCookielValue != null && $PsdCookieValue != null) {
 } else {
     $emailSessionValue = $sessionMaker->getSession('UserEmailSession');
     $psdSessionValue = $sessionMaker->getSession('UserPswSession');
+    if($emailSessionValue!=null && $psdSessionValue!=null){
     $psdSessionValue = $encrtptor->crypt_function($psdSessionValue, 'd');
     $emailSessionValue = $encrtptor->crypt_function($emailSessionValue, 'd');
 
@@ -37,6 +38,7 @@ if ($EmaiCookielValue != null && $PsdCookieValue != null) {
         $sessionMaker->deleteSession('UserPswSession');
         $sessionMaker->deleteSession('UserIDSession');
     }
+   }
 
 }
 

@@ -1,18 +1,26 @@
 <?php
 session_start();
-include 'EncryptClass.php';
-include 'cookiesAndSessions.php';
-include "DatabaseConnectorClass.php";
-$CookieMaker = new CookiesTracking();
-$SessionMaker = new SessionsTracking();
-$encryptor = new EncryptClass();
-$isLogined = true;
-$dbConn = new DababaseConnector();
-$UserID = null;
+require 'includes/validate.php';
 
+$sql= "SELECT `First_Name`, `Last_Name`, `Profile_Picture`, `Contact_Number`, `Age`, `Gender` FROM `user_account` WHERE User_ID = $UserID";
 
+$dbConn->setQuery($sql);
 
-
+$user=$dbConn->executeSelectQuery();
+$firstName;
+$lastName;
+while($row = @mysqli_fetch_array($user)){
+    
+    $firstName = $row['First_Name'];
+    $lastName = $row['Last_Name'];
+    $userPicture = $row['Profile_Picture'];
+    $contact = $row['Contact_Number'];
+    $age = $row['Age'];
+    $gender = $row['Gender'];
+}
+    
+    
+ 
 
 ?>
 
@@ -89,57 +97,13 @@ $UserID = null;
 
     <!-- Header -->
     <div id="header">
+        <?php
+        require("includes/header.php");
+        ?>
+    </div>
 
         <!-- Nav -->
-        <nav id="nav">
-            <ul>
-                <li><a href="index.php"><img src="images/MyPtLogo.png" width="150" height="90"></a></li>
-                <li><a href="index.php">Home</a></li>
-                <li class="current">
-                    <a href="#">User</a>
-                    <ul>
-
-
-                        <?php
-
-                        echo '<form id="UserIDForm"  action="userprofile.php" method="get">
-  <input type="hidden" name="userID" value=' . $UserID . '>
-</form>';
-                        echo '<form id="LogoutForm"  action="login.php" method="post">
-  <input type="hidden" name="isSignout" value="true">
-</form>';
-                        echo ' <li><a  href="userprofile.php">User Profile</a></form></li>';
-
-                        echo ' <li><a onclick="document.getElementById(\'LogoutForm\').submit();">Logout</a></li>';
-
-                        ?>
-
-                    </ul>
-                </li>
-                <li>
-
-                    <a href="#">Videos</a>
-                    <ul>
-                        <li><a href="videos.php?part=upper">Upper Body</a></li>
-                        <li><a href="videos.php?part=lower">Lower Body</a></li>
-                        <li><a  href="savevideos.php">Saved Videos</a></form></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#">Appointment</a>
-                    <ul>
-                        <li><a href="newappointment.php">New Appointment</a></li>
-                        <li><a href="myappointment.php">My Appointment</a></li>
-                    </ul>
-                </li>
-                <li><a href="contactinfo.php">Contact Information</a></li>
-            </ul>
-
-
-        </nav>
-
-    </div>
+       
 
 
 
@@ -156,10 +120,10 @@ $UserID = null;
                     <div class="">
                         <div class="row">
                             <div class="panel panel-default">
-                                <div class="panel-heading">  <h4 >User: ameraIbrahim2</h4></div>
+                                <div class="panel-heading">  <h4 >Welcome, <?Php echo $firstName ?></h4></div>
                                 <div class="panel-body" style = "width: 100%">
                                     <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
-                                        <img class="fa-tumblr-square d-flex" width="80%" alt="User Pic" src="https://scontent.fmnl15-1.fna.fbcdn.net/v/t1.0-9/25660154_1928942137371855_1011372740605600366_n.jpg?_nc_cat=0&oh=4344c8616dbee95c93ed39dc97d29bfc&oe=5B8C6DDF"
+                                        <img class="fa-tumblr-square d-flex" width="80%" alt="User Pic" src="<?php echo'userprofilepictures/'.$userPicture; ?>"
                                              id="profile-image1" class="img-circle img-responsive">
 
 
@@ -169,17 +133,18 @@ $UserID = null;
                                     </div>
                                     <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8" >
                                         <div class="container" >
-                                            <h2>Amera Ibrahim</h2>
+                                            <h2><?Php echo $firstName ." ". $lastName  ?></h2>
                                             <p>Regular   <b> Member</b></p>
 
 
                                         </div>
                                         <hr>
                                         <ul class="container details" >
-                                            <li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>amera.ayman@gmail.com</p></li>
-                                            <li><p><span class="glyphicon glyphicon-user one" style="width:50px;"></span>Female</p></li>
-                                            <li><p><span class="glyphicon glyphicon-info-sign one" style="width:50px;"></span>18 years old</p></li>
+                                            <li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span><?Php echo $email ?></p></li>
+                                            <li><p><span class="fa fa-intersex" style="width:50px;"></span>Gender: <b><?Php echo $gender ?></b></p></li>
+                                            <li><p><span class="glyphicon glyphicon-info-sign one" style="width:50px;"></span><?Php echo $age ?> years old</p></li>
                                             <li><p><span class="glyphicon glyphicon-home" style="width:50px;"></span>in <b>Manila</b></p></li>
+                                            <li><p><span class="fa fa-mobile" style="width:50px;"></span><?Php echo $contact ?> </p></li>
 
                                         </ul>
                                         <hr>

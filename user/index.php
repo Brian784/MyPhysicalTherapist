@@ -41,12 +41,12 @@ $isSearch=null;
 if(!isset($_GET['keyword'])){
     $isSearch=false;
 $sql = 'SELECT a.Therapist_ID,a.Article_ID,a.Article_Title,
-SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM article a
+SUBSTRING( a.Article,1,200) as Article,b.First_Name,b.Last_Name FROM article a
  INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND b.isValidated = 1 ORDER BY a.Article_ID DESC LIMIT '.$pageCntentRange1.','.$itemperpage;
 }else{
     $isSearch=true;
     $sql='SELECT a.Therapist_ID,a.Article_ID,a.Article_Title,
-SUBSTRING( a.Article,1,300) as Article,b.First_Name,b.Last_Name FROM article a
+SUBSTRING( a.Article,1,200) as Article,b.First_Name,b.Last_Name FROM article a
  INNER JOIN therapist_account b WHERE a.Therapist_ID = b.Therapist_ID AND (a.Article_Title LIKE \'%' . $_GET['keyword'] . '%\' OR b.First_Name LIKE \'%'. $_GET['keyword'] . '%\' OR b.Last_Name LIKE \'%'. $_GET['keyword'] . '%\') AND b.isValidated = 1 ORDER BY a.Article_ID DESC LIMIT '.$pageCntentRange1.','.$itemperpage;
 }
 $dbConn->setQuery($sql);
@@ -106,7 +106,7 @@ $result = $dbConn->executeSelectQuery();
                                     <input type="hidden" name="articleID" value="<?php echo $row['Article_ID'] ?>">
                                 </form>
 
-                                <a onclick="document.getElementById('article<?php echo $row['Article_ID'] ?>' ).submit();"><?php echo $row['Article_Title'] ?></a>
+                                <a onclick="document.getElementById('article<?php echo $row['Article_ID'] ?>' ).submit();"><?php echo substr($row['Article_Title'],0,70) ?></a>
                             </h4>
                             <form id="therapist<?php echo $row['Therapist_ID'] ?>" action="therapistprofile.php"
                                   method="post">
@@ -158,6 +158,17 @@ $result = $dbConn->executeSelectQuery();
                     These articles are posted by authorized therapists.
                 </div>
             </div>
+            
+            <!-- Side Widget -->
+            <div class="card my-4">
+                <div class="card-body">
+                    <?php
+                    include_once '../Ads.php';
+                    $ads= new Ads();
+                    echo $ads->getAds();
+                    ?>
+                </div>
+            </div>
 
         </div>
 
@@ -197,11 +208,6 @@ $result = $dbConn->executeSelectQuery();
 <script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="assets/js/main.js"></script>
 
-<?php
-include_once '../Ads.php';
-$ads= new Ads();
-echo $ads->getAds();
-?>
 </body>
 
 </html>

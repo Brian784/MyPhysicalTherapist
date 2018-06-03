@@ -180,12 +180,23 @@ $result = $dbConn->executeSelectQuery();
 
             <!-- Side Widget -->
             <div class="card my-4">
-                <h5 class="card-header"><strong>Reminder</strong></h5>
+                <h5 class="card-header"><strong>DISCLAIMER</strong></h5>
                 <div class="card-body">
                     We would like to remind you that these video tutorials will serve as guide for certain physical injuries. However, My Physical Therapist is not responsible for any event that may occur.
                 </div>
             </div>
 
+        <!-- Side Widget -->
+            <div class="card my-4">
+                <div class="card-body">
+                    <?php
+                    include_once '../Ads.php';
+                    $ads= new Ads();
+                    echo $ads->getAds();
+                    ?>
+                </div>
+            </div>
+            
         </div>
 
     </div>
@@ -241,11 +252,6 @@ if($isSearch) {
 <!--[if lte IE 8]>
 <script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="assets/js/main.js"></script>
-<?php
-include_once '../Ads.php';
-$ads= new Ads();
-echo $ads->getAds();
-?>
 
 </body>
 </html>

@@ -84,23 +84,33 @@ $result = $dbConn->executeSelectQuery();
 
         <!-- Blog Entries Column -->
         <div class="col-md-8 ">
-
-            <h2 class="my-4">My Articles
-            </h2>
-            <a href="google.com">New Article</a>
-            <?php if($isSearch){ ?>
-                <h6 class="my-4"><?php echo 'Search \''.ucfirst($_GET['keyword']).'\'';?>
-                </h6>
-            <?php } ?>
+            <div class ='col-md-8'>
+            <h2 class="my-4">My Articles</h2>
+                <h4><a href="newArticle.php">New Article</a></h4>
+                <?php if($isSearch){ ?>
+                    <h6 class="my-4"><?php echo 'Search \''.ucfirst($_GET['keyword']).'\'';?>
+                    </h6>
+                <?php } ?>
+            </div>
             <?php if ($result->num_rows > 0) { ?>
                 <?php while ($row = @mysqli_fetch_array($result)) { ?>
                     <div class="col-lg-6 portfolio-item">
                         <div class="card h-100 mh-100">
-                            <div class="card-body">
+                            <div class="card-body" >
                                 <h4 class="card-title">
                                     <form id="article<?php echo $row['Article_ID'] ?>" action="article.php"
                                           method="post">
                                         <input type="hidden" name="articleID" value="<?php echo $row['Article_ID'] ?>">
+                                    </form>
+                                    <form id="modify<?php echo $row['Article_ID'] ?>" action="modifyArticle.php"
+                                          method="post">
+                                        <input type="hidden" name="articleID" value="<?php echo $row['Article_ID'] ?>">
+                                    </form>
+
+                                    <form id="deleteArticle<?php echo $row['Article_ID'] ?>" action="article.action.php"
+                                          method="post">
+                                        <input type="hidden" name="articleID" value="<?php echo $row['Article_ID'] ?>">
+                                        <input type="hidden" name="action" value="delete">
                                     </form>
 
                                     <a onclick="document.getElementById('article<?php echo $row['Article_ID'] ?>' ).submit();"><?php echo $row['Article_Title'] ?></a>
@@ -110,13 +120,13 @@ $result = $dbConn->executeSelectQuery();
                                     <?php echo $row['Article'] . '...' ?>
                                 </p>
 
-                                <button type="button" class="btn btn-warning btn-md">
+                                <button type="button" class="btn btn-danger btn-md pull-right" onclick="deleteArticle('<?php echo 'deleteArticle'. $row['Article_ID']?>')">
+                                    <span class="glyphicon glyphicon-remove"></span> Delete
+                                </button>
+                                <button type="button" class="btn btn-warning btn-md pull-right" style="margin-right: 2rem" onclick="document.getElementById('modify<?php echo $row['Article_ID'] ?>' ).submit();">
                                     <span class="glyphicon glyphicon-font"></span> Modify
                                 </button>
 
-                                <button type="button" class="btn btn-danger btn-md">
-                                    <span class="glyphicon glyphicon-remove"></span> Delete
-                                </button>
 
                             </div>
                         </div>
@@ -151,6 +161,17 @@ $result = $dbConn->executeSelectQuery();
                 <h5 class="card-header"><strong>Article Section</strong></h5>
                 <div class="card-body">
                     Manage your articles.
+                </div>
+            </div>
+            
+            <!-- Side Widget -->
+            <div class="card my-4">
+                <div class="card-body">
+                    <?php
+                    include_once '../Ads.php';
+                    $ads= new Ads();
+                    echo $ads->getAds();
+                    ?>
                 </div>
             </div>
 
@@ -191,6 +212,6 @@ $result = $dbConn->executeSelectQuery();
 <!--[if lte IE 8]>
 <script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="assets/js/main.js"></script>
-
+<script src="assets/js/confirm.js"></script>
 </body>
 </html>
